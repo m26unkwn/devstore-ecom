@@ -10,5 +10,6 @@ export { default as CartIcon } from "./CartIcon.svg";
 export { default as RemoveIcon } from "./Remove.svg";
 export { default as Eye } from "./eyes.svg";
 export { default as disableEye } from "./disableEye.svg";
+export { default as Bag } from "./bag.png";
 
 //
