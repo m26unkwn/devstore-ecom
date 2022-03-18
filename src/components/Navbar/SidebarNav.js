@@ -7,7 +7,7 @@ import useWidth from "../../hooks/useWidth";
 import { RemoveIcon } from "../../assets";
 
 const SidebarNav = ({ setIsClicked, clickHandler }) => {
-  const { width } = useWidth();
+  const width = useWidth();
 
   useEffect(() => {
     if (width > 700) {
