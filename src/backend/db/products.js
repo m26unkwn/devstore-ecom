@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { Stickers, Tees, Bag, Hat } from "../../assets";
+import { Sticker, Tees, Bag, Hat } from "../../assets";
 
 /**
  * Product Database can be added here.
@@ -14,8 +14,8 @@ export const products = [
     price: "4",
     prev_price: "8",
     discount: "50",
-    category: "stickers",
-    img: { Stickers },
+    category: "Sticker",
+    img: Sticker,
   },
   {
     _id: uuid(),
@@ -25,7 +25,7 @@ export const products = [
     prev_price: "80",
     discount: "50",
     category: "hat",
-    img: { Hat },
+    img: Hat,
   },
   {
     _id: uuid(),
@@ -35,7 +35,7 @@ export const products = [
     prev_price: "160",
     discount: "50",
     category: "Tees",
-    img: { Tees },
+    img: Tees,
   },
   {
     _id: uuid(),
@@ -45,7 +45,7 @@ export const products = [
     prev_price: "12",
     discount: "50",
     category: "sticker",
-    img: { Stickers },
+    img: Sticker,
   },
   {
     _id: uuid(),
@@ -55,7 +55,7 @@ export const products = [
     prev_price: "12",
     discount: "50",
     category: "bag",
-    img: { Bag },
+    img: Bag,
   },
   {
     _id: uuid(),
@@ -64,8 +64,8 @@ export const products = [
     price: "3",
     prev_price: "6",
     discount: "50",
-    category: "stickers",
-    img: { Stickers },
+    category: "Sticker",
+    img: Sticker,
   },
   {
     _id: uuid(),
@@ -75,7 +75,7 @@ export const products = [
     prev_price: "40",
     discount: "50",
     category: "hat",
-    img: { Hat },
+    img: Hat,
   },
   {
     _id: uuid(),
@@ -85,7 +85,7 @@ export const products = [
     prev_price: "120",
     discount: "50",
     category: "Tees",
-    img: { Tees },
+    img: Tees,
   },
   {
     _id: uuid(),
@@ -95,7 +95,7 @@ export const products = [
     prev_price: "12",
     discount: "50",
     category: "sticker",
-    img: { Stickers },
+    img: Sticker,
   },
   {
     _id: uuid(),
@@ -105,6 +105,6 @@ export const products = [
     prev_price: "12",
     discount: "50",
     category: "bag",
-    img: { Bag },
+    img: Bag,
   },
 ];

@@ -2,16 +2,16 @@ import React from "react";
 import { Tees, HeartIcon, CartIcon } from "../../assets";
 
 const Product = (props) => {
-  const { title, desc, price, prevPrice, discount } = props;
+  const { title, desc, price, prevPrice, discount, img } = props;
 
   return (
     <div className='pd-card-container vertical'>
       <div className='card-img-wrapper vertical-img'>
         <a href='./'>
           <img
-            src={Tees}
+            src={img}
             className='pd-img card-img vertical-card-img'
-            alt='img'
+            alt={`${img} + img`}
           />
         </a>
       </div>
