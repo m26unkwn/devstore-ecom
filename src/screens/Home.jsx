@@ -1,10 +1,15 @@
 import React from "react";
 import "./home.css";
 
+import { Hero,Category,HomeProducts } from "../components";
+
 const home = () => {
   return (
     <main className='main-wrapper'>
-     <p>Hey I am Home</p>
+      <Hero />
+      <Category />
+      <HomeProducts />
+    
     </main>
   );
 };
