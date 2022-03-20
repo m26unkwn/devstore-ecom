@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { StateProvider } from "./Context/StateContext";
+import { StateProvider } from "./Context/state-context";
 
 // Call make Server
 makeServer();

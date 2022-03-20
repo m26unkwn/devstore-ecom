@@ -5,17 +5,16 @@ import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 
 import { useEffect } from "react";
-import { useData } from "./Context/StateContext";
+import { useData } from "./Context/state-context";
 
-import { getDataFromServer } from "./utils/serverCalls/getProducts";
-import useAxios from "./hooks/useAxios";
+import useAxios from "./hooks/use-axios";
 function App() {
   const { dispatch } = useData();
-  const [product] = useAxios("/api/products", "get");
+  const [products] = useAxios("/api/products", "get");
 
   useEffect(() => {
-    dispatch({ type: "ADD_TO_PRODUCTS", payload: product });
-  }, [dispatch, product]);
+    dispatch({ type: "ADD_TO_PRODUCTS", payload: products });
+  }, [dispatch, products]);
 
   return (
     <>
@@ -25,7 +24,6 @@ function App() {
           path='/mockman'
           element={
             <div className='MockAPI'>
-              {" "}
               <Mockman />
             </div>
           }

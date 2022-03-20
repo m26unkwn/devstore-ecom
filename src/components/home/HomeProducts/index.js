@@ -1,8 +1,8 @@
 import React from "react";
 
-import Product from "../../Nuclie/Product";
+import ProductCard from "../../Nuclie/ProductCard";
 
-import { useData } from "../../../Context/StateContext";
+import { useData } from "../../../Context/state-context";
 
 const HomeProducts = () => {
   const { state } = useData();
@@ -20,7 +20,7 @@ const HomeProducts = () => {
           products
             .slice(0, 4)
             .map((product) => (
-              <Product
+              <ProductCard
                 key={product._id}
                 title={product.title}
                 desc={product.desc}

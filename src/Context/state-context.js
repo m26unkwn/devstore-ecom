@@ -1,5 +1,5 @@
 import { createContext, useReducer, useContext } from "react";
-import { stateReducer } from "./stateReducer";
+import { stateReducer } from "./state-reducer";
 const StateContext = createContext();
 let initialSatate = {
   products: [],

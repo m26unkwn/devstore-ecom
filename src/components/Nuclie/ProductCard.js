@@ -1,7 +1,7 @@
 import React from "react";
-import { Tees, HeartIcon, CartIcon } from "../../assets";
+import { HeartIcon, CartIcon } from "../../assets";
 
-const Product = (props) => {
+const ProductCard = (props) => {
   const { title, desc, price, prevPrice, discount, img } = props;
 
   return (
@@ -11,7 +11,7 @@ const Product = (props) => {
           <img
             src={img}
             className='pd-img card-img vertical-card-img'
-            alt={`${img} + img`}
+            alt={`${title} + img`}
           />
         </a>
       </div>
@@ -39,4 +39,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default ProductCard;

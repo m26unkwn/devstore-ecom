@@ -1,12 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react/cjs/react.production.min";
-
-import useAxios from "../../../hooks/useAxios";
+import useAxios from "../../../hooks/use-axios";
 
 import { CategoryCard } from "./Category";
 
 const Category = () => {
-  //const [categoryData, setcategoryData] = useState([]);
   const [categoryDatas] = useAxios("/api/categories", "get");
 
   return (

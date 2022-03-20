@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { NavLink } from "react-router-dom";
 
-import useWidth from "../../hooks/useWidth";
+import useWidth from "../../hooks/use-width";
 
 import { RemoveIcon } from "../../assets";
 
