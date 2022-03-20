@@ -1,48 +1,27 @@
 import React from "react";
+import { useState, useEffect } from "react/cjs/react.production.min";
 
-import { Sticker, Tees, Hat, Bag } from "../../../assets";
+import useAxios from "../../../hooks/useAxios";
+
+import { CategoryCard } from "./Category";
 
 const Category = () => {
+  //const [categoryData, setcategoryData] = useState([]);
+  const [categoryDatas] = useAxios("/api/categories", "get");
+
   return (
     <section className='pd-container'>
       <h1>Categories</h1>
       <div className='categories-wrapper flex jc-center flex-wrap'>
-        <div className='categories-item'>
-          <a href='./'>
-            <img
-              className='img-resposive'
-              src={Sticker}
-              alt='clothing-section'
+        {categoryDatas &&
+          categoryDatas.categories.map((item) => (
+            <CategoryCard
+              key={item._id}
+              link={item.link}
+              img={item.img}
+              categoryName={item.categoryName}
             />
-          </a>
-          <div className='item-btn'>
-            <a href='./'>Shop Stickers</a>
-          </div>
-        </div>
-        <div className='categories-item'>
-          <a href='./'>
-            <img className='img-resposive' src={Tees} alt='clothing-section' />
-          </a>
-          <div className='item-btn'>
-            <a href='./'>Shop T-Shirts</a>
-          </div>
-        </div>
-        <div className='categories-item'>
-          <a href='./'>
-            <img className='img-resposive' src={Hat} alt='clothing-section' />
-          </a>
-          <div className='item-btn'>
-            <a href='./'>Shop Hats</a>
-          </div>
-        </div>
-        <div className='categories-item'>
-          <a href='./'>
-            <img className='img-resposive' src={Bag} alt='clothing-section' />
-          </a>
-          <div className='item-btn'>
-            <a href='./'>Shop Bags</a>
-          </div>
-        </div>
+          ))}
       </div>
     </section>
   );

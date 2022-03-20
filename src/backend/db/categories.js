@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { Sticker, Tees, Bag, Hat } from "../../assets";
 
 /**
  * Category Database can be added here.
@@ -8,20 +9,26 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    link: "/products/sticker",
+    img: Sticker,
+    categoryName: "Stickers",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    link: "/products/tees",
+    img: Tees,
+    categoryName: "T-Shirts",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    link: "/products/hat",
+    img: Hat,
+    categoryName: "Hats",
+  },
+  {
+    _id: uuid(),
+    link: "/products/Bag",
+    img: Bag,
+    categoryName: "Bag",
   },
 ];

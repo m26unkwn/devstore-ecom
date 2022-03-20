@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: "ADD_TO_PRODUCTS", payload: product });
-  }, [product]);
+  }, [dispatch, product]);
 
   return (
     <>
