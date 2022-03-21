@@ -8,12 +8,16 @@ import { useEffect } from "react";
 import { useData } from "./Context/state-context";
 
 import useAxios from "./hooks/use-axios";
+import { ProductList } from "./screens/ProductList";
+import { getDataFromServer } from "./services/get-data-server";
+
 function App() {
   const { dispatch } = useData();
   const [products] = useAxios("/api/products", "get");
 
   useEffect(() => {
-    dispatch({ type: "ADD_TO_PRODUCTS", payload: products });
+    getDataFromServer("/api/products", "get", dispatch, "ADD_TO_PRODUCTS");
+    //dispatch({ type: "ADD_TO_PRODUCTS", payload: products });
   }, [dispatch, products]);
 
   return (
@@ -29,6 +33,7 @@ function App() {
           }
         />
         <Route path='/' element={<Home />} />
+        <Route path='/products' element={<ProductList />} />
       </Routes>
     </>
   );

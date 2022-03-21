@@ -6,6 +6,11 @@
   position: sticky;
   padding: var(--spacing-lg);
   background: var(--white-color);
+  top: 0;
+  z-index: 4;
+}
+.logo {
+  gap: 2rem;
 }
 
 .search-bar {
@@ -256,5 +261,11 @@
 
   .nav-burger {
     display: block;
+  }
+}
+
+@media (min-width: 700px) {
+  .navbar-backdrop {
+    display: none;
   }
 }

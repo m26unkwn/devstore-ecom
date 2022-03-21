@@ -30,6 +30,11 @@ const Navbar = () => {
           </button>
         </NavLink>
         <h1 className='logo-text'>DEVSTORE</h1>
+        <NavLink
+          to='/products'
+          className='link-btn logo-text  flex ai-center  jc-center'>
+          Shop Now
+        </NavLink>
       </div>
 
       <div className='input-field search-bar'>
@@ -45,12 +50,6 @@ const Navbar = () => {
             <NavLink to='/signup' className='auth-signup btn'>
               Signup
             </NavLink>
-
-            <a
-              href='./screens/product.html'
-              className='link-btn  flex ai-center  jc-center'>
-              Shop Now
-            </a>
           </div>
         )}
 
