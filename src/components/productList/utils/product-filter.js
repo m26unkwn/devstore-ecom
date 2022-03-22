@@ -1,6 +1,7 @@
 import { productCheckbox } from "./product-checkbox";
 import { productSort } from "./product-sort";
 
+
 export default function filteredProduct(products, selectedFilters = {}) {
   let filteredProducts = [...products];
   Object.keys(selectedFilters).forEach((filterPram) => {
