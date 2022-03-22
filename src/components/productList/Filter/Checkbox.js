@@ -1,4 +1,4 @@
-import { InputCheckbox } from "./InputCheckbox";
+import { Input } from "./Input";
 
 import { useData } from "../../../Context/state-context";
 export const Checkbox = ({ filter }) => {
@@ -16,9 +16,10 @@ export const Checkbox = ({ filter }) => {
       <li className='filter-section-title'>{filter.name}</li>
       {filter.data.map((check) => (
         <li key={check.id}>
-          <InputCheckbox
+          <Input
             type='CHECKBOX_CHANGE'
             filterType={filter.type}
+            inputType='checkbox'
             label={check.label}
             value={check.value}
             name={check.name}

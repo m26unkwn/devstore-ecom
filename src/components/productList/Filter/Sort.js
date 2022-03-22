@@ -1,4 +1,4 @@
-import { InputRadio } from "./InputRadio";
+import { Input } from "./Input";
 import { useData } from "../../../Context/state-context";
 
 export const Sort = ({ filter }) => {
@@ -12,7 +12,7 @@ export const Sort = ({ filter }) => {
       <li className='filter-section-title'>{filter.name}</li>
       {filter.data.map((sort) => (
         <li key={sort.id}>
-          <InputRadio
+          <Input
             value={sort.value}
             name={sort.name}
             label={sort.label}
@@ -20,6 +20,7 @@ export const Sort = ({ filter }) => {
             filterParam={filter.parameter}
             type='SORT_CHANGE'
             stateValue={value}
+            inputType='radio'
           />
         </li>
       ))}

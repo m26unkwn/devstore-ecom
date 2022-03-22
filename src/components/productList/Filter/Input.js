@@ -1,9 +1,10 @@
 import { useData } from "../../../Context/state-context";
 
-export const InputCheckbox = ({
+export const Input = ({
   filterParam,
   type,
   filterType,
+  inputType,
   value,
   name,
   label,
@@ -23,14 +24,16 @@ export const InputCheckbox = ({
 
   let checkedValue = Array.isArray(stateValue)
     ? stateValue.some((val) => value === val)
+    : stateValue
+    ? value === stateValue
     : false;
 
-  console.log("is Array ", checkedValue, value);
+  console.log("Check value", checkedValue);
 
   return (
     <label className='form-label'>
       <input
-        type='checkbox'
+        type={inputType}
         name={name}
         value={value}
         onChange={onChangeHandler}
