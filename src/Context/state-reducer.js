@@ -2,6 +2,7 @@ export function stateReducer(state, action) {
   switch (action.type) {
     case "ADD_TO_PRODUCTS":
       return { ...state, products: action.payload };
+
     case "SORT_CHANGE":
       return {
         ...state,
@@ -13,10 +14,12 @@ export function stateReducer(state, action) {
           },
         },
       };
+
     case "CHECKBOX_CHANGE":
       const found = state.selectedFilters[
         action.payload.filterParam
       ]?.data?.some((value) => value === action.payload.data);
+
       return {
         ...state,
         selectedFilters: {
@@ -36,11 +39,13 @@ export function stateReducer(state, action) {
           },
         },
       };
+
     case "CLEAR_FILTER":
       return {
         ...state,
         selectedFilters: action.payload,
       };
+
     default:
       return state;
   }
