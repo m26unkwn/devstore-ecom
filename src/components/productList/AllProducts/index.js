@@ -1,5 +1,3 @@
-import React from "react";
-
 import ProductCard from "../../Nuclie/ProductCard";
 
 import { useData } from "../../../Context/state-context";

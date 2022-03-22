@@ -2,7 +2,7 @@ import { useData } from "../../../Context/state-context";
 
 export const Input = ({
   filterParam,
-  type,
+  dispatchType,
   filterType,
   inputType,
   value,
@@ -13,7 +13,7 @@ export const Input = ({
   const { dispatch } = useData();
   const onChangeHandler = () => {
     dispatch({
-      type: type,
+      type: dispatchType,
       payload: {
         data: value,
         filterType: filterType,
