@@ -6,7 +6,7 @@ import { Checkbox } from "./Checkbox";
 import { useData } from "../../../Context/state-context";
 
 const Filter = () => {
-  const { state, dispatch } = useData();
+  const {  dispatch } = useData();
 
   const clearFilterHanlder = () => {
     dispatch({ type: "CLEAR_FILTER", payload: {} });
@@ -30,80 +30,6 @@ const Filter = () => {
             ""
           );
         })}
-
-        {/* <li class='filter-section-title'>SORT</li>
-        <li>
-          <label class='form-label'>
-            <input type='radio' name='sort' value='HIGH_TO_LOW_PRICE' />
-            Price High to low
-          </label>
-        </li>
-        <li>
-          <label class='form-label'>
-            <input type='radio' name='sort' value='LOW_TO_HIGH_PRICE' />
-            Price Low to High
-          </label>
-        </li>
-        <div class='card-divider'></div>
-        <li class='filter-section-title'>CATEGORIES</li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            Hat
-          </label>
-        </li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            Stickers
-          </label>
-        </li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            Keyboards
-          </label>
-        </li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            BackPack
-          </label>
-        </li>
-        <div class='card-divider'></div>
-        <li class='filter-section-title'>BRANDS</li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            Apple
-          </label>
-        </li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            Google
-          </label>
-        </li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            Dev
-          </label>
-        </li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' />
-            Github
-          </label>
-        </li>
-        <div class='card-divider'></div>
-        <li class='filter-section-title'>OTHER</li>
-        <li>
-          <label class='form-label'>
-            <input type='checkbox' checked='' />
-            Include out of stock
-          </label>
-        </li> */}
       </ul>
     </section>
   );

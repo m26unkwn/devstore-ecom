@@ -5,9 +5,9 @@ export const Checkbox = ({ filter }) => {
   const {
     state: { selectedFilters },
   } = useData();
-  let value = selectedFilters?.category?.data;
-
-  console.log("category", value);
+  let value = selectedFilters?.category?.data
+    ? selectedFilters?.category?.data
+    : selectedFilters?.brand?.data;
 
   return (
     <>
