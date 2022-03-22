@@ -1,6 +1,14 @@
-import { Input } from "./Input";
+import { InputCheckbox } from "./InputCheckbox";
 
+import { useData } from "../../../Context/state-context";
 export const Checkbox = ({ filter }) => {
+  const {
+    state: { selectedFilters },
+  } = useData();
+  let value = selectedFilters?.category?.data;
+
+  console.log("category", value);
+
   return (
     <>
       <div className='card-divider'></div>
@@ -8,14 +16,14 @@ export const Checkbox = ({ filter }) => {
       <li className='filter-section-title'>{filter.name}</li>
       {filter.data.map((check) => (
         <li key={check.id}>
-          <Input
+          <InputCheckbox
             type='CHECKBOX_CHANGE'
             filterType={filter.type}
-            inputType='checkbox'
             label={check.label}
             value={check.value}
             name={check.name}
             filterParam={filter.parameter}
+            stateValue={value}
           />
         </li>
       ))}

@@ -8,7 +8,7 @@ import { useData } from "../../../Context/state-context";
 
 const HomeProducts = () => {
   const { state } = useData();
-  const products = state.products.products;
+  const products = state.products;
   return (
     <section className='pd-container'>
       <div className='pd-nav'>

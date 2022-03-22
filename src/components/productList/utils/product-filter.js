@@ -1,18 +1,16 @@
-import productCheckbox from "./product-checkbox";
-import productSort from "./product-sort";
+import { productCheckbox } from "./product-checkbox";
+import { productSort } from "./product-sort";
 
-export const productFilter = (products, selectedFilters = {}) => {
-  let filteredProduct = [...products];
-  Object.keys(selectedFilters).forEach((paramFilter) => {
-    const { type, data } = selectedFilters[paramFilter];
-
+export default function filteredProduct(products, selectedFilters = {}) {
+  let filteredProducts = [...products];
+  Object.keys(selectedFilters).forEach((filterPram) => {
+    const { type, data } = selectedFilters[filterPram];
     if (type === "sort" && data.length > 0) {
-      filteredProduct = productSort(filteredProduct, data, paramFilter);
-      console.log("Sorted Data", filteredProduct);
+      filteredProducts = productSort(filteredProducts, data, filterPram);
     }
     if (type === "checkbox" && data.length > 0) {
-      filteredProduct = productCheckbox(filteredProduct, data, paramFilter);
+      filteredProducts = productCheckbox(filteredProducts, data, filterPram);
     }
   });
-  return filteredProduct;
-};
+  return filteredProducts;
+}

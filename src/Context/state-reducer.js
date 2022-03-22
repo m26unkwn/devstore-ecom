@@ -36,6 +36,11 @@ export function stateReducer(state, action) {
           },
         },
       };
+    case "CLEAR_FILTER":
+      return {
+        ...state,
+        selectedFilters: action.payload,
+      };
     default:
       return state;
   }
