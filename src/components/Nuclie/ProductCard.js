@@ -1,4 +1,3 @@
-import React from "react";
 import { HeartIcon, CartIcon } from "../../assets";
 
 const ProductCard = (props) => {

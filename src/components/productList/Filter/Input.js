@@ -11,6 +11,7 @@ export const Input = ({
   stateValue,
 }) => {
   const { dispatch } = useData();
+
   const onChangeHandler = () => {
     dispatch({
       type: dispatchType,

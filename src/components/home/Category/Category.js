@@ -1,5 +1,3 @@
-import React from "react";
-
 export const CategoryCard = ({ link, img, categoryName }) => {
   return (
     <div className='categories-item'>

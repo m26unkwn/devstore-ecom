@@ -5,7 +5,9 @@ import productFilter from "../utils/product-filter";
 
 export const AllProducts = () => {
   const { state } = useData();
+
   const filterProduct = productFilter(state.products, state.selectedFilters);
+
   return (
     <section className='pd-container-main'>
       <div className='pd-wrapper flex jc-center flex-gap flex-wrap'>

@@ -1,16 +1,15 @@
-import React from "react";
-
 import { filters } from "../utils/filters";
 import { Sort } from "./Sort";
 import { Checkbox } from "./Checkbox";
 import { useData } from "../../../Context/state-context";
 
 const Filter = () => {
-  const {  dispatch } = useData();
+  const { dispatch } = useData();
 
   const clearFilterHanlder = () => {
     dispatch({ type: "CLEAR_FILTER", payload: {} });
   };
+
   return (
     <section className='filter'>
       <div className='filter-head flex jc-between'>
@@ -20,6 +19,7 @@ const Filter = () => {
         </h4>
       </div>
       <div className='card-divider'></div>
+
       <ul className='filter-section'>
         {filters.map((filter) => {
           return filter.type === "sort" ? (
