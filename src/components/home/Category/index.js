@@ -5,7 +5,6 @@ import { CategoryCard } from "./Category";
 
 const Category = () => {
   const [categoryDatas] = useAxios("/api/categories", "get");
-
   return (
     <section className='pd-container'>
       <h1>Categories</h1>

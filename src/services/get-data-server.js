@@ -16,7 +16,6 @@ export const getDataFromServer = async (
       headers: header,
     });
     if (response.status === 200 || response.status === 201) {
-      console.log(response.data);
       dispatch({ type: type, payload: response.data.products });
     }
   } catch (error) {

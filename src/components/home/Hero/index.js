@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section className='hero-section'>
@@ -7,9 +7,9 @@ const Hero = () => {
       <div className='hero-text flex flex-col jc-center ai-center'>
         <h1>All dev product at one place.</h1>
         <h1>Buy Anything with ease.</h1>
-        <a href='./screens/product.html' className='btn link-btn'>
+        <Link to='/products' className='btn link-btn'>
           SHOP NOW
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -1,20 +1,9 @@
-import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { NavLink } from "react-router-dom";
-
-import useWidth from "../../hooks/use-width";
 
 import { RemoveIcon } from "../../assets";
 
 const SidebarNav = ({ setIsClicked, clickHandler }) => {
-  const width = useWidth();
-
-  useEffect(() => {
-    if (width > 700) {
-      setIsClicked(false);
-    }
-  }, [width, setIsClicked]);
-
   const removeSideBar = (e) => {
     if (e.target.classList.contains("navbar-backdrop")) {
       setIsClicked(false);
@@ -48,9 +37,9 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
             </div>
           </li>
           <li className='nav-items'>
-            <a href='./' className='link-btn'>
+            <NavLink to='/products' className='link-btn'>
               Shop Now
-            </a>
+            </NavLink>
           </li>
           <li className='nav-items'>
             <a href='./' className='link-btn '>

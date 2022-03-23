@@ -1,0 +1,30 @@
+.filter-product-wrapper {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  margin-top: 3rem;
+}
+
+.filter {
+  padding: 0 1rem;
+  color: var(--heading-text-color);
+}
+.filter-head {
+  margin-bottom: 1rem;
+}
+
+.filter-section > * {
+  margin: 1rem 0;
+  list-style-type: none;
+}
+
+.filter-section > li > * {
+  margin-left: 10px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-section-title {
+  font-weight: bold;
+}
