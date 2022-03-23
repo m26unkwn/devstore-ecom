@@ -18,7 +18,7 @@ export const Sort = ({ filter }) => {
             label={sort.label}
             filterType={filter.type}
             filterParam={filter.parameter}
-            type='SORT_CHANGE'
+            dispatchType='SORT_CHANGE'
             stateValue={value}
             inputType='radio'
           />

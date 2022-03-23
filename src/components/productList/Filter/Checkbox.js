@@ -5,6 +5,7 @@ export const Checkbox = ({ filter }) => {
   const {
     state: { selectedFilters },
   } = useData();
+
   let value = selectedFilters?.category?.data
     ? selectedFilters?.category?.data
     : selectedFilters?.brand?.data;
@@ -17,7 +18,7 @@ export const Checkbox = ({ filter }) => {
       {filter.data.map((check) => (
         <li key={check.id}>
           <Input
-            type='CHECKBOX_CHANGE'
+            dispatchType='CHECKBOX_CHANGE'
             filterType={filter.type}
             inputType='checkbox'
             label={check.label}

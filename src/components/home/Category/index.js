@@ -1,4 +1,3 @@
-import React from "react";
 import useAxios from "../../../hooks/use-axios";
 
 import { CategoryCard } from "./Category";
