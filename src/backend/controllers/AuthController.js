@@ -74,18 +74,19 @@ export const loginHandler = function (schema, request) {
         { _id: foundUser._id, email },
         process.env.REACT_APP_JWT_SECRET
       );
-      foundUser.password = undefined;
       return new Response(200, {}, { foundUser, encodedToken });
     }
-    new Response(
-      401,
-      {},
-      {
-        errors: [
-          "The credentials you entered are invalid. Unauthorized access error.",
-        ],
-      }
-    );
+    if ((foundUser.password = undefined)) {
+      return new Response(
+        401,
+        {},
+        {
+          errors: [
+            "The credentials you entered are invalid. Unauthorized access error.",
+          ],
+        }
+      );
+    }
   } catch (error) {
     return new Response(
       500,

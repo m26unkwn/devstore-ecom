@@ -1,4 +1,4 @@
-import { useData } from "../../../Context/state-context";
+import { useData } from "../../../Context/stateManage/state-context";
 
 export const Input = ({
   filterParam,
@@ -29,6 +29,7 @@ export const Input = ({
     ? value === stateValue
     : false;
 
+  console.log(checkedValue);
   return (
     <label className='form-label'>
       <input

@@ -1,12 +1,13 @@
 import ProductCard from "../../Nuclie/ProductCard";
 
-import { useData } from "../../../Context/state-context";
+import { useData } from "../../../Context/stateManage/state-context";
 import productFilter from "../utils/product-filter";
 
 export const AllProducts = () => {
   const { state } = useData();
 
   const filterProduct = productFilter(state.products, state.selectedFilters);
+  console.log("filterData", filterProduct);
 
   return (
     <section className='pd-container-main'>

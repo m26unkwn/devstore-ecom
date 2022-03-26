@@ -1,11 +1,11 @@
 import "./App.css";
 import Home from "./screens/Home";
-import { Navbar } from "./components";
+import { Navbar, Login, Signup, PrivateRoute, Profile } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 
 import { useEffect } from "react";
-import { useData } from "./Context/state-context";
+import { useData } from "./Context/stateManage/state-context";
 
 import { ProductList } from "./screens/ProductList";
 import { getDataFromServer } from "./services/get-data-server";
@@ -30,6 +30,16 @@ function App() {
         />
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<ProductList />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route
+          path='/profile'
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

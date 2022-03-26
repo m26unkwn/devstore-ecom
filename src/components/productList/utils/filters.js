@@ -73,7 +73,7 @@ export const filters = [
   {
     name: "Brands",
     parameter: "brand",
-    type: "checkbox",
+    type: "checkboxBrand",
     data: brands,
   },
 ];

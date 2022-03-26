@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useLocation, NavLink } from "react-router-dom";
 
-import { devLogo, wishlist, cart, burger } from "../../assets";
+import { devLogo, wishlist, cart, burger, User } from "../../assets";
+import { useAuth } from "../../Context/auth/auth-context";
 
 import SidebarNav from "./SidebarNav";
 
 const Navbar = () => {
   const [isClicked, setIsClicked] = useState(false);
+
+  const {
+    authState: { token },
+  } = useAuth();
 
   const currentPath = useLocation();
 
@@ -43,13 +48,20 @@ const Navbar = () => {
       <div className='nav-action-wrapper flex jc-between ai-center flex-gap'>
         {!pathArray.some((item) => currentPath.pathname === item) && (
           <div className='auth-link flex jc-between flex-gap'>
-            <NavLink to='/login' className='btn auth-login'>
-              Login
-            </NavLink>
-
-            <NavLink to='/signup' className='auth-signup btn'>
-              Signup
-            </NavLink>
+            {token ? (
+              <NavLink to='/profile' className='btn btn-icon'>
+                <img src={User} alt='userImage' />
+              </NavLink>
+            ) : (
+              <>
+                <NavLink to='/login' className='btn auth-login'>
+                  Login
+                </NavLink>
+                <NavLink to='/signup' className='auth-signup btn'>
+                  Signup
+                </NavLink>
+              </>
+            )}
           </div>
         )}
 
