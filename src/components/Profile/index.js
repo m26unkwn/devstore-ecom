@@ -12,6 +12,7 @@ const Profile = () => {
     authDispatch({ type: "LOGOUT_USER" });
     navigate("/");
   };
+  console.log(userDetails)
 
   return (
     <div className=' account-wrapper'>
