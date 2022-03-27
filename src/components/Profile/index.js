@@ -3,10 +3,7 @@ import { useAuth } from "../../Context/auth/auth-context";
 import "./profile.css";
 
 const Profile = () => {
-  const {
-    authDispatch,
-    authState: { userDetails },
-  } = useAuth();
+  const { authDispatch, authState: userDetails } = useAuth();
 
   const navigate = useNavigate();
 
