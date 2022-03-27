@@ -4,8 +4,6 @@ export const getDataFromServer = async (
   method,
   dispatch,
   type,
-  navigate = null,
-  to = null,
   body = null,
   header = null
 ) => {
@@ -18,7 +16,6 @@ export const getDataFromServer = async (
     });
     if (response.status === 200 || response.status === 201) {
       dispatch({ type: type, payload: response.data.products });
-      navigate(to);
     }
   } catch (error) {
     console.log(error);

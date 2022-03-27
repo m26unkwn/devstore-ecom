@@ -3,7 +3,10 @@ import { useAuth } from "../../Context/auth/auth-context";
 import "./profile.css";
 
 const Profile = () => {
-  const { authDispatch, authState: userDetails } = useAuth();
+  const {
+    authDispatch,
+    authState: { userDetails },
+  } = useAuth();
 
   const navigate = useNavigate();
 
@@ -12,7 +15,6 @@ const Profile = () => {
     authDispatch({ type: "LOGOUT_USER" });
     navigate("/");
   };
-  console.log(userDetails)
 
   return (
     <div className=' account-wrapper'>
