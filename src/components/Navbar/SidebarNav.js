@@ -24,7 +24,6 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
       setIsClicked(false);
     }
   };
-  console.log(userDetails);
 
   return ReactDOM.createPortal(
     <div className='navbar-backdrop' onClick={removeSideBar}>

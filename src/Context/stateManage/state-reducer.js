@@ -69,6 +69,9 @@ export function reducer(state, action) {
         selectedFilters: {},
       };
 
+    case "ADD_PRODUCT_INTO_CART":
+      return { ...state, cartItems: action.payload };
+
     default:
       return state;
   }

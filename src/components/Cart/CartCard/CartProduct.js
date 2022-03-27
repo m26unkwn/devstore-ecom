@@ -1,8 +1,30 @@
 import { Link } from "react-router-dom";
 import { Delete, Negative, Positive } from "../../../assets";
+import { useData } from "../../../Context/stateManage/state-context";
+import { useAuth } from "../../../Context/auth/auth-context";
+import { getDataFromServer } from "../../../services/get-data-server";
 
 const CartProduct = (props) => {
-  const { img, title, desc, price, prevPrice, discPrice, qty } = props;
+  const { id, img, title, desc, price, prevPrice, discPrice, qty, product } =
+    props;
+
+  const {
+    authState: { token },
+  } = useAuth();
+  const { dispatch } = useData();
+
+  const removefromCartHandler = (id) => {
+    const header = { authorization: token };
+    getDataFromServer(
+      `/api/user/cart/${id}`,
+      "DELETE",
+      dispatch,
+      "ADD_PRODUCT_INTO_CART",
+      "cart",
+      { product: product },
+      header
+    );
+  };
 
   return (
     <div className='pd-card-container'>
@@ -16,7 +38,9 @@ const CartProduct = (props) => {
         </Link>
       </div>
       <div className='badge pd-badge'>
-        <button className='btn btn-icon'>
+        <button
+          onClick={() => removefromCartHandler(id)}
+          className='btn btn-icon'>
           <img src={Delete} alt='remove-product-icon' />
         </button>
       </div>
@@ -24,9 +48,9 @@ const CartProduct = (props) => {
         <h1 className='pd-heading card-heading'>{title}</h1>
         <p className='pd-desc'>{desc}</p>
         <div className='pd-price'>
-          <p className='crnt-price'>{price}</p>
+          <p className='crnt-price'>${price}</p>
           <p className='prev-price'>{prevPrice}</p>
-          <p className='discount'>{discPrice}</p>
+          <p className='discount'>{discPrice}%</p>
         </div>
         <div className='pd-quantity-action flex ai-center jc-between'>
           <span>Quantity:</span>

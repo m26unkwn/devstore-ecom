@@ -20,7 +20,13 @@ import { getDataFromServer } from "./services/get-data-server";
 function App() {
   const { dispatch } = useData();
   useEffect(() => {
-    getDataFromServer("/api/products", "get", dispatch, "ADD_TO_PRODUCTS");
+    getDataFromServer(
+      "/api/products",
+      "get",
+      dispatch,
+      "ADD_TO_PRODUCTS",
+      "products"
+    );
   }, [dispatch]);
 
   return (
