@@ -1,14 +1,30 @@
 import ReactDOM from "react-dom";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import useWidth from "../../hooks/use-width";
 
 import { RemoveIcon } from "../../assets";
+import { useAuth } from "../../Context/auth/auth-context";
 
 const SidebarNav = ({ setIsClicked, clickHandler }) => {
+  const {
+    authState: { token, userDetails },
+  } = useAuth();
+
+  const width = useWidth();
+
+  useEffect(() => {
+    if (width > 700) {
+      setIsClicked(false);
+    }
+  }, [width, setIsClicked]);
+
   const removeSideBar = (e) => {
     if (e.target.classList.contains("navbar-backdrop")) {
       setIsClicked(false);
     }
   };
+  console.log(userDetails);
 
   return ReactDOM.createPortal(
     <div className='navbar-backdrop' onClick={removeSideBar}>
@@ -22,19 +38,23 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
                 onClick={() => clickHandler()}
                 style={{ background: "#ffff", borderRadius: "50%" }}
                 className='btn btn-icon'>
-                <img src={RemoveIcon} alt='remove_icon' />
+                <img src={RemoveIcon} alt='remove_icon' height='50px' />
               </button>
             </div>
 
-            <div className='flex flex-gap'>
-              <NavLink to='/login' className='link-btn font-b'>
-                Log In
-              </NavLink>
-              or
-              <a href='./' className='link-btn font-b'>
-                Sign Up
-              </a>
-            </div>
+            {token ? (
+              <p>Hello {userDetails.firstName}</p>
+            ) : (
+              <div className='flex flex-gap'>
+                <NavLink to='/login' className='link-btn font-b'>
+                  Log In
+                </NavLink>
+                or
+                <a href='./' className='link-btn font-b'>
+                  Sign Up
+                </a>
+              </div>
+            )}
           </li>
           <li className='nav-items'>
             <NavLink to='/products' className='link-btn'>
@@ -51,6 +71,9 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
               My Cart
             </a>
           </li>
+          <NavLink to='/profile' className='link-btn'>
+            Profile
+          </NavLink>
         </ul>
       </div>
     </div>,

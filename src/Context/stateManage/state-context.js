@@ -1,5 +1,5 @@
 import { createContext, useReducer, useContext } from "react";
-import { stateReducer } from "./state-reducer";
+import { reducer } from "./state-reducer";
 
 const StateContext = createContext();
 
@@ -11,7 +11,7 @@ let initialSatate = {
 };
 
 const StateProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(stateReducer, initialSatate);
+  const [state, dispatch] = useReducer(reducer, initialSatate);
 
   return (
     <>

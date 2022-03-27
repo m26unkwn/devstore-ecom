@@ -1,13 +1,14 @@
 import { filters } from "../utils/filters";
 import { Sort } from "./Sort";
 import { Checkbox } from "./Checkbox";
-import { useData } from "../../../Context/state-context";
+import { useData } from "../../../Context/stateManage/state-context";
+import { CheckboxBrand } from "./CheckboxBrand";
 
 const Filter = () => {
   const { dispatch } = useData();
 
   const clearFilterHanlder = () => {
-    dispatch({ type: "CLEAR_FILTER", payload: {} });
+    dispatch({ type: "CLEAR_FILTER" });
   };
 
   return (
@@ -26,6 +27,8 @@ const Filter = () => {
             <Sort key={filter.parameter} filter={filter} />
           ) : filter.type === "checkbox" ? (
             <Checkbox key={filter.parameter} filter={filter} />
+          ) : filter.type === "checkboxBrand" ? (
+            <CheckboxBrand key={filter.parameter} filter={filter} />
           ) : (
             ""
           );

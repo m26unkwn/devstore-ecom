@@ -75,6 +75,7 @@ export const products = [
     prev_price: 40,
     discount: 50,
     category: "hat",
+    brand: "google",
     img: Hat,
   },
   {
@@ -105,6 +106,7 @@ export const products = [
     prev_price: 12,
     discount: 50,
     category: "bag",
+    brand: "google",
     img: Bag,
   },
 ];

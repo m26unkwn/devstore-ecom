@@ -1,13 +1,12 @@
 import { Input } from "./Input";
 
 import { useData } from "../../../Context/stateManage/state-context";
-export const Checkbox = ({ filter }) => {
+export const CheckboxBrand = ({ filter }) => {
   const {
     state: { selectedFilters },
   } = useData();
 
-  let value = selectedFilters?.category?.data;
-
+  let value = selectedFilters?.brand?.data;
   return (
     <>
       <div className='card-divider'></div>
@@ -16,7 +15,7 @@ export const Checkbox = ({ filter }) => {
       {filter.data.map((check) => (
         <li key={check.id}>
           <Input
-            dispatchType='CHECKBOX_CHANGE'
+            dispatchType='CHECKBOX_BRAND_CHANGE'
             filterType={filter.type}
             inputType='checkbox'
             label={check.label}

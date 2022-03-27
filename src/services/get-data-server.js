@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const getDataFromServer = async (
   api,
   method,
