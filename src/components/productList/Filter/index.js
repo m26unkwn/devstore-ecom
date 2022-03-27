@@ -8,7 +8,7 @@ const Filter = () => {
   const { dispatch } = useData();
 
   const clearFilterHanlder = () => {
-    dispatch({ type: "CLEAR_FILTER", payload: {} });
+    dispatch({ type: "CLEAR_FILTER" });
   };
 
   return (

@@ -15,37 +15,56 @@ let initialAuthData = {
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthData);
 
-  const getUserLogin = async (email, password) => {
+  const getUserAuth = async (
+    email,
+    password,
+    firstName = null,
+    lastName = null
+  ) => {
     try {
-      const response = await axios.post(`/api/auth/login`, {
-        email: email,
-        password: password,
+      const {
+        data: { encodedToken, foundUser },
+        status,
+        error,
+      } = await axios({
+        method: "post",
+        url: `/api/auth/login`,
+        data: {
+          email: email,
+          password: password,
+          firstName: firstName,
+          lastName: lastName,
+        },
       });
 
-      localStorage.setItem("token", response.data.encodedToken);
-      console.log("token", response);
-      if (response.status === 200) {
+      localStorage.setItem("token", encodedToken);
+
+      if (status === 200) {
         authDispatch({
           type: "ADD_TOKEN",
-          payload: response.data.encodedToken,
+          payload: encodedToken,
         });
         authDispatch({
           type: "ADD_USER_DATA",
-          payload: response.data.userFound,
+          payload: foundUser,
         });
-      } else {
+      } else if (status !== 200) {
         authDispatch({
-          type: "ADD_ERROR",
-          payload: response.error || "Something is Wrong",
+          type: "ADD_AUTH_ERROR",
+          payload: error || "Email or password is incorrect!",
         });
       }
     } catch (error) {
-      console.log(error);
+      authDispatch({
+        type: "ADD_AUTH_ERROR",
+        payload: "Email or password is incorrect!",
+      });
+      console.error(error);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ getUserLogin, authState, authDispatch }}>
+    <AuthContext.Provider value={{ getUserAuth, authState, authDispatch }}>
       {children}
     </AuthContext.Provider>
   );

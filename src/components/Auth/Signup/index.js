@@ -8,9 +8,14 @@ import { signupInitialData, signUpReducer, signupValidation } from "../utils";
 
 import Input from "../Input/Input";
 import axios from "axios";
+import { useAuth } from "../../../Context/auth/auth-context";
 
 const Signup = () => {
   const [signupState, dispatch] = useReducer(signUpReducer, signupInitialData);
+  const {
+    getUserAuth,
+    authState: { authError },
+  } = useAuth();
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
@@ -34,13 +39,12 @@ const Signup = () => {
 
   const clickHandler = (e) => {
     e.preventDefault();
-    signupValidation(signupState, dispatch);
     if (signupValidation(signupState, dispatch)) {
-      signupHandler(
-        signupState.firstName,
-        signupState.lastName,
+      getUserAuth(
         signupState.email,
-        signupState.password
+        signupState.password,
+        signupState.firstName,
+        signupState.lastName
       );
     }
   };

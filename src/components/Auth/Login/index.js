@@ -11,10 +11,9 @@ import { useAuth } from "../../../Context/auth/auth-context";
 const Login = () => {
   const [loginState, dispatch] = useReducer(loginReducer, loginInitialData);
   const {
-    getUserLogin,
-    authState: { token },
+    getUserAuth,
+    authState: { token, authError },
   } = useAuth();
-  console.log(token);
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
@@ -24,12 +23,17 @@ const Login = () => {
     e.preventDefault();
 
     if (loginValidation(loginState, dispatch)) {
-      getUserLogin(loginState.email, loginState.password);
+      getUserAuth(loginState.email, loginState.password);
     }
   };
 
   const onFocusHandler = (type) => {
     dispatch({ type, payload: false });
+  };
+
+  const testLoginHandler = (e) => {
+    e.preventDefault();
+    getUserAuth("adarshbalika@gmail.com", "Adarshbalika1!");
   };
 
   return (
@@ -50,7 +54,9 @@ const Login = () => {
               </div>
             </div>
 
-            <form className='form-wrapper flex flex-col ai-center jc-center'>
+            <form
+              className='form-wrapper flex flex-col ai-center jc-center'
+              onSubmit={(e) => loginHandler(e)}>
               <Input
                 type='email'
                 label='Email Address'
@@ -76,10 +82,23 @@ const Login = () => {
                 eye={true}
                 errorMsg='enter Valid Password'
               />
-              <div className='form-action auth-action'>
+              <div
+                style={{ marginBottom: "2rem" }}
+                className='form-action auth-action'>
                 <button onClick={loginHandler} className='btn'>
                   Login In
                 </button>
+                <button
+                  style={{ marginTop: "2rem" }}
+                  onClick={testLoginHandler}
+                  className='btn outline-primary'>
+                  Test Login
+                </button>
+                {authError && (
+                  <div style={{ padding: " 1rem 0" }}>
+                    <h4 className='error-color'>{authError}!</h4>
+                  </div>
+                )}
               </div>
             </form>
           </div>

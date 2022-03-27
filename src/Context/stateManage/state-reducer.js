@@ -1,8 +1,4 @@
-export function stateReducer(state, action) {
-  const found = state.selectedFilters[action.payload.filterParam]?.data?.some(
-    (value) => value === action.payload.data
-  );
-
+export function reducer(state, action) {
   switch (action.type) {
     case "ADD_TO_PRODUCTS":
       return { ...state, products: action.payload };
@@ -20,6 +16,9 @@ export function stateReducer(state, action) {
       };
 
     case "CHECKBOX_CHANGE":
+      const found = state.selectedFilters[
+        action.payload.filterParam
+      ]?.data?.some((value) => value === action.payload.data);
       return {
         ...state,
         selectedFilters: {
@@ -40,13 +39,16 @@ export function stateReducer(state, action) {
         },
       };
     case "CHECKBOX_BRAND_CHANGE":
+      const Newfound = state.selectedFilters[
+        action.payload.filterParam
+      ]?.data?.some((value) => value === action.payload.data);
       return {
         ...state,
         selectedFilters: {
           ...state.selectedFilters,
           [action.payload.filterParam]: {
             type: action.payload.filterType,
-            data: found
+            data: Newfound
               ? state.selectedFilters[action.payload.filterParam].data.filter(
                   (value) => value !== action.payload.data
                 )
@@ -62,7 +64,7 @@ export function stateReducer(state, action) {
     case "CLEAR_FILTER":
       return {
         ...state,
-        selectedFilters: action.payload,
+        selectedFilters: {},
       };
 
     default:

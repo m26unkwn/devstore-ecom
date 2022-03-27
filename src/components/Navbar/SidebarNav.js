@@ -8,7 +8,7 @@ import { useAuth } from "../../Context/auth/auth-context";
 
 const SidebarNav = ({ setIsClicked, clickHandler }) => {
   const {
-    authState: { token },
+    authState: { token, userDetails },
   } = useAuth();
 
   const width = useWidth();
@@ -24,6 +24,7 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
       setIsClicked(false);
     }
   };
+  console.log(userDetails);
 
   return ReactDOM.createPortal(
     <div className='navbar-backdrop' onClick={removeSideBar}>
@@ -42,7 +43,7 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
             </div>
 
             {token ? (
-              <p>Hello User</p>
+              <p>Hello {userDetails.firstName}</p>
             ) : (
               <div className='flex flex-gap'>
                 <NavLink to='/login' className='link-btn font-b'>
@@ -70,6 +71,9 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
               My Cart
             </a>
           </li>
+          <NavLink to='/profile' className='link-btn'>
+            Profile
+          </NavLink>
         </ul>
       </div>
     </div>,
