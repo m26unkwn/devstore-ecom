@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { signupInitialData, signUpReducer, signupValidation } from "../utils";
 
 import Input from "../Input/Input";
-import axios from "axios";
 import { useAuth } from "../../../Context/auth/auth-context";
 
 const Signup = () => {
@@ -19,22 +18,6 @@ const Signup = () => {
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
-  };
-
-  const signupHandler = async (firstName, lastName, email, password) => {
-    try {
-      const response = await axios.post(`/api/auth/signup`, {
-        firstName: { firstName },
-        lastName: { lastName },
-        email: { email },
-        password: { password },
-      });
-      // saving the encodedToken in the localStorage
-      localStorage.setItem("token", response.data.encodedToken);
-      console.log("token", response.data.encodedToken);
-    } catch (error) {
-      console.log("error", error);
-    }
   };
 
   const clickHandler = (e) => {
@@ -129,6 +112,11 @@ const Signup = () => {
               Sign Up
             </button>
           </div>
+          {authError && (
+            <div style={{ padding: " 1rem 0" }}>
+              <h4 className='error-color'>{authError}!</h4>
+            </div>
+          )}
           <div className='head-desc flex flex-row jc-start auth-action flex-gap'>
             <span>Already have an account ? </span>
             <Link to='/login' className='link-btn'>

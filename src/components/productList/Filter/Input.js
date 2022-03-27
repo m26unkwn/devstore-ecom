@@ -29,7 +29,6 @@ export const Input = ({
     ? value === stateValue
     : false;
 
-  console.log(checkedValue);
   return (
     <label className='form-label'>
       <input

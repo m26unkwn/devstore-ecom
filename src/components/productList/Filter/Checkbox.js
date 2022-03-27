@@ -8,10 +8,6 @@ export const Checkbox = ({ filter }) => {
 
   let value = selectedFilters?.category?.data;
 
-  console.log("value for input", value);
-
-  console.log("selected Data", selectedFilters);
-
   return (
     <>
       <div className='card-divider'></div>
