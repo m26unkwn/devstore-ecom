@@ -48,6 +48,14 @@ const AuthProvider = ({ children }) => {
           type: "ADD_USER_DATA",
           payload: foundUser,
         });
+        authDispatch({
+          type: "ADD_CART_DATA",
+          cartData: foundUser.cart,
+        });
+        authDispatch({
+          type: "ADD_CART_DATA",
+          wishlistData: foundUser.wishlist,
+        });
       } else if (status !== 200) {
         authDispatch({
           type: "ADD_AUTH_ERROR",

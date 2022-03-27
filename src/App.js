@@ -1,6 +1,13 @@
 import "./App.css";
 import Home from "./screens/Home";
-import { Navbar, Login, Signup, PrivateRoute, Profile } from "./components";
+import {
+  Navbar,
+  Login,
+  Signup,
+  PrivateRoute,
+  Profile,
+  Cart,
+} from "./components";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 
@@ -37,6 +44,14 @@ function App() {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/cart'
+          element={
+            <PrivateRoute>
+              <Cart />
             </PrivateRoute>
           }
         />

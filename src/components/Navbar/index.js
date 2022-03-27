@@ -71,11 +71,11 @@ const Navbar = () => {
               <img src={wishlist} alt='wishlist_logo' />
             </button>
           </a>
-          <a href='./screens/mycart.html'>
+          <NavLink to='/cart'>
             <button className='btn btn-icon'>
               <img src={cart} alt='cart_icon' />
             </button>
-          </a>
+          </NavLink>
         </div>
       </div>
       <div className='nav-burger'>

@@ -16,6 +16,8 @@ const Profile = () => {
     navigate("/");
   };
 
+  console.log(userDetails);
+
   return (
     <div className=' account-wrapper'>
       <div className=' card-container account-head flex flex-col ai-center jc-center'>

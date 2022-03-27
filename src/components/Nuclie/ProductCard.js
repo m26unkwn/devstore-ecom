@@ -1,7 +1,7 @@
 import { HeartIcon, CartIcon } from "../../assets";
 
 const ProductCard = (props) => {
-  const { title, desc, price, prevPrice, discount, img } = props;
+  const { title, desc, price, prevPrice, discount, img, product } = props;
 
   return (
     <div className='pd-card-container vertical'>
