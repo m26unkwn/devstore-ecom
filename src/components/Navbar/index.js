@@ -4,6 +4,8 @@ import { useLocation, NavLink } from "react-router-dom";
 import { devLogo, wishlist, cart, burger, User } from "../../assets";
 import { useAuth } from "../../Context/auth/auth-context";
 
+import Tooltip from "../Tooltip/Tooltip";
+
 import SidebarNav from "./SidebarNav";
 
 const Navbar = () => {
@@ -49,9 +51,11 @@ const Navbar = () => {
         {!pathArray.some((item) => currentPath.pathname === item) && (
           <div className='auth-link flex jc-between flex-gap'>
             {token ? (
-              <NavLink to='/profile' className='btn btn-icon'>
-                <img src={User} alt='userImage' />
-              </NavLink>
+              <Tooltip info='Profile'>
+                <NavLink to='/profile' className='btn btn-icon'>
+                  <img src={User} alt='userImage' />
+                </NavLink>
+              </Tooltip>
             ) : (
               <>
                 <NavLink to='/login' className='btn auth-login'>
@@ -67,14 +71,18 @@ const Navbar = () => {
 
         <div className='nav-btn flex jc-between flex-gap'>
           <a href='./screens/wishlist.html'>
-            <button className='btn btn-icon'>
-              <img src={wishlist} alt='wishlist_logo' />
-            </button>
+            <Tooltip info='wishlist'>
+              <button className='btn btn-icon'>
+                <img src={wishlist} alt='wishlist_logo' />
+              </button>
+            </Tooltip>
           </a>
           <a href='./screens/mycart.html'>
-            <button className='btn btn-icon'>
-              <img src={cart} alt='cart_icon' />
-            </button>
+            <Tooltip info='cart'>
+              <button className='btn btn-icon'>
+                <img src={cart} alt='cart_icon' />
+              </button>
+            </Tooltip>
           </a>
         </div>
       </div>
