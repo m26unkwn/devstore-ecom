@@ -72,6 +72,12 @@ export function reducer(state, action) {
     case "ADD_PRODUCT_INTO_CART":
       return { ...state, cartItems: action.payload };
 
+    case "ADD_PRODUCT_INTO_WISHLIST":
+      return { ...state, wishlistItems: action.payload };
+
+    case "CLEAR_ALL_DATA_FROM_STATE":
+      return { ...state, wishlistItems: [], cartItems: [] };
+
     default:
       return state;
   }

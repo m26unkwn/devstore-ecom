@@ -11,7 +11,10 @@ const CartProduct = (props) => {
   const {
     authState: { token },
   } = useAuth();
-  const { dispatch } = useData();
+  const {
+    dispatch,
+    state: { wishlistItems },
+  } = useData();
 
   const removefromCartHandler = (id) => {
     const header = { authorization: token };
@@ -24,6 +27,46 @@ const CartProduct = (props) => {
       { product: product },
       header
     );
+  };
+
+  console.log(wishlistItems);
+
+  let isProducInWishlist = wishlistItems.some((item) => item._id === id);
+
+  console.log(isProducInWishlist);
+
+  const quantityUpdateHandler = (id, type) => {
+    const header = { authorization: token };
+
+    getDataFromServer(
+      `/api/user/cart/${id}`,
+      "post",
+      dispatch,
+      "ADD_PRODUCT_INTO_CART",
+      "cart",
+      {
+        action: {
+          type: type,
+        },
+      },
+      header
+    );
+  };
+
+  const moveToWishlistHandler = (product) => {
+    const header = { authorization: token };
+    isProducInWishlist
+      ? alert("Item already inside of Wishlist")
+      : getDataFromServer(
+          `/api/user/wishlist`,
+          "POST",
+          dispatch,
+          "ADD_PRODUCT_INTO_WISHLIST",
+          "wishlist",
+          { product: product },
+          header
+        );
+    removefromCartHandler(id);
   };
 
   return (
@@ -54,16 +97,29 @@ const CartProduct = (props) => {
         </div>
         <div className='pd-quantity-action flex ai-center jc-between'>
           <span>Quantity:</span>
-          <button className='btn btn-icon icon-primary-color'>
+          <button
+            disabled={Number(qty) === 1}
+            onClick={() => quantityUpdateHandler(id, "decrement")}
+            className={
+              Number(qty) === 1
+                ? "btn btn-disabled btn-icon icon-primary-color "
+                : "btn btn-icon icon-primary-color "
+            }>
             <img src={Negative} alt='increment-product-quantity' />
           </button>
           <span className='quantity-view flex ai-center jc-center'>{qty}</span>
-          <button className='btn btn-icon icon-primary-color'>
+          <button
+            onClick={() => quantityUpdateHandler(id, "increment")}
+            className='btn btn-icon icon-primary-color'>
             <img src={Positive} alt='increment-product-quantity' />
           </button>
         </div>
         <div className='pd-card-action pd-card-btn'>
-          <button className='btn outline-primary'>Move to wishlist</button>
+          <button
+            onClick={() => moveToWishlistHandler(product)}
+            className='btn outline-primary'>
+            Move to wishlist
+          </button>
         </div>
       </div>
     </div>

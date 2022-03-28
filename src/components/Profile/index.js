@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/auth/auth-context";
+import { useData } from "../../Context/stateManage/state-context";
 import "./profile.css";
 
 const Profile = () => {
@@ -7,12 +8,14 @@ const Profile = () => {
     authDispatch,
     authState: { userDetails },
   } = useAuth();
+  const { dispatch } = useData();
 
   const navigate = useNavigate();
 
   const logoutHandler = (e) => {
     e.preventDefault();
     authDispatch({ type: "LOGOUT_USER" });
+    dispatch({ type: "CLEAR_ALL_DATA_FROM_STATE" });
     navigate("/");
   };
 

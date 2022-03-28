@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, Link } from "react-router-dom";
 
 import { devLogo, wishlist, cart, burger, User } from "../../assets";
 import { useAuth } from "../../Context/auth/auth-context";
+import { useData } from "../../Context/stateManage/state-context";
 
 import SidebarNav from "./SidebarNav";
 
@@ -12,6 +13,10 @@ const Navbar = () => {
   const {
     authState: { token },
   } = useAuth();
+
+  const {
+    state: { wishlistItems, cartItems },
+  } = useData();
 
   const currentPath = useLocation();
 
@@ -66,15 +71,33 @@ const Navbar = () => {
         )}
 
         <div className='nav-btn flex jc-between flex-gap'>
-          <a href='./screens/wishlist.html'>
-            <button className='btn btn-icon'>
-              <img src={wishlist} alt='wishlist_logo' />
-            </button>
-          </a>
+          <Link to='/wishlist'>
+            <div className='badge'>
+              <button className='btn btn-icon'>
+                <img src={wishlist} alt='wishlist_logo' />
+              </button>
+              {token
+                ? wishlistItems.length > 0 && (
+                    <div className='badge-num-size badge-num-pos circle'>
+                      {wishlistItems.length}
+                    </div>
+                  )
+                : ""}
+            </div>
+          </Link>
           <NavLink to='/cart'>
-            <button className='btn btn-icon'>
-              <img src={cart} alt='cart_icon' />
-            </button>
+            <div className='badge'>
+              <button className='btn btn-icon'>
+                <img src={cart} alt='cart_icon' />
+              </button>
+              {token
+                ? cartItems.length > 0 && (
+                    <div className='badge-num-size badge-num-pos circle'>
+                      {cartItems.length}
+                    </div>
+                  )
+                : ""}
+            </div>
           </NavLink>
         </div>
       </div>
