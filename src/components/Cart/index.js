@@ -1,4 +1,3 @@
-import { cart } from "../../assets";
 import { useData } from "../../Context/stateManage/state-context";
 import "./cart.css";
 import CartProduct from "./CartCard/CartProduct";
@@ -8,7 +7,6 @@ const Cart = () => {
     state: { cartItems },
   } = useData();
 
-  console.log("cart Iteme", cartItems);
   return (
     <main className='cart-wrapper'>
       <div className='cart-head flex jc-center'>
