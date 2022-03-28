@@ -29,11 +29,7 @@ const CartProduct = (props) => {
     );
   };
 
-  console.log(wishlistItems);
-
   let isProducInWishlist = wishlistItems.some((item) => item._id === id);
-
-  console.log(isProducInWishlist);
 
   const quantityUpdateHandler = (id, type) => {
     const header = { authorization: token };
