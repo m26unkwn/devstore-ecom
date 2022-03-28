@@ -1,4 +1,5 @@
 import { createContext, useReducer, useContext } from "react";
+import { useData } from "../stateManage/state-context";
 
 import axios from "axios";
 
@@ -15,20 +16,24 @@ let initialAuthData = {
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthData);
 
+  const { dispatch } = useData();
+
   const getUserAuth = async (
+    api,
     email,
     password,
     firstName = null,
     lastName = null
   ) => {
+    console.log(api);
     try {
       const {
-        data: { encodedToken, foundUser },
+        data: { encodedToken, foundUser, createdUser },
         status,
         error,
       } = await axios({
         method: "post",
-        url: `/api/auth/login`,
+        url: api,
         data: {
           email: email,
           password: password,
@@ -38,7 +43,7 @@ const AuthProvider = ({ children }) => {
       });
 
       localStorage.setItem("token", encodedToken);
-
+      console.log(encodedToken);
       if (status === 200) {
         authDispatch({
           type: "ADD_TOKEN",
@@ -48,15 +53,32 @@ const AuthProvider = ({ children }) => {
           type: "ADD_USER_DATA",
           payload: foundUser,
         });
+        dispatch({
+          type: "ADD_PRODUCT_INTO_CART",
+          payload: foundUser.cart,
+        });
+        dispatch({
+          type: "ADD_PRODUCT_INTO_WISHLIST",
+          payload: foundUser.wishlist,
+        });
+      } else if (status === 201) {
         authDispatch({
-          type: "ADD_CART_DATA",
-          cartData: foundUser.cart,
+          type: "ADD_TOKEN",
+          payload: encodedToken,
         });
         authDispatch({
-          type: "ADD_CART_DATA",
-          wishlistData: foundUser.wishlist,
+          type: "ADD_USER_DATA",
+          payload: createdUser,
         });
-      } else if (status !== 200) {
+        dispatch({
+          type: "ADD_PRODUCT_INTO_CART",
+          payload: createdUser.cart,
+        });
+        dispatch({
+          type: "ADD_PRODUCT_INTO_WISHLIST",
+          payload: createdUser.wishlist,
+        });
+      } else {
         authDispatch({
           type: "ADD_AUTH_ERROR",
           payload: error || "Email or password is incorrect!",

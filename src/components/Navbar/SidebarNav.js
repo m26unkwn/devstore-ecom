@@ -49,9 +49,9 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
                   Log In
                 </NavLink>
                 or
-                <a href='./' className='link-btn font-b'>
+                <NavLink to='/signup' className='link-btn font-b'>
                   Sign Up
-                </a>
+                </NavLink>
               </div>
             )}
           </li>

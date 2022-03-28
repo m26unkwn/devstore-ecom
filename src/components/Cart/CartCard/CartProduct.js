@@ -91,8 +91,8 @@ const CartProduct = (props) => {
         <h1 className='pd-heading card-heading'>{title}</h1>
         <p className='pd-desc'>{desc}</p>
         <div className='pd-price'>
-          <p className='crnt-price'>${price}</p>
-          <p className='prev-price'>{prevPrice}</p>
+          <p className='crnt-price'>₹{price}</p>
+          <p className='prev-price'>₹{prevPrice}</p>
           <p className='discount'>{discPrice}%</p>
         </div>
         <div className='pd-quantity-action flex ai-center jc-between'>
