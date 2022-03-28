@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
           type: "ADD_PRODUCT_INTO_WISHLIST",
           payload: foundUser.wishlist,
         });
-      } else if (status === 201) {
+      } else if (status === 201 && createdUser) {
         authDispatch({
           type: "ADD_TOKEN",
           payload: encodedToken,
