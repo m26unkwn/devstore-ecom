@@ -7,6 +7,7 @@ import {
   PrivateRoute,
   Profile,
   Cart,
+  Wishlist,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
