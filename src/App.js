@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { useData } from "./Context/stateManage/state-context";
 
 import { ProductList } from "./screens/ProductList";
-import { getDataFromServer } from "./services/get-data-server";
+import { getDataFromServer } from "./services";
 
 function App() {
   const { dispatch } = useData();

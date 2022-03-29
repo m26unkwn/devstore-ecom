@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Delete, Negative, Positive } from "../../../assets";
 import { useData } from "../../../Context/stateManage/state-context";
 import { useAuth } from "../../../Context/auth/auth-context";
-import { getDataFromServer } from "../../../services/get-data-server";
+import { postUpdatedQuantity, getDataFromServer } from "../../../services/";
 
 const CartProduct = (props) => {
   const { id, img, title, desc, price, prevPrice, discPrice, qty, product } =
@@ -13,7 +13,7 @@ const CartProduct = (props) => {
   } = useAuth();
   const {
     dispatch,
-    state: { wishlistItems },
+    state: { wishlistItems, cartItems },
   } = useData();
 
   const removefromCartHandler = (id) => {
@@ -34,12 +34,25 @@ const CartProduct = (props) => {
   const quantityUpdateHandler = (id, type) => {
     const header = { authorization: token };
 
-    getDataFromServer(
+    const updatedQuantity = cartItems.filter((item) => {
+      if (item._id === id) {
+        if (type === "increment") {
+          item.qty = item.qty + 1;
+        } else {
+          item.qty = item.qty - 1;
+        }
+      }
+      return item;
+    });
+    dispatch({ type: "ADD_PRODUCT_INTO_CART", payload: updatedQuantity });
+
+    postUpdatedQuantity(
       `/api/user/cart/${id}`,
       "post",
       dispatch,
       "ADD_PRODUCT_INTO_CART",
-      "cart",
+      product,
+
       {
         action: {
           type: type,
@@ -106,7 +119,12 @@ const CartProduct = (props) => {
           <span className='quantity-view flex ai-center jc-center'>{qty}</span>
           <button
             onClick={() => quantityUpdateHandler(id, "increment")}
-            className='btn btn-icon icon-primary-color'>
+            disabled={Number(qty) === 10}
+            className={
+              Number(qty) === 10
+                ? "btn btn-disabled btn-icon icon-primary-color "
+                : "btn btn-icon icon-primary-color "
+            }>
             <img src={Positive} alt='increment-product-quantity' />
           </button>
         </div>
