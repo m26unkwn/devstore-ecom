@@ -22,6 +22,7 @@ export const AllProducts = () => {
               prevPrice={product.prev_price}
               discount={product.discount}
               img={product.img}
+              product={product}
             />
           ))}
       </div>

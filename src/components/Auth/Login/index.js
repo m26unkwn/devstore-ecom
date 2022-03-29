@@ -22,9 +22,8 @@ const Login = () => {
 
   const loginHandler = (e) => {
     e.preventDefault();
-
     if (loginValidation(loginState, dispatch)) {
-      getUserAuth(loginState.email, loginState.password);
+      getUserAuth("/api/auth/login", loginState.email, loginState.password);
     }
   };
 
@@ -34,7 +33,7 @@ const Login = () => {
 
   const testLoginHandler = (e) => {
     e.preventDefault();
-    getUserAuth("adarshbalika@gmail.com", "Adarshbalika1!");
+    getUserAuth("/api/auth/login", "adarshbalika@gmail.com", "Adarshbalika1!");
   };
 
   return (

@@ -1,6 +1,13 @@
 import "./App.css";
 import Home from "./screens/Home";
-import { Navbar, Login, Signup, PrivateRoute, Profile } from "./components";
+import {
+  Navbar,
+  Login,
+  Signup,
+  PrivateRoute,
+  Profile,
+  Cart,
+} from "./components";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 
@@ -8,12 +15,18 @@ import { useEffect } from "react";
 import { useData } from "./Context/stateManage/state-context";
 
 import { ProductList } from "./screens/ProductList";
-import { getDataFromServer } from "./services/get-data-server";
+import { getDataFromServer } from "./services";
 
 function App() {
   const { dispatch } = useData();
   useEffect(() => {
-    getDataFromServer("/api/products", "get", dispatch, "ADD_TO_PRODUCTS");
+    getDataFromServer(
+      "/api/products",
+      "get",
+      dispatch,
+      "ADD_TO_PRODUCTS",
+      "products"
+    );
   }, [dispatch]);
 
   return (
@@ -37,6 +50,14 @@ function App() {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/cart'
+          element={
+            <PrivateRoute>
+              <Cart />
             </PrivateRoute>
           }
         />

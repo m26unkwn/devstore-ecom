@@ -24,7 +24,6 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
       setIsClicked(false);
     }
   };
-  console.log(userDetails);
 
   return ReactDOM.createPortal(
     <div className='navbar-backdrop' onClick={removeSideBar}>
@@ -50,9 +49,9 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
                   Log In
                 </NavLink>
                 or
-                <a href='./' className='link-btn font-b'>
+                <NavLink to='/signup' className='link-btn font-b'>
                   Sign Up
-                </a>
+                </NavLink>
               </div>
             )}
           </li>
@@ -67,9 +66,9 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
             </a>
           </li>
           <li className='nav-items'>
-            <a href='./' className='link-btn'>
+            <NavLink to='/cart' className='link-btn'>
               My Cart
-            </a>
+            </NavLink>
           </li>
           <NavLink to='/profile' className='link-btn'>
             Profile
