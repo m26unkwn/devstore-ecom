@@ -7,7 +7,6 @@ const Wishlist = () => {
     state: { wishlistItems },
   } = useData();
 
-  console.log(wishlistItems);
   return (
     <main class='wishlist-container'>
       <div class='wishlist-head flex jc-center'>

@@ -7,7 +7,6 @@ export const AllProducts = () => {
   const { state } = useData();
 
   const filterProduct = productFilter(state.products, state.selectedFilters);
-  console.log("filterData", filterProduct);
 
   return (
     <section className='pd-container-main'>

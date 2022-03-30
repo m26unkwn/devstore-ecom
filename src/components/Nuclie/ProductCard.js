@@ -44,10 +44,6 @@ const ProductCard = (props) => {
     (item) => item._id === product._id
   );
 
-  console.log("product in Wishlist", isProducInWishlist);
-
-  console.log(loading);
-
   const moveToWishlistHandler = (product) => {
     const header = { authorization: token };
     if (isProducInWishlist) {

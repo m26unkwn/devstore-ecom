@@ -15,7 +15,6 @@ const signupValidation = (state, dispatch) => {
     flag = false;
   }
   if (state.password === "" || !formRegex.password.test(state.password)) {
-    console.log("password", !formRegex.password.test(state.password));
     dispatch({
       type: "SET_PASSWORD_ERROR",
       payload: true,

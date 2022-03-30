@@ -25,7 +25,6 @@ const AuthProvider = ({ children }) => {
     firstName = null,
     lastName = null
   ) => {
-    console.log(api);
     try {
       const {
         data: { encodedToken, foundUser, createdUser },
@@ -43,7 +42,6 @@ const AuthProvider = ({ children }) => {
       });
 
       localStorage.setItem("token", encodedToken);
-      console.log(encodedToken);
       if (status === 200) {
         authDispatch({
           type: "ADD_TOKEN",
