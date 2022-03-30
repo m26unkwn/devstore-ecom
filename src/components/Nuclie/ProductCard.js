@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { HeartIcon, CartIcon } from "../../assets";
+import { useState } from "react";
+import { CartIcon } from "../../assets";
+import { ReactComponent as HeartIcon } from "../../assets/svg/Heart.svg";
 import { useAuth } from "../../Context/auth/auth-context";
 import { useData } from "../../Context/stateManage/state-context";
 import { getDataFromServer } from "../../services/get-data-server";
@@ -7,11 +9,14 @@ import { getDataFromServer } from "../../services/get-data-server";
 const ProductCard = (props) => {
   const {
     dispatch,
-    state: { cartItems },
+    state: { cartItems, wishlistItems },
   } = useData();
   const {
     authState: { token },
   } = useAuth();
+
+  const [loading, setLoading] = useState(false);
+
   const { title, desc, price, prevPrice, discount, img, product } = props;
 
   const navigate = useNavigate();
@@ -25,6 +30,7 @@ const ProductCard = (props) => {
           dispatch,
           "ADD_PRODUCT_INTO_CART",
           "cart",
+          setLoading,
           {
             product: prod,
           },
@@ -34,6 +40,49 @@ const ProductCard = (props) => {
   };
 
   const isProducInCart = cartItems.some((item) => item._id === product._id);
+  const isProducInWishlist = wishlistItems.some(
+    (item) => item._id === product._id
+  );
+
+  console.log("product in Wishlist", isProducInWishlist);
+
+  console.log(loading);
+
+  const moveToWishlistHandler = (product) => {
+    const header = { authorization: token };
+    if (isProducInWishlist) {
+      alert("Item already inside of Wishlist");
+    } else if (token) {
+      getDataFromServer(
+        `/api/user/wishlist`,
+        "POST",
+        dispatch,
+        "ADD_PRODUCT_INTO_WISHLIST",
+        "wishlist",
+        setLoading,
+        { product: product },
+        header
+      );
+    } else {
+      alert("You have to login first.");
+    }
+  };
+
+  const removefromWishlistHandler = (id) => {
+    const header = { authorization: token };
+    token
+      ? getDataFromServer(
+          `/api/user/wishlist/${id}`,
+          "DELETE",
+          dispatch,
+          "ADD_PRODUCT_INTO_WISHLIST",
+          "wishlist",
+          setLoading,
+          { product: product },
+          header
+        )
+      : alert("You have to login first.");
+  };
 
   return (
     <div className='pd-card-container vertical'>
@@ -47,8 +96,14 @@ const ProductCard = (props) => {
         </a>
       </div>
       <div className='badge pd-badge'>
-        <button className='btn btn-icon'>
-          <img src={HeartIcon} alt='wishlist_heart_icon' />
+        <button
+          onClick={() =>
+            isProducInWishlist
+              ? removefromWishlistHandler(product._id)
+              : moveToWishlistHandler(product)
+          }
+          className='btn btn-icon'>
+          <HeartIcon fill={isProducInWishlist ? "#d00d65" : "none"} />
         </button>
       </div>
       <div className='pd-content'>
@@ -67,8 +122,11 @@ const ProductCard = (props) => {
             </button>
           ) : (
             <button
+              disabled={loading}
               onClick={() => addToCartHandler(product)}
-              className='btn icon-text'>
+              className={
+                loading ? "btn icon-text btn-disabled" : "btn icon-text"
+              }>
               <img src={CartIcon} alt='add_to_cart_icon' />
               Add to cart
             </button>

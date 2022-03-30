@@ -62,6 +62,14 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path='/wishlist'
+          element={
+            <PrivateRoute>
+              <Wishlist />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );
