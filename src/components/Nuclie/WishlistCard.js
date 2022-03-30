@@ -2,7 +2,7 @@ import { RemoveIcon, CartIcon } from "../../assets";
 import { useAuth } from "../../Context/auth/auth-context";
 import { useData } from "../../Context/stateManage/state-context";
 import { getDataFromServer } from "../../services/get-data-server";
-
+import { useState } from "react";
 const WishlistCard = (props) => {
   const {
     dispatch,
@@ -13,6 +13,8 @@ const WishlistCard = (props) => {
   } = useAuth();
   const { title, desc, price, prevPrice, discount, img, product } = props;
 
+  const [loading, setLoading] = useState(false);
+
   const removefromWishlistHandler = (id) => {
     const header = { authorization: token };
     getDataFromServer(
@@ -21,6 +23,7 @@ const WishlistCard = (props) => {
       dispatch,
       "ADD_PRODUCT_INTO_WISHLIST",
       "wishlist",
+      setLoading,
       { product: product },
       header
     );
@@ -39,6 +42,7 @@ const WishlistCard = (props) => {
         dispatch,
         "ADD_PRODUCT_INTO_CART",
         "cart",
+        setLoading,
         {
           product: prod,
         },
@@ -61,6 +65,7 @@ const WishlistCard = (props) => {
       </div>
       <div className='badge pd-badge'>
         <button
+          disabled={loading}
           onClick={() => removefromWishlistHandler(product._id)}
           className='btn btn-icon'>
           <img src={RemoveIcon} alt='wishlist_heart_icon' />

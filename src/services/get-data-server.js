@@ -20,13 +20,15 @@ export const getDataFromServer = async (
       headers: header,
     });
     if (response.status === 200 || response.status === 201) {
-      dispatch({ type: type, payload: response.data[result] });
       if (setLoading) {
         setLoading(false);
       }
+      dispatch({ type: type, payload: response.data[result] });
     }
   } catch (error) {
     console.log(error);
-    if (setLoading) setLoading(false);
+    if (setLoading) {
+      setLoading(false);
+    }
   }
 };

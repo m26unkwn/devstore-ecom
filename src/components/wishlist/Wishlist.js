@@ -8,12 +8,12 @@ const Wishlist = () => {
   } = useData();
 
   return (
-    <main class='wishlist-container'>
-      <div class='wishlist-head flex jc-center'>
+    <main className='wishlist-container'>
+      <div className='wishlist-head flex jc-center'>
         <h1>Wishlist</h1>
       </div>
-      <section class='pd-container-main'>
-        <div calssName='pd-wrapper flex jc-center flex-gap flex-wrap'>
+      <section className='pd-container-main'>
+        <div className='pd-wrapper flex jc-center flex-gap flex-wrap'>
           {wishlistItems.length > 0 ? (
             wishlistItems.map((product) => (
               <WishlistCard
