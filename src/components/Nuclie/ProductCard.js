@@ -16,6 +16,7 @@ const ProductCard = (props) => {
   } = useAuth();
 
   const [loading, setLoading] = useState(false);
+  const [wishlistLoading, setWishListLoading] = useState(false);
 
   const { title, desc, price, prevPrice, discount, img, product } = props;
 
@@ -55,7 +56,7 @@ const ProductCard = (props) => {
         dispatch,
         "ADD_PRODUCT_INTO_WISHLIST",
         "wishlist",
-        setLoading,
+        setWishListLoading,
         { product: product },
         header
       );
@@ -73,7 +74,7 @@ const ProductCard = (props) => {
           dispatch,
           "ADD_PRODUCT_INTO_WISHLIST",
           "wishlist",
-          setLoading,
+          setWishListLoading,
           { product: product },
           header
         )
@@ -93,6 +94,7 @@ const ProductCard = (props) => {
       </div>
       <div className='badge pd-badge'>
         <button
+          disabled={wishlistLoading}
           onClick={() =>
             isProducInWishlist
               ? removefromWishlistHandler(product._id)
@@ -129,6 +131,7 @@ const ProductCard = (props) => {
           )}
         </div>
       </div>
+      {!wishlistItems}
     </div>
   );
 };
