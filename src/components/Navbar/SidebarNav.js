@@ -61,9 +61,9 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
             </NavLink>
           </li>
           <li className='nav-items'>
-            <a href='/wishlist' className='link-btn '>
+            <NavLink to='/wishlist' className='link-btn '>
               My Wishlist
-            </a>
+            </NavLink>
           </li>
           <li className='nav-items'>
             <NavLink to='/cart' className='link-btn'>
