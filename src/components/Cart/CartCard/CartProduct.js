@@ -3,6 +3,7 @@ import { Delete, Negative, Positive } from "../../../assets";
 import { useData } from "../../../Context/stateManage/state-context";
 import { useAuth } from "../../../Context/auth/auth-context";
 import { postUpdatedQuantity, getDataFromServer } from "../../../services/";
+import { useState } from "react";
 
 const CartProduct = (props) => {
   const { id, img, title, desc, price, prevPrice, discPrice, qty, product } =
@@ -16,6 +17,8 @@ const CartProduct = (props) => {
     state: { wishlistItems, cartItems },
   } = useData();
 
+  const [loading, setLoading] = useState(false);
+
   const removefromCartHandler = (id) => {
     const header = { authorization: token };
     getDataFromServer(
@@ -24,6 +27,7 @@ const CartProduct = (props) => {
       dispatch,
       "ADD_PRODUCT_INTO_CART",
       "cart",
+      setLoading,
       { product: product },
       header
     );
@@ -51,8 +55,7 @@ const CartProduct = (props) => {
       "post",
       dispatch,
       "ADD_PRODUCT_INTO_CART",
-      product,
-
+      "product",
       {
         action: {
           type: type,
@@ -64,18 +67,21 @@ const CartProduct = (props) => {
 
   const moveToWishlistHandler = (product) => {
     const header = { authorization: token };
-    isProducInWishlist
-      ? alert("Item already inside of Wishlist")
-      : getDataFromServer(
-          `/api/user/wishlist`,
-          "POST",
-          dispatch,
-          "ADD_PRODUCT_INTO_WISHLIST",
-          "wishlist",
-          { product: product },
-          header
-        );
-    removefromCartHandler(id);
+    if (isProducInWishlist) {
+      alert("Item already inside of Wishlist");
+    } else {
+      getDataFromServer(
+        `/api/user/wishlist`,
+        "POST",
+        dispatch,
+        "ADD_PRODUCT_INTO_WISHLIST",
+        "wishlist",
+        setLoading,
+        { product: product },
+        header
+      );
+      removefromCartHandler(id);
+    }
   };
 
   return (
@@ -91,8 +97,9 @@ const CartProduct = (props) => {
       </div>
       <div className='badge pd-badge'>
         <button
+          disabled={loading}
           onClick={() => removefromCartHandler(id)}
-          className='btn btn-icon'>
+          className={loading ? "btn btn-icon btn-disabled" : "btn btn-icon"}>
           <img src={Delete} alt='remove-product-icon' />
         </button>
       </div>

@@ -16,7 +16,6 @@ export const postUpdatedQuantity = async (
       headers: header,
     });
   } catch (error) {
-    console.log(error);
     dispatch({ type: type, payload: payload });
   }
 };

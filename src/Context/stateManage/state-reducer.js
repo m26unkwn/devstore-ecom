@@ -20,7 +20,6 @@ export function reducer(state, action) {
         action.payload.filterParam
       ]?.data.some((value) => value === action.payload.data);
 
-      console.log("FOUND ITEM", found);
       return {
         ...state,
         selectedFilters: {

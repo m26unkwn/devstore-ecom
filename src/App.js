@@ -7,6 +7,7 @@ import {
   PrivateRoute,
   Profile,
   Cart,
+  Wishlist,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
@@ -58,6 +59,14 @@ function App() {
           element={
             <PrivateRoute>
               <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/wishlist'
+          element={
+            <PrivateRoute>
+              <Wishlist />
             </PrivateRoute>
           }
         />
