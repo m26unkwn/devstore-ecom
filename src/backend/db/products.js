@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { Sticker, Tees, Bag, Hat } from "../../assets";
+import { Sticker, Bag, Hat } from "../../assets";
 
 /**
  * Product Database can be added here.
@@ -7,17 +7,6 @@ import { Sticker, Tees, Bag, Hat } from "../../assets";
  * */
 
 export const products = [
-  {
-    _id: uuid(),
-    title: "Don't Stop ",
-    desc: "Motivation Stikers",
-    price: 4,
-    prev_price: 8,
-    discount: 50,
-    category: "sticker",
-    img: Sticker,
-    brand: "apple",
-  },
   {
     _id: uuid(),
     title: "DEV Snapback Cap",
@@ -76,6 +65,7 @@ export const products = [
     discount: 50,
     category: "sticker",
     img: Sticker,
+    inStock: false,
   },
   {
     _id: uuid(),
@@ -86,6 +76,7 @@ export const products = [
     discount: 50,
     category: "bag",
     img: Bag,
+    inStock: false,
   },
   {
     _id: uuid(),
@@ -103,6 +94,7 @@ export const products = [
       "Hand wash recommended",
       "Microwave safe",
     ],
+    inStock: true,
   },
   {
     _id: uuid(),
@@ -112,7 +104,7 @@ export const products = [
     prev_price: 40,
     discount: 50,
     category: "sticker",
-    brand: "dev",
+    brand: "apple",
     img: "https://cdn.shopify.com/s/files/1/1626/8507/products/custom_resized_af6cf36b-42a8-423f-bb05-ca150f5d7bb1_1024x1024.jpg",
     description: [
       "Stickers are die-cut, a mix of glossy and matte, and range in widths from 2”-6”",
@@ -120,6 +112,7 @@ export const products = [
       "Stickers pictured are not to scale.",
       " Stickers ship separately from other items.",
     ],
+    inStock: true,
   },
 
   {
@@ -260,6 +253,18 @@ export const products = [
       "Color rim, inside, and handle",
       "Dishwasher and microwave safe",
     ],
+  },
+  {
+    _id: uuid(),
+    title: "Don't Stop ",
+    desc: "Motivation Stikers",
+    price: 4,
+    prev_price: 8,
+    discount: 50,
+    category: "sticker",
+    img: Sticker,
+    brand: "apple",
+    inStock: false,
   },
   {
     _id: uuid(),
