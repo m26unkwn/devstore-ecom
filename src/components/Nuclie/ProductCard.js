@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CartIcon } from "../../assets";
 import { ReactComponent as HeartIcon } from "../../assets/svg/Heart.svg";
@@ -84,13 +84,13 @@ const ProductCard = (props) => {
   return (
     <div className='pd-card-container vertical'>
       <div className='card-img-wrapper vertical-img'>
-        <a href='./'>
+        <Link to={`/product/${product._id}`}>
           <img
             src={img}
             className='pd-img card-img vertical-card-img'
             alt={`${title} + img`}
           />
-        </a>
+        </Link>
       </div>
       <div className='badge pd-badge'>
         <button
@@ -101,7 +101,9 @@ const ProductCard = (props) => {
               : moveToWishlistHandler(product)
           }
           className='btn btn-icon'>
-          <HeartIcon fill={isProducInWishlist ? "#d00d65" : "none"} />
+          <HeartIcon
+            fill={isProducInWishlist ? "var(--danger-color)" : "none"}
+          />
         </button>
       </div>
       <div className='pd-content'>

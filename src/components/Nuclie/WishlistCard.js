@@ -81,6 +81,7 @@ const WishlistCard = (props) => {
         </div>
         <div className='pd-card-action pd-card-btn'>
           <button
+            disabled={loading}
             onClick={() => addToCartHandler(product, product._id)}
             className='btn icon-text'>
             <img src={CartIcon} alt='add_to_cart_icon' />
