@@ -107,7 +107,15 @@ const ProductCard = (props) => {
         </button>
       </div>
       <div className='pd-content'>
-        <h1 className='pd-heading card-heading'>{title}</h1>
+        <h1
+          className='pd-heading card-heading'
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}>
+          {title}
+        </h1>
         <p className='pd-desc'>{desc}</p>
         <div className='pd-price'>
           <p className='crnt-price'>₹{price}</p>
