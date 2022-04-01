@@ -18,7 +18,7 @@ const HomeProducts = () => {
         </Link>
       </div>
       <div className='pd-wrapper flex jc-center flex-gap flex-wrap'>
-        {products &&
+        {products ? (
           products
             .slice(0, 4)
             .map((product) => (
@@ -32,7 +32,10 @@ const HomeProducts = () => {
                 img={product.img}
                 product={product}
               />
-            ))}
+            ))
+        ) : (
+          <p>Loading</p>
+        )}
       </div>
     </section>
   );

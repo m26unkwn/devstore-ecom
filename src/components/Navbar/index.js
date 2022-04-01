@@ -29,17 +29,19 @@ const Navbar = () => {
   return (
     <nav
       className={`nav-wrapper flex ${
-        pathArray.some((item) => currentPath.pathname === item)
+        pathArray.some((item) => currentPath.pathname === item) || token
           ? "jc-center"
           : "jc-between ai-center"
       } flex-gap`}>
       <div className='logo flex jc-between ai-center flex-gap'>
-        <NavLink to='/'>
-          <button className='btn btn-icon'>
-            <img src={devLogo} alt='dev_logo' />
-          </button>
-        </NavLink>
-        <h1 className='logo-text'>DEVSTORE</h1>
+        <div className='flex flex-gap jc-center  ai-center'>
+          <NavLink to='/'>
+            <button className='btn btn-icon'>
+              <img src={devLogo} alt='dev_logo' />
+            </button>
+          </NavLink>
+          <h1 className='logo-text'>DEVSTORE</h1>
+        </div>
         <NavLink
           to='/products'
           className='link-btn logo-text  flex ai-center  jc-center'>

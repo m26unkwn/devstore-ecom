@@ -18,9 +18,9 @@ const category = [
   },
   {
     id: 3,
-    name: "T-shirts",
-    value: "tees",
-    label: "T-shirts",
+    name: "Mug",
+    value: "mug",
+    label: "Mug",
   },
   {
     id: 4,

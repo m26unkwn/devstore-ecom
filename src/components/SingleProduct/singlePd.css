@@ -1,0 +1,13 @@
+.single-product-wrapper{
+    max-width: 1024px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--white-color);
+    grid-column-gap: 2rem;
+}
+
+.equal-grid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}

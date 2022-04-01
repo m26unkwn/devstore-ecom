@@ -7,11 +7,12 @@ export const AllProducts = () => {
   const { state } = useData();
 
   const filterProduct = productFilter(state.products, state.selectedFilters);
+  console.log(filterProduct);
 
   return (
     <section className='pd-container-main'>
       <div className='pd-wrapper flex jc-center flex-gap flex-wrap'>
-        {filterProduct &&
+        {filterProduct.length > 0 ? (
           filterProduct.map((product) => (
             <ProductCard
               key={product._id}
@@ -21,9 +22,13 @@ export const AllProducts = () => {
               prevPrice={product.prev_price}
               discount={product.discount}
               img={product.img}
+              inStock={product.inStock}
               product={product}
             />
-          ))}
+          ))
+        ) : (
+          <h1>Sorry No Products Available :(.</h1>
+        )}
       </div>
     </section>
   );

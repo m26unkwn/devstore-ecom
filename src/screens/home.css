@@ -4,10 +4,11 @@
 
 .nav-wrapper {
   position: sticky;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   background: var(--white-color);
   top: 0;
   z-index: 4;
+  gap: 4rem;
 }
 .logo {
   gap: 2rem;
@@ -21,7 +22,7 @@
 
 .search-bar > input {
   width: 100%;
-  padding: 0.8rem;
+  padding: 8px 12px;
   background-color: var(--bg-input-color);
   border: 2px solid transparent;
 }

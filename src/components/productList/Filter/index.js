@@ -5,19 +5,29 @@ import { useData } from "../../../Context/stateManage/state-context";
 import { CheckboxBrand } from "./CheckboxBrand";
 
 const Filter = () => {
-  const { dispatch } = useData();
+  const {
+    dispatch,
+    state: { selectedFilters },
+  } = useData();
 
-  const clearFilterHanlder = () => {
+  const clearFilterHandler = () => {
     dispatch({ type: "CLEAR_FILTER" });
   };
+
+  let clearFilterFlag =
+    selectedFilters.price?.data ||
+    selectedFilters.category?.data ||
+    selectedFilters.brands?.data;
 
   return (
     <section className='filter'>
       <div className='filter-head flex jc-between'>
         <h4>Filter</h4>
-        <h4 onClick={clearFilterHanlder} style={{ cursor: "pointer" }}>
-          Clear All
-        </h4>
+        {clearFilterFlag ? (
+          <h4 onClick={clearFilterHandler} style={{ cursor: "pointer" }}>
+            Clear All
+          </h4>
+        ) : null}
       </div>
       <div className='card-divider'></div>
 

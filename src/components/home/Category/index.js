@@ -8,7 +8,7 @@ const Category = () => {
     <section className='pd-container'>
       <h1>Categories</h1>
       <div className='categories-wrapper flex jc-center flex-wrap'>
-        {categoryDatas &&
+        {categoryDatas ? (
           categoryDatas.categories.map((item) => (
             <CategoryCard
               key={item._id}
@@ -16,7 +16,10 @@ const Category = () => {
               img={item.img}
               categoryName={item.categoryName}
             />
-          ))}
+          ))
+        ) : (
+          <p>Loading</p>
+        )}
       </div>
     </section>
   );

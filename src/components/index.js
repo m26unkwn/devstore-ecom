@@ -6,3 +6,4 @@ export { default as PrivateRoute } from "./PrivateRoute/index";
 export { default as Profile } from "./Profile/index";
 export { default as Cart } from "./Cart/index";
 export { default as Wishlist } from "./wishlist/Wishlist";
+export { default as SingleProduct } from "./SingleProduct/SingleProduct";

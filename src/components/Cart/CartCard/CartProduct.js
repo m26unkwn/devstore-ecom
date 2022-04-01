@@ -99,7 +99,7 @@ const CartProduct = (props) => {
         <button
           disabled={loading}
           onClick={() => removefromCartHandler(id)}
-          className={loading ? "btn btn-icon btn-disabled" : "btn btn-icon"}>
+          className='btn btn-icon'>
           <img src={Delete} alt='remove-product-icon' />
         </button>
       </div>
@@ -137,6 +137,7 @@ const CartProduct = (props) => {
         </div>
         <div className='pd-card-action pd-card-btn'>
           <button
+            disabled={loading}
             onClick={() => moveToWishlistHandler(product)}
             className='btn outline-primary'>
             Move to wishlist
