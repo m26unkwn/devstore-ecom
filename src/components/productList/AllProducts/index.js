@@ -2,11 +2,14 @@ import ProductCard from "../../Nuclie/ProductCard";
 
 import { useData } from "../../../Context/stateManage/state-context";
 import productFilter from "../utils/product-filter";
+import filterByRating from "../utils/rating-filter";
 
 export const AllProducts = () => {
   const { state } = useData();
 
-  const filterProduct = productFilter(state.products, state.selectedFilters);
+  const filters = productFilter(state.products, state.selectedFilters);
+  const filterProduct = filterByRating(filters, state.rating);
+  console.log(state?.rating);
   console.log(filterProduct);
 
   return (

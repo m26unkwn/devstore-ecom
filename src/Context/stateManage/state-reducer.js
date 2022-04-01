@@ -62,10 +62,13 @@ export function reducer(state, action) {
           },
         },
       };
+    case "INCREASE_RATING":
+      return { ...state, rating: action.rating };
     case "CLEAR_FILTER":
       return {
         ...state,
         selectedFilters: {},
+        rating: 0,
       };
 
     case "ADD_PRODUCT_INTO_CART":
