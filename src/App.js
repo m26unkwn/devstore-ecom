@@ -9,6 +9,7 @@ import {
   Cart,
   Wishlist,
   SingleProduct,
+  CategoryProducts,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
@@ -48,6 +49,10 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/product/:productId' element={<SingleProduct />} />
+        <Route
+          path='/product/category/:categoryParam'
+          element={<CategoryProducts />}
+        />
         <Route
           path='/profile'
           element={

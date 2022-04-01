@@ -7,3 +7,4 @@ export { default as Profile } from "./Profile/index";
 export { default as Cart } from "./Cart/index";
 export { default as Wishlist } from "./wishlist/Wishlist";
 export { default as SingleProduct } from "./SingleProduct/SingleProduct";
+export { default as CategoryProducts } from "./CategoryPage/CategoryProducts";
