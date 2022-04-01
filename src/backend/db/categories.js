@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { Sticker, Tees, Bag, Hat } from "../../assets";
+import { Sticker, Mug, Bag, Hat } from "../../assets";
 
 /**
  * Category Database can be added here.
@@ -11,24 +11,24 @@ export const categories = [
     _id: uuid(),
     link: "/products/sticker",
     img: Sticker,
-    categoryName: "Stickers",
+    categoryName: "sticker",
   },
   {
     _id: uuid(),
     link: "/products/tees",
-    img: Tees,
-    categoryName: "T-Shirts",
+    img: Mug,
+    categoryName: "mug",
   },
   {
     _id: uuid(),
     link: "/products/hat",
     img: Hat,
-    categoryName: "Hats",
+    categoryName: "hat",
   },
   {
     _id: uuid(),
     link: "/products/Bag",
     img: Bag,
-    categoryName: "Bag",
+    categoryName: "bag",
   },
 ];

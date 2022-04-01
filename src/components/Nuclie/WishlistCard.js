@@ -3,6 +3,7 @@ import { useAuth } from "../../Context/auth/auth-context";
 import { useData } from "../../Context/stateManage/state-context";
 import { getDataFromServer } from "../../services/get-data-server";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const WishlistCard = (props) => {
   const {
     dispatch,
@@ -55,13 +56,13 @@ const WishlistCard = (props) => {
   return (
     <div className='pd-card-container vertical'>
       <div className='card-img-wrapper vertical-img'>
-        <a href='./'>
+        <Link to={`/products/${product._id}`}>
           <img
             src={img}
             className='pd-img card-img vertical-card-img'
             alt={`${title} + img`}
           />
-        </a>
+        </Link>
       </div>
       <div className='badge pd-badge'>
         <button

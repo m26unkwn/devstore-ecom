@@ -87,11 +87,11 @@ const CartProduct = (props) => {
   return (
     <div className='pd-card-container'>
       <div className='card-img-wrapper'>
-        <Link to='/'>
+        <Link to={`/products/${product._id}`}>
           <img
             src={img}
             className='pd-img card-img vertical-card-img'
-            alt='img'
+            alt={`${title} + img`}
           />
         </Link>
       </div>
