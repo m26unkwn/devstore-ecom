@@ -9,8 +9,6 @@ export const AllProducts = () => {
 
   const filters = productFilter(state.products, state.selectedFilters);
   const filterProduct = filterByRating(filters, state.rating);
-  console.log(state?.rating);
-  console.log(filterProduct);
 
   return (
     <section className='pd-container-main'>
