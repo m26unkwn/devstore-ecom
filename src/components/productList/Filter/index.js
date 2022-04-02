@@ -24,7 +24,7 @@ const Filter = () => {
 
   let onChangeSlider = (e) => {
     console.log(e.target.value);
-    dispatch({ type: "INCREASE_RATING", rating: e.target.value });
+    dispatch({ type: "CHANGE_RATING", rating: e.target.value });
   };
 
   return (
@@ -57,7 +57,7 @@ const Filter = () => {
         <li className='flex flex-col  flex-gap jc-center'>
           <label className='flex jc-center ai-center'>
             <StarIcon width='25' height='25' />
-            <span style={{ fontSize: "1.5rem" }}>{rating}</span>
+            <span style={{ fontSize: "1.5rem" }}>{rating} +</span>
           </label>
           <input
             type='range'

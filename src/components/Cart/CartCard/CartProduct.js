@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
-import { Delete, Negative, Positive } from "../../../assets";
+import { Delete, Negative, Positive, Star } from "../../../assets";
 import { useData } from "../../../Context/stateManage/state-context";
 import { useAuth } from "../../../Context/auth/auth-context";
 import { postUpdatedQuantity, getDataFromServer } from "../../../services/";
 import { useState } from "react";
 
 const CartProduct = (props) => {
-  const { id, img, title, desc, price, prevPrice, discPrice, qty, product } =
-    props;
+  const {
+    id,
+    img,
+    title,
+    desc,
+    price,
+    prevPrice,
+    discPrice,
+    qty,
+    rating,
+    product,
+  } = props;
 
   const {
     authState: { token },
@@ -111,6 +121,9 @@ const CartProduct = (props) => {
           <p className='prev-price'>₹{prevPrice}</p>
           <p className='discount'>{discPrice}%</p>
         </div>
+        <p className='price rating'>
+          {rating} <img src={Star} alt='rating_star' />
+        </p>
         <div className='pd-quantity-action flex ai-center jc-between'>
           <span>Quantity:</span>
           <button

@@ -26,6 +26,7 @@ export const AllProducts = () => {
               discount={product.discount}
               img={product.img}
               inStock={product.inStock}
+              rating={product.rating}
               product={product}
             />
           ))

@@ -30,6 +30,7 @@ const HomeProducts = () => {
                 prevPrice={product.prev_price}
                 discount={product.discount}
                 img={product.img}
+                rating={product.rating}
                 product={product}
               />
             ))

@@ -62,7 +62,7 @@ export function reducer(state, action) {
           },
         },
       };
-    case "INCREASE_RATING":
+    case "CHANGE_RATING":
       return { ...state, rating: action.rating };
     case "CLEAR_FILTER":
       return {

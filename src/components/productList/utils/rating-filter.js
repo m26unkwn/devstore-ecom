@@ -3,5 +3,5 @@ export default function filterByRating(allProducts, rating) {
   if (rating === 0) {
     return products;
   }
-  return products.filter((product) => product.rating === Number(rating));
+  return products.filter((product) => product.rating >= Number(rating));
 }

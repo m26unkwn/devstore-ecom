@@ -17,8 +17,17 @@ const ProductCard = (props) => {
 
   const [loading, setLoading] = useState(false);
 
-  const { title, desc, price, prevPrice, discount, img, inStock, product } =
-    props;
+  const {
+    title,
+    desc,
+    price,
+    prevPrice,
+    discount,
+    img,
+    inStock,
+    rating,
+    product,
+  } = props;
 
   const navigate = useNavigate();
 
@@ -122,10 +131,10 @@ const ProductCard = (props) => {
             <p className='crnt-price'>₹{price}</p>
             <p className='prev-price'>₹{prevPrice}</p>
             <p className='discount'>{discount}% off</p>
-            <p className='rating'>
-              {product.rating} <img src={Star} alt='rating_star' /> 5
-            </p>
           </div>
+          <p className='price rating'>
+            {rating} <img src={Star} alt='rating_star' />
+          </p>
           <div className='pd-card-action pd-card-btn'>
             <button
               disabled={loading}
