@@ -2,12 +2,13 @@ import ProductCard from "../../Nuclie/ProductCard";
 
 import { useData } from "../../../Context/stateManage/state-context";
 import productFilter from "../utils/product-filter";
+import filterByRating from "../utils/rating-filter";
 
 export const AllProducts = () => {
   const { state } = useData();
 
-  const filterProduct = productFilter(state.products, state.selectedFilters);
-  console.log(filterProduct);
+  const filters = productFilter(state.products, state.selectedFilters);
+  const filterProduct = filterByRating(filters, state.rating);
 
   return (
     <section className='pd-container-main'>
@@ -23,6 +24,7 @@ export const AllProducts = () => {
               discount={product.discount}
               img={product.img}
               inStock={product.inStock}
+              rating={product.rating}
               product={product}
             />
           ))

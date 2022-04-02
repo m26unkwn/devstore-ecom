@@ -22,6 +22,7 @@ export const products = [
       "Plastic snap closure",
       "Green under visor",
     ],
+    rating: 4,
   },
 
   {
@@ -40,6 +41,7 @@ export const products = [
       "Stickers pictured are not to scale.",
       " Stickers ship separately from other items.",
     ],
+    rating: 2,
   },
 
   {
@@ -55,6 +57,7 @@ export const products = [
     description: [
       " This mug will end the meeting the moment you arrive because, well, what else is there to say? This glossy ceramic mug is safe for the dishwasher and the microwave!",
     ],
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -66,6 +69,7 @@ export const products = [
     category: "sticker",
     img: Sticker,
     inStock: false,
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -95,6 +99,7 @@ export const products = [
       "Microwave safe",
     ],
     inStock: true,
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -113,6 +118,7 @@ export const products = [
       " Stickers ship separately from other items.",
     ],
     inStock: true,
+    rating: 2,
   },
 
   {
@@ -143,6 +149,7 @@ export const products = [
       " Black sweatband",
       "Washed-out vintage effect",
     ],
+    rating: 5,
   },
   {
     _id: uuid(),
@@ -154,6 +161,7 @@ export const products = [
     category: "mug",
     brand: "dev",
     img: "https://cdn.shopify.com/s/files/1/1626/8507/products/mockup-22c8b531_1024x1024.jpg",
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -170,6 +178,7 @@ export const products = [
       "Removable, kiss-cut vinyl stickers",
       "Super durable and water-resistant",
     ],
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -186,6 +195,7 @@ export const products = [
       "Water-resistant material",
       "Large inside pocket with a separate pocket for a 15” laptop, front pocket with a zipper, and a hidden pocket with zipper on the back of the bag",
     ],
+    rating: 5,
   },
   {
     _id: uuid(),
@@ -203,6 +213,7 @@ export const products = [
       "Color rim, inside, and handle",
       "Dishwasher and microwave safe",
     ],
+    rating:5
   },
   {
     _id: uuid(),
@@ -219,6 +230,7 @@ export const products = [
       "Water-resistant material",
       "Large inside pocket with a separate pocket for a 15” laptop, front pocket with a zipper, and a hidden pocket with zipper on the back of the bag",
     ],
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -236,6 +248,7 @@ export const products = [
       "6 sewn eyelets",
       "Black sweatband",
     ],
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -253,6 +266,7 @@ export const products = [
       "Color rim, inside, and handle",
       "Dishwasher and microwave safe",
     ],
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -265,6 +279,7 @@ export const products = [
     img: Sticker,
     brand: "apple",
     inStock: false,
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -282,5 +297,6 @@ export const products = [
       "6 sewn eyelets",
       "Black sweatband",
     ],
+    rating: 5,
   },
 ];

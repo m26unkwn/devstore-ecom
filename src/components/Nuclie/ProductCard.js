@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { CartIcon } from "../../assets";
+import { CartIcon, Star } from "../../assets";
 import { ReactComponent as HeartIcon } from "../../assets/svg/Heart.svg";
 import { useAuth } from "../../Context/auth/auth-context";
 import { useData } from "../../Context/stateManage/state-context";
@@ -17,8 +17,17 @@ const ProductCard = (props) => {
 
   const [loading, setLoading] = useState(false);
 
-  const { title, desc, price, prevPrice, discount, img, inStock, product } =
-    props;
+  const {
+    title,
+    desc,
+    price,
+    prevPrice,
+    discount,
+    img,
+    inStock,
+    rating,
+    product,
+  } = props;
 
   const navigate = useNavigate();
 
@@ -123,6 +132,9 @@ const ProductCard = (props) => {
             <p className='prev-price'>₹{prevPrice}</p>
             <p className='discount'>{discount}% off</p>
           </div>
+          <p className='price rating'>
+            {rating} <img src={Star} alt='rating_star' />
+          </p>
           <div className='pd-card-action pd-card-btn'>
             <button
               disabled={loading}
