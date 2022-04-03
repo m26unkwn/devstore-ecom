@@ -18,6 +18,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: relative;
+}
+.search-bar-icon{
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 
 .search-bar > input {

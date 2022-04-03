@@ -14,15 +14,22 @@ const FilterProducts = () => {
   const filterProducts = filterSearchProducts(products, searchQuery);
 
   return (
-    <div>
-      <main className='pd-container'>
-        <div className='wishlist-head flex jc-center'>
-          <h1>Found Items ({filterProducts.length})</h1>
-        </div>
-        <section className='pd-container-main'>
-          <div className='pd-wrapper flex jc-center flex-gap flex-wrap'>
-            {filterProducts.length > 0 ? (
-              filterProducts.map((product) => (
+    <main className='pd-container'>
+      {filterProducts.length > 0 ? (
+        <>
+          <div className='wishlist-head flex jc-center'>
+            <h4
+              className='pd-desc'
+              style={{
+                fontSize: "1.5rem",
+                textAlign: "center",
+              }}>
+              Found Items for "{searchQuery}" ({filterProducts.length})
+            </h4>
+          </div>
+          <section className='pd-container-main'>
+            <div className='pd-wrapper flex jc-center flex-gap flex-wrap'>
+              {filterProducts.map((product) => (
                 <ProductCard
                   key={product._id}
                   title={product.title}
@@ -35,27 +42,36 @@ const FilterProducts = () => {
                   rating={product.rating}
                   product={product}
                 />
-              ))
-            ) : (
-              <div className=' flex jc-center flex-col ai-center flex-gap'>
-                <h3 style={{ fontSize: "2rem" }} className='pd-desc'>
-                  Sorry We could not find any Products
-                </h3>
-                <h4 style={{ fontSize: "1.5rem" }} className='pd-desc'>
-                  You can look for different Products
-                </h4>
-
-                <button className='btn'>
-                  <Link to='/products' className='btn-link'>
-                    Shop Now
-                  </Link>
-                </button>
-              </div>
-            )}
-          </div>
-        </section>
-      </main>
-    </div>
+              ))}
+            </div>
+          </section>
+        </>
+      ) : (
+        <div className=' flex jc-center flex-col ai-center flex-gap'>
+          <h3
+            style={{
+              fontSize: "2rem",
+              textAlign: "center",
+            }}
+            className='pd-desc'>
+            Oh! No search results for {searchQuery}
+          </h3>
+          <h4
+            style={{
+              fontSize: "1.5rem",
+              textAlign: "center",
+            }}
+            className='pd-desc'>
+            You can look for different Products
+          </h4>
+          <button className='btn'>
+            <Link to='/products' className='btn-link'>
+              Shop Now
+            </Link>
+          </button>
+        </div>
+      )}
+    </main>
   );
 };
 export default FilterProducts;
