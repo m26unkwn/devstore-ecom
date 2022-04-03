@@ -7,5 +7,5 @@ export { default as Wishlist } from "./wishlist/Wishlist";
 export { HomeProducts, Category, Hero } from "./home";
 export { Login, Signup } from "./authentication";
 export { default as Profile } from "./profile/index";
-export { default as Cart } from "./cart";
 export { default as Navbar } from "./navbar";
+export { default as Cart } from "./cart";
