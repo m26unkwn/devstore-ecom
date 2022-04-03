@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useSearchParams } from "react-router-dom";
 import { useData } from "../../Context/stateManage/state-context";
 import ProductCard from "../productCards/ProductCard";
 import filterSearchProducts from "./filter-search-products";
@@ -8,6 +8,8 @@ const FilterProducts = () => {
     state: { products },
   } = useData();
   const { search } = useLocation();
+  const parms = useSearchParams();
+  console.log("filteteter", parms);
   const searchParam = new URLSearchParams(search);
   const searchQuery = searchParam.get("filter");
 
