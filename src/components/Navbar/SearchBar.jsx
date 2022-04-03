@@ -3,18 +3,19 @@ import { useNavigate } from "react-router-dom";
 import {ReactComponent as SearchIcon} from "../../assets/Search.svg"
 
 const SearchBar=()=>{
-  
+    
+
     const [searchParam,setSearchParam]=useState("");
     const navigate = useNavigate();
 
-
+    
     const onSearchChangeHandler=(e)=>{
         setSearchParam(e.target.value)
           
     }
 
     const onClick=()=>{
-            navigate(`/products/search?filter=${encodeURIComponent(searchParam)}`)
+            navigate(`/products/search?filter=${searchParam}`)
             setSearchParam("")
 }
     

@@ -17,7 +17,7 @@ const Login = () => {
   } = useAuth();
 
   let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  let lastLocation = location.state?.lastLocation?.pathname || "/";
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <>
       {token ? (
-        <Navigate to={from} replace />
+        <Navigate to={lastLocation} replace />
       ) : (
         <section className='auth-wrapper flex ai-center jc-center'>
           <div className='card-container auth-card'>

@@ -8,7 +8,9 @@ const FilterProducts = () => {
     state: { products },
   } = useData();
   const { search } = useLocation();
+
   const searchParam = new URLSearchParams(search);
+
   const searchQuery = searchParam.get("filter");
 
   const filterProducts = filterSearchProducts(products, searchQuery);

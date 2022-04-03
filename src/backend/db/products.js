@@ -61,7 +61,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Github  Sticker ",
+    title: "Github Sticker ",
     desc: "Cat Github Sticker",
     price: 6,
     prev_price: 12,
@@ -153,7 +153,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "DEV Rainbow Mug  ",
+    title: "DEV Rainbow Mug",
     desc: "White Rainbow Mug",
     price: 60,
     prev_price: 120,
@@ -165,7 +165,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Github  Sticker ",
+    title: "Github Sticker ",
     desc: "Cat Github Sticker",
     price: 6,
     prev_price: 12,
@@ -213,7 +213,7 @@ export const products = [
       "Color rim, inside, and handle",
       "Dishwasher and microwave safe",
     ],
-    rating:5
+    rating: 5,
   },
   {
     _id: uuid(),

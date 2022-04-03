@@ -55,6 +55,7 @@ function App() {
           element={<CategoryProducts />}
         />
         <Route path='/products/search' element={<FilterProducts />} />
+
         <Route
           path='/profile'
           element={
@@ -63,6 +64,7 @@ function App() {
             </PrivateRoute>
           }
         />
+
         <Route
           path='/cart'
           element={
