@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Delete, Negative, Positive, Star } from "../../../assets";
 import { useData } from "../../../Context/stateManage/state-context";
 import { useAuth } from "../../../Context/auth/auth-context";
-import { postUpdatedQuantity, getDataFromServer } from "../../../services/";
+import { postUpdatedQuantity, getDataFromServer } from "../../../services";
 import { useState } from "react";
 
 const CartProduct = (props) => {
