@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import { useData } from "../../Context/stateManage/state-context";
-import ProductCard from "../Nuclie/ProductCard";
+import ProductCard from "../productCards/ProductCard";
 const CategoryProducts = ()=>{
 
     const {state:{products}} = useData()

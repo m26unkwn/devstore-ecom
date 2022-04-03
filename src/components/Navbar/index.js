@@ -4,6 +4,7 @@ import { useLocation, NavLink, Link } from "react-router-dom";
 import { devLogo, wishlist, cart, burger, User } from "../../assets";
 import { useAuth } from "../../Context/auth/auth-context";
 import { useData } from "../../Context/stateManage/state-context";
+import SearchBar from "./SearchBar";
 
 import SidebarNav from "./SidebarNav";
 
@@ -49,9 +50,7 @@ const Navbar = () => {
         </NavLink>
       </div>
 
-      <div className='input-field search-bar'>
-        <input placeholder='Search dev swags' type='search' />
-      </div>
+      <SearchBar />
       <div className='nav-action-wrapper flex jc-between ai-center flex-gap'>
         {!pathArray.some((item) => currentPath.pathname === item) && (
           <div className='auth-link flex jc-between flex-gap'>

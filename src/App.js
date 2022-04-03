@@ -54,6 +54,10 @@ function App() {
           element={<CategoryProducts />}
         />
         <Route
+          path='/products/filter?:filterProducts'
+          element={<FilterProducts />}
+        />
+        <Route
           path='/profile'
           element={
             <PrivateRoute>

@@ -1,4 +1,4 @@
-import ProductCard from "../../Nuclie/ProductCard";
+import ProductCard from "../../productCards/ProductCard";
 
 import { useData } from "../../../Context/stateManage/state-context";
 import productFilter from "../utils/product-filter";

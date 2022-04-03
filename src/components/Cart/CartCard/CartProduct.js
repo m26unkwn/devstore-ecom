@@ -6,18 +6,8 @@ import { postUpdatedQuantity, getDataFromServer } from "../../../services/";
 import { useState } from "react";
 
 const CartProduct = (props) => {
-  const {
-    id,
-    img,
-    title,
-    desc,
-    price,
-    prevPrice,
-    discPrice,
-    qty,
-    rating,
-    product,
-  } = props;
+  const { id, img, title, desc, price, prevPrice, discPrice, qty, product } =
+    props;
 
   const {
     authState: { token },
@@ -93,7 +83,7 @@ const CartProduct = (props) => {
       removefromCartHandler(id);
     }
   };
-
+  console.log(product.rating);
   return (
     <div className='pd-card-container'>
       <div className='card-img-wrapper'>
@@ -122,7 +112,7 @@ const CartProduct = (props) => {
           <p className='discount'>{discPrice}%</p>
         </div>
         <p className='price rating'>
-          {rating} <img src={Star} alt='rating_star' />
+          {product.rating} <img src={Star} alt='rating_star' />
         </p>
         <div className='pd-quantity-action flex ai-center jc-between'>
           <span>Quantity:</span>

@@ -12,7 +12,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  const logoutHandler = (e) => {
+  const logoutHandler = (e, navigate) => {
     e.preventDefault();
     authDispatch({ type: "LOGOUT_USER" });
     dispatch({ type: "CLEAR_ALL_DATA_FROM_STATE" });
@@ -41,7 +41,7 @@ const Profile = () => {
           </div>
           <button
             style={{ marginTop: "2rem" }}
-            onClick={logoutHandler}
+            onClick={(e) => logoutHandler(e, navigate)}
             className='btn outline-primary'>
             Logout
           </button>

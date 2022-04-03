@@ -13,8 +13,7 @@ const WishlistCard = (props) => {
   const {
     authState: { token },
   } = useAuth();
-  const { title, desc, price, prevPrice, discount, img, rating, product } =
-    props;
+  const { title, desc, price, prevPrice, discount, img, product } = props;
 
   const [loading, setLoading] = useState(false);
 
@@ -83,7 +82,7 @@ const WishlistCard = (props) => {
           <p className='discount'>{discount}% off</p>
         </div>
         <p className='price rating'>
-          {rating} <img src={Star} alt='rating_star' />
+          {product.rating} <img src={Star} alt='rating_star' />
         </p>{" "}
         <div className='pd-card-action pd-card-btn'>
           <button

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-import ProductCard from "../../Nuclie/ProductCard";
+import ProductCard from "../../productCards/ProductCard";
 
 import { useData } from "../../../Context/stateManage/state-context";
 

@@ -4,7 +4,7 @@ import "../auth.css";
 
 import { Link } from "react-router-dom";
 
-import { signupInitialData, signUpReducer, signupValidation } from "../utils";
+import { signupInitialData, signUpReducer, signupValidation } from "../action";
 
 import Input from "../Input/Input";
 import { useAuth } from "../../../Context/auth/auth-context";
@@ -20,7 +20,7 @@ const Signup = () => {
     dispatch({ type, payload: e.target.value });
   };
 
-  const clickHandler = (e) => {
+  const signupHandler = (e) => {
     e.preventDefault();
     if (signupValidation(signupState, dispatch)) {
       getUserAuth(
@@ -113,7 +113,7 @@ const Signup = () => {
                 eye={true}
               />
               <div className='form-action auth-action'>
-                <button onClick={clickHandler} className='btn'>
+                <button onClick={signupHandler} className='btn'>
                   Sign Up
                 </button>
               </div>

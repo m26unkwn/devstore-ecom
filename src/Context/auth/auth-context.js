@@ -27,9 +27,9 @@ const AuthProvider = ({ children }) => {
   ) => {
     try {
       const {
+        data,
         data: { encodedToken, foundUser, createdUser },
         status,
-        error,
       } = await axios({
         method: "post",
         url: api,
@@ -40,8 +40,8 @@ const AuthProvider = ({ children }) => {
           lastName: lastName,
         },
       });
-
-      localStorage.setItem("token", encodedToken);
+      console.log(data);
+      localStorage.setItem("token", data);
       if (status === 200) {
         authDispatch({
           type: "ADD_TOKEN",
@@ -79,15 +79,33 @@ const AuthProvider = ({ children }) => {
       } else {
         authDispatch({
           type: "ADD_AUTH_ERROR",
-          payload: error || "Email or password is incorrect!",
+          payload: "Email or password is incorrect!",
         });
       }
-    } catch (error) {
-      authDispatch({
-        type: "ADD_AUTH_ERROR",
-        payload: "Email or password is incorrect!",
-      });
-      console.error(error);
+    } catch ({
+      response: {
+        data: { errors },
+        status,
+      },
+    }) {
+      if (status === 404) {
+        authDispatch({
+          type: "ADD_AUTH_ERROR",
+          payload: "email is not present",
+        });
+      } else if (status === 401) {
+        authDispatch({
+          type: "ADD_AUTH_ERROR",
+          payload: "email or  Password is not present",
+        });
+      } else if (status === 422) {
+        authDispatch({
+          type: "ADD_AUTH_ERROR",
+          payload: "Email is already exist",
+        });
+      }
+
+      console.error(errors[0]);
     }
   };
 
