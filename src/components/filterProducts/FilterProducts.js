@@ -9,10 +9,9 @@ const FilterProducts = () => {
   } = useData();
   const { search } = useLocation();
   const searchParam = new URLSearchParams(search);
-  const getQuery = searchParam.get("filter");
+  const searchQuery = searchParam.get("filter");
 
-  const filterProducts = filterSearchProducts(products, getQuery);
-  console.log(filterProducts);
+  const filterProducts = filterSearchProducts(products, searchQuery);
 
   return (
     <div>
