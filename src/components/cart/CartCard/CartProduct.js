@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import { Delete, Negative, Positive, Star } from "../../../assets";
-import { useData } from "../../../Context/stateManage/state-context";
-import { useAuth } from "../../../Context/auth/auth-context";
-import { postUpdatedQuantity, getDataFromServer } from "../../../services";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { Delete, Negative, Positive, Star } from "../../../assets";
+
+import { useData, useAuth } from "../../../Context";
+import { handlers } from "../../../utils/handlers";
 
 const CartProduct = (props) => {
   const { id, img, title, desc, price, prevPrice, discPrice, qty, product } =
@@ -12,78 +13,16 @@ const CartProduct = (props) => {
   const {
     authState: { token },
   } = useAuth();
+
   const {
     dispatch,
-    state: { wishlistItems, cartItems },
+    state: { wishlistItems },
   } = useData();
 
   const [loading, setLoading] = useState(false);
 
-  const removefromCartHandler = (id) => {
-    const header = { authorization: token };
-    getDataFromServer(
-      `/api/user/cart/${id}`,
-      "DELETE",
-      dispatch,
-      "ADD_PRODUCT_INTO_CART",
-      "cart",
-      setLoading,
-      { product: product },
-      header
-    );
-  };
-
   let isProducInWishlist = wishlistItems.some((item) => item._id === id);
 
-  const quantityUpdateHandler = (id, type) => {
-    const header = { authorization: token };
-
-    const updatedQuantity = cartItems.filter((item) => {
-      if (item._id === id) {
-        if (type === "increment") {
-          item.qty = item.qty + 1;
-        } else {
-          item.qty = item.qty - 1;
-        }
-      }
-      return item;
-    });
-    dispatch({ type: "ADD_PRODUCT_INTO_CART", payload: updatedQuantity });
-
-    postUpdatedQuantity(
-      `/api/user/cart/${id}`,
-      "post",
-      dispatch,
-      "ADD_PRODUCT_INTO_CART",
-      "product",
-      {
-        action: {
-          type: type,
-        },
-      },
-      header
-    );
-  };
-
-  const moveToWishlistHandler = (product) => {
-    const header = { authorization: token };
-    if (isProducInWishlist) {
-      alert("Item already inside of Wishlist");
-    } else {
-      getDataFromServer(
-        `/api/user/wishlist`,
-        "POST",
-        dispatch,
-        "ADD_PRODUCT_INTO_WISHLIST",
-        "wishlist",
-        setLoading,
-        { product: product },
-        header
-      );
-      removefromCartHandler(id);
-    }
-  };
-  console.log(product.rating);
   return (
     <div className='pd-card-container'>
       <div className='card-img-wrapper'>
@@ -98,7 +37,9 @@ const CartProduct = (props) => {
       <div className='badge pd-badge'>
         <button
           disabled={loading}
-          onClick={() => removefromCartHandler(id)}
+          onClick={() =>
+            handlers.removefromCart(id, token, product, dispatch, setLoading)
+          }
           className='btn btn-icon'>
           <img src={Delete} alt='remove-product-icon' />
         </button>
@@ -117,8 +58,16 @@ const CartProduct = (props) => {
         <div className='pd-quantity-action flex ai-center jc-between'>
           <span>Quantity:</span>
           <button
-            disabled={Number(qty) === 1}
-            onClick={() => quantityUpdateHandler(id, "decrement")}
+            disabled={Number(qty) === 1 || loading}
+            onClick={() =>
+              handlers.updateQuantity(
+                id,
+                token,
+                dispatch,
+                setLoading,
+                "decrement"
+              )
+            }
             className={
               Number(qty) === 1
                 ? "btn btn-disabled btn-icon icon-primary-color "
@@ -128,8 +77,16 @@ const CartProduct = (props) => {
           </button>
           <span className='quantity-view flex ai-center jc-center'>{qty}</span>
           <button
-            onClick={() => quantityUpdateHandler(id, "increment")}
-            disabled={Number(qty) === 10}
+            onClick={() =>
+              handlers.updateQuantity(
+                id,
+                token,
+                dispatch,
+                setLoading,
+                "increment"
+              )
+            }
+            disabled={Number(qty) === 10 || loading}
             className={
               Number(qty) === 10
                 ? "btn btn-disabled btn-icon icon-primary-color "
@@ -141,7 +98,16 @@ const CartProduct = (props) => {
         <div className='pd-card-action pd-card-btn'>
           <button
             disabled={loading}
-            onClick={() => moveToWishlistHandler(product)}
+            onClick={() =>
+              handlers.moveToWishlist(
+                id,
+                token,
+                product,
+                dispatch,
+                setLoading,
+                isProducInWishlist
+              )
+            }
             className='btn outline-primary'>
             Move to wishlist
           </button>

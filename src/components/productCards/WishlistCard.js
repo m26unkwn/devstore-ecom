@@ -1,10 +1,12 @@
-import { RemoveIcon, CartIcon, Star } from "../../assets";
-
-import { useAuth } from "../../Context/auth/auth-context";
-import { useData } from "../../Context/stateManage/state-context";
-import { getDataFromServer } from "../../services/get-data-server";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import { RemoveIcon, CartIcon, Star } from "../../assets";
+
+import { useAuth, useData } from "../../Context";
+
+import { handlers } from "../../utils/handlers";
+
 const WishlistCard = (props) => {
   const {
     dispatch,
@@ -13,46 +15,12 @@ const WishlistCard = (props) => {
   const {
     authState: { token },
   } = useAuth();
-  const { title, desc, price, prevPrice, discount, img, product } = props;
 
   const [loading, setLoading] = useState(false);
 
-  const removefromWishlistHandler = (id) => {
-    const header = { authorization: token };
-    getDataFromServer(
-      `/api/user/wishlist/${id}`,
-      "DELETE",
-      dispatch,
-      "ADD_PRODUCT_INTO_WISHLIST",
-      "wishlist",
-      setLoading,
-      { product: product },
-      header
-    );
-  };
+  const { title, desc, price, prevPrice, discount, img, product } = props;
 
   const isProducInCart = cartItems.some((item) => item._id === product._id);
-
-  const addToCartHandler = (prod, id) => {
-    const header = { authorization: token };
-    if (isProducInCart) {
-      alert("Item is already in the cart");
-    } else {
-      getDataFromServer(
-        "/api/user/cart",
-        "post",
-        dispatch,
-        "ADD_PRODUCT_INTO_CART",
-        "cart",
-        setLoading,
-        {
-          product: prod,
-        },
-        header
-      );
-      removefromWishlistHandler(id);
-    }
-  };
 
   return (
     <div className='pd-card-container vertical'>
@@ -68,7 +36,15 @@ const WishlistCard = (props) => {
       <div className='badge pd-badge'>
         <button
           disabled={loading}
-          onClick={() => removefromWishlistHandler(product._id)}
+          onClick={() =>
+            handlers.removefromWishlist(
+              product._id,
+              token,
+              product,
+              dispatch,
+              setLoading
+            )
+          }
           className='btn btn-icon'>
           <img src={RemoveIcon} alt='wishlist_heart_icon' />
         </button>
@@ -87,7 +63,16 @@ const WishlistCard = (props) => {
         <div className='pd-card-action pd-card-btn'>
           <button
             disabled={loading}
-            onClick={() => addToCartHandler(product, product._id)}
+            onClick={() =>
+              handlers.moveToCart(
+                product._id,
+                token,
+                product,
+                dispatch,
+                setLoading,
+                isProducInCart
+              )
+            }
             className='btn icon-text'>
             <img src={CartIcon} alt='add_to_cart_icon' />
             Move To Cart

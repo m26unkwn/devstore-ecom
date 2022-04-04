@@ -1,6 +1,7 @@
 import ProductCard from "../../productCards/ProductCard";
 
-import { useData } from "../../../Context/stateManage/state-context";
+import { useData } from "../../../Context";
+
 import productFilter from "../utils/product-filter";
 import filterByRating from "../utils/rating-filter";
 

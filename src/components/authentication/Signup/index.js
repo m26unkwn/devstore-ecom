@@ -1,13 +1,12 @@
 import React, { useReducer } from "react";
-import { Navigate } from "react-router-dom";
-import "../auth.css";
+import { Navigate, Link } from "react-router-dom";
+import { useAuth } from "../../../Context/";
 
-import { Link } from "react-router-dom";
+import "../auth.css";
 
 import { signupInitialData, signUpReducer, signupValidation } from "../action";
 
 import Input from "../Input/Input";
-import { useAuth } from "../../../Context/auth/auth-context";
 
 const Signup = () => {
   const [signupState, dispatch] = useReducer(signUpReducer, signupInitialData);
@@ -20,7 +19,7 @@ const Signup = () => {
     dispatch({ type, payload: e.target.value });
   };
 
-  const signupHandler = (e) => {
+  const signupUser = (e) => {
     e.preventDefault();
     if (signupValidation(signupState, dispatch)) {
       getUserAuth(
@@ -33,7 +32,7 @@ const Signup = () => {
     }
   };
 
-  const onFocusHandler = (type) => {
+  const onFocus = (type) => {
     dispatch({ type, payload: false });
   };
 
@@ -56,7 +55,7 @@ const Signup = () => {
                 type='name'
                 placeholder='Jhon'
                 onChangeHandler={onChangeHandler}
-                onFocusHandler={onFocusHandler}
+                onFocusHandler={onFocus}
                 onChangeParam='SET_FIRST_NAME'
                 onFocusParam='SET_FIRST_NAME_ERROR'
                 errorMsg='Enter Valid First Name'
@@ -68,7 +67,7 @@ const Signup = () => {
                 type='name'
                 placeholder='Doe'
                 onChangeHandler={onChangeHandler}
-                onFocusHandler={onFocusHandler}
+                onFocusHandler={onFocus}
                 onChangeParam='SET_LAST_NAME'
                 onFocusParam='SET_LAST_NAME_ERROR'
                 errorMsg='Enter Valid Last Name'
@@ -80,7 +79,7 @@ const Signup = () => {
                 type='email'
                 placeholder='jhonDoe@example.com'
                 onChangeHandler={onChangeHandler}
-                onFocusHandler={onFocusHandler}
+                onFocusHandler={onFocus}
                 onChangeParam='SET_EMAIL'
                 onFocusParam='SET_EMAIL_ERROR'
                 errorMsg='  Enter Valid Email Address'
@@ -92,7 +91,7 @@ const Signup = () => {
                 type='password'
                 placeholder='password'
                 onChangeHandler={onChangeHandler}
-                onFocusHandler={onFocusHandler}
+                onFocusHandler={onFocus}
                 onChangeParam='SET_PASSWORD'
                 onFocusParam='SET_PASSWORD_ERROR'
                 errorMsg='Password length should contain minimum 8 characters (at least
@@ -106,14 +105,14 @@ const Signup = () => {
                 type='password'
                 placeholder='confirm password'
                 onChangeHandler={onChangeHandler}
-                onFocusHandler={onFocusHandler}
+                onFocusHandler={onFocus}
                 onChangeParam='SET_CNFRM_PASSWORD'
                 onFocusParam='SET_CNFRM_PASSWORD_ERROR'
                 errorMsg='Password does not match'
                 eye={true}
               />
               <div className='form-action auth-action'>
-                <button onClick={signupHandler} className='btn'>
+                <button onClick={signupUser} className='btn'>
                   Sign Up
                 </button>
               </div>

@@ -1,7 +1,7 @@
 import { filters } from "../utils/filters";
 import { Sort } from "./Sort";
 import { Checkbox } from "./Checkbox";
-import { useData } from "../../../Context/stateManage/state-context";
+import { useData } from "../../../Context";
 import { CheckboxBrand } from "./CheckboxBrand";
 import { ReactComponent as StarIcon } from "../../../assets/Star.svg";
 
@@ -63,7 +63,6 @@ const Filter = () => {
             type='range'
             min='1'
             max='5'
-            defaultValue='0'
             value={rating}
             onChange={onChangeSlider}
             class='slider'

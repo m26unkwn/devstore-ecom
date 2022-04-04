@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/auth/auth-context";
-import { useData } from "../../Context/stateManage/state-context";
+import { useAuth, useData } from "../../Context";
 import "./profile.css";
 
 const Profile = () => {

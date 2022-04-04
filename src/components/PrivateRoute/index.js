@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../Context/auth/auth-context";
+import { useAuth } from "../../Context";
 
 const PrivateRoute = ({ children }) => {
   const {
@@ -11,7 +11,7 @@ const PrivateRoute = ({ children }) => {
   return token ? (
     children
   ) : (
-    <Navigate to='/login' state={{ from: location }} replace />
+    <Navigate to='/login' state={{ lastLocation: location }} replace />
   );
 };
 
