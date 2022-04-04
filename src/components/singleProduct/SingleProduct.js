@@ -33,6 +33,8 @@ const SingleProduct = () => {
     (item) => item._id === productId
   );
 
+  console.log(product.prev_price);
+
   return SingleProduct?.product ? (
     <>
       <div className='card-container equal-grid  single-product-wrapper flex flex-row'>
@@ -48,8 +50,8 @@ const SingleProduct = () => {
           <p> {product.brand}</p>
           <p> {product.desc}</p>
           <div className='pd-price'>
-            <h3 className='crnt-price'>$ {product.price}</h3>
-            <h3 className='prev-price'>$ {product.prev_prece}</h3>
+            <h3 className='crnt-price'>₹ {product.price}</h3>
+            <h3 className='prev-price'>₹ {product.prev_price}</h3>
             <h3 className='discount'>{product.discount} off</h3>
           </div>
           <div className='discount'>inclusive of all taxes</div>
