@@ -10,6 +10,7 @@ import {
   Wishlist,
   SingleProduct,
   CategoryProducts,
+  FilterProducts,
 } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
@@ -53,6 +54,8 @@ function App() {
           path='/products/category/:categoryParam'
           element={<CategoryProducts />}
         />
+        <Route path='/products/search' element={<FilterProducts />} />
+
         <Route
           path='/profile'
           element={
@@ -61,6 +64,7 @@ function App() {
             </PrivateRoute>
           }
         />
+
         <Route
           path='/cart'
           element={

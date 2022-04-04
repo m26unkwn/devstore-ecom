@@ -1,5 +1,5 @@
 import { useData } from "../../Context/stateManage/state-context";
-import WishlistCard from "../Nuclie/WishlistCard";
+import WishlistCard from "../productCards/WishlistCard";
 import "./wishlist.css";
 
 const Wishlist = () => {

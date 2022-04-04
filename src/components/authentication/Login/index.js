@@ -1,9 +1,9 @@
 import React, { useReducer } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 
 import Input from "../Input/Input";
 
-import { loginReducer, loginInitialData, loginValidation } from "../utils";
+import { loginReducer, loginInitialData, loginValidation } from "../action";
 
 import "../auth.css";
 
@@ -15,6 +15,9 @@ const Login = () => {
     getUserAuth,
     authState: { token, authError },
   } = useAuth();
+
+  let location = useLocation();
+  let lastLocation = location.state?.lastLocation?.pathname || "/";
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
@@ -39,7 +42,7 @@ const Login = () => {
   return (
     <>
       {token ? (
-        <Navigate to='/' replace />
+        <Navigate to={lastLocation} replace />
       ) : (
         <section className='auth-wrapper flex ai-center jc-center'>
           <div className='card-container auth-card'>

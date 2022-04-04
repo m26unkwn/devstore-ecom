@@ -16,3 +16,4 @@ export { default as Delete } from "./Delete.svg";
 export { default as Negative } from "./Negative.svg";
 export { default as Positive } from "./Positive.svg";
 export { default as Star } from "./Star.svg";
+export { default as Search } from "./Search.svg";
