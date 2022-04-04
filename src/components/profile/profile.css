@@ -1,0 +1,10 @@
+.account-wrapper {
+  padding: 3rem;
+  max-width: 50rem;
+  margin: auto;
+}
+.account-head {
+  margin: auto;
+  width: 30rem;
+  padding: 2rem;
+}
