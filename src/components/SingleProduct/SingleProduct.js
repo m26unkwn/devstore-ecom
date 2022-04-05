@@ -33,8 +33,6 @@ const SingleProduct = () => {
     (item) => item._id === productId
   );
 
-  console.log(product.prev_price);
-
   return SingleProduct?.product ? (
     <>
       <div className='card-container equal-grid  single-product-wrapper flex flex-row'>

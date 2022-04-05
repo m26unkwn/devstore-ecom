@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Delete, Negative, Positive, Star } from "../../../assets";
+import { Delete, Negative, Positive } from "../../../assets";
+import { ReactComponent as StarIcon } from "../../../assets/Star.svg";
 
 import { useData, useAuth } from "../../../Context";
 import { handlers } from "../../../utils/handlers";
@@ -53,7 +54,7 @@ const CartProduct = (props) => {
           <p className='discount'>{discPrice}%</p>
         </div>
         <p className='price rating'>
-          {product.rating} <img src={Star} alt='rating_star' />
+          {product.rating} <StarIcon fill='orange' />
         </p>
         <div className='pd-quantity-action flex ai-center jc-between'>
           <span>Quantity:</span>

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { CartIcon, Star } from "../../assets";
+import { CartIcon } from "../../assets";
+import { ReactComponent as StarIcon } from "../../assets/Star.svg";
 import { ReactComponent as HeartIcon } from "../../assets/svg/Heart.svg";
 import { useAuth, useData } from "../../Context";
 import { handlers } from "../../utils/handlers";
@@ -92,7 +93,7 @@ const ProductCard = (props) => {
             <p className='discount'>{discount}% off</p>
           </div>
           <p className='price rating'>
-            {rating} <img src={Star} alt='rating_star' />
+            {rating} <StarIcon fill='orange' />
           </p>
           <div className='pd-card-action pd-card-btn'>
             <button

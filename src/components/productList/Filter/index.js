@@ -9,18 +9,20 @@ import "./slider.css";
 const Filter = () => {
   const {
     dispatch,
-    state: { selectedFilters, rating },
+    state: { selectedFilters },
   } = useData();
 
   const clearFilterHandler = () => {
     dispatch({ type: "CLEAR_FILTER" });
   };
 
+  const { rating } = selectedFilters;
+
   let clearFilterFlag =
     selectedFilters.price?.data ||
     selectedFilters.category?.data ||
     selectedFilters.brands?.data ||
-    rating;
+    selectedFilters;
 
   let onChangeSlider = (e) => {
     console.log(e.target.value);
@@ -55,9 +57,34 @@ const Filter = () => {
         <li className='filter-section-title'>Rating</li>
 
         <li className='flex flex-col  flex-gap jc-center'>
-          <label className='flex jc-center ai-center'>
-            <StarIcon width='25' height='25' />
-            <span style={{ fontSize: "1.5rem" }}>{rating} +</span>
+          <label
+            style={{ marginRight: "10px" }}
+            className='flex jc-center ai-center'>
+            <StarIcon
+              width='25'
+              fill={rating > 0 ? "orange" : "white"}
+              height='25'
+            />
+            <StarIcon
+              width='25'
+              fill={rating >= 2 ? "orange" : "white"}
+              height='25'
+            />
+            <StarIcon
+              width='25'
+              fill={rating >= 3 ? "orange" : "white"}
+              height='25'
+            />
+            <StarIcon
+              width='25'
+              fill={rating >= 4 ? "orange" : "white"}
+              height='25'
+            />
+            <StarIcon
+              width='25'
+              fill={rating >= 5 ? "orange" : "white"}
+              height='25'
+            />
           </label>
           <input
             type='range'

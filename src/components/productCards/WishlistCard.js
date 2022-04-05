@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { RemoveIcon, CartIcon, Star } from "../../assets";
+import { RemoveIcon, CartIcon } from "../../assets";
+import { ReactComponent as StarIcon } from "../../assets/Star.svg";
 
 import { useAuth, useData } from "../../Context";
 
@@ -58,7 +59,7 @@ const WishlistCard = (props) => {
           <p className='discount'>{discount}% off</p>
         </div>
         <p className='price rating'>
-          {product.rating} <img src={Star} alt='rating_star' />
+          {product.rating} <StarIcon fill='orange' />
         </p>{" "}
         <div className='pd-card-action pd-card-btn'>
           <button
