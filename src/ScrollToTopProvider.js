@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useData } from "./Context";
 
 export const ScrollToTopProvider = ({ children }) => {
   const location = useLocation();
