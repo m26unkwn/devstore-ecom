@@ -7,10 +7,11 @@ import { loginReducer, loginInitialData, loginValidation } from "../action";
 
 import "../auth.css";
 
-import { useAuth } from "../../../Context/auth/auth-context";
+import { useAuth } from "../../../Context";
 
 const Login = () => {
   const [loginState, dispatch] = useReducer(loginReducer, loginInitialData);
+
   const {
     getUserAuth,
     authState: { token, authError },
@@ -23,18 +24,18 @@ const Login = () => {
     dispatch({ type, payload: e.target.value });
   };
 
-  const loginHandler = (e) => {
+  const loginUser = (e) => {
     e.preventDefault();
     if (loginValidation(loginState, dispatch)) {
       getUserAuth("/api/auth/login", loginState.email, loginState.password);
     }
   };
 
-  const onFocusHandler = (type) => {
+  const onFocus = (type) => {
     dispatch({ type, payload: false });
   };
 
-  const testLoginHandler = (e) => {
+  const testUserLogin = (e) => {
     e.preventDefault();
     getUserAuth("/api/auth/login", "adarshbalika@gmail.com", "Adarshbalika1!");
   };
@@ -59,13 +60,13 @@ const Login = () => {
 
             <form
               className='form-wrapper flex flex-col ai-center jc-center'
-              onSubmit={(e) => loginHandler(e)}>
+              onSubmit={(e) => loginUser(e)}>
               <Input
                 type='email'
                 label='Email Address'
                 placeHolder='JhonDoe@example.com'
                 onChangeHandler={onChangeHandler}
-                onFocusHandler={onFocusHandler}
+                onFocusHandler={onFocus}
                 value={loginState.email}
                 error={loginState.emailError}
                 onFocusParam='SET_EMAIL_ERROR'
@@ -77,7 +78,7 @@ const Login = () => {
                 label='Password'
                 placeHolder='password'
                 onChangeHandler={onChangeHandler}
-                onFocusHandler={onFocusHandler}
+                onFocusHandler={onFocus}
                 onChangeParam='SET_PASSWORD'
                 onFocusParam='SET_PASSWORD_ERROR'
                 value={loginState.password}
@@ -88,12 +89,12 @@ const Login = () => {
               <div
                 style={{ marginBottom: "2rem" }}
                 className='form-action auth-action'>
-                <button onClick={loginHandler} className='btn'>
+                <button onClick={loginUser} className='btn'>
                   Login In
                 </button>
                 <button
                   style={{ marginTop: "2rem" }}
-                  onClick={testLoginHandler}
+                  onClick={testUserLogin}
                   className='btn outline-primary'>
                   Test Login
                 </button>

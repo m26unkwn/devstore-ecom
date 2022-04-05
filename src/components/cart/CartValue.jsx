@@ -1,4 +1,4 @@
-import { useData } from "../../Context/stateManage/state-context"
+import { useData } from "../../Context"
 import { cartValueCalc } from "./utils/cart-value";
 
 const CartValue =()=>{

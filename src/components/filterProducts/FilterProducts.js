@@ -1,5 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
-import { useData } from "../../Context/stateManage/state-context";
+import { useData } from "../../Context";
+
 import ProductCard from "../productCards/ProductCard";
 import filterSearchProducts from "./filter-search-products";
 

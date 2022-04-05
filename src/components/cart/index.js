@@ -1,4 +1,4 @@
-import { useData } from "../../Context/stateManage/state-context";
+import { useData } from "../../Context";
 import "./cart.css";
 import CartProduct from "./CartCard/CartProduct";
 import CartValue from "./CartValue";

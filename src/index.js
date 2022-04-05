@@ -5,6 +5,7 @@ import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { StateProvider } from "./Context/stateManage/state-context";
 import { AuthProvider } from "./Context/auth/auth-context";
+import { ScrollToTopProvider } from "./ScrollToTopProvider";
 
 // Call make Server
 makeServer();
@@ -14,7 +15,9 @@ ReactDOM.render(
     <Router>
       <StateProvider>
         <AuthProvider>
-          <App />
+          <ScrollToTopProvider>
+            <App />
+          </ScrollToTopProvider>
         </AuthProvider>
       </StateProvider>
     </Router>

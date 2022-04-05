@@ -2,11 +2,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/use-axios";
 import { CartIcon } from "../../assets";
 import { ReactComponent as HeartIcon } from "../../assets/svg/Heart.svg";
-import { useData } from "../../Context/stateManage/state-context";
-import { useAuth } from "../../Context/auth/auth-context";
+import { useData, useAuth } from "../../Context";
 import { useState } from "react";
 
-import { getDataFromServer } from "../../services";
+import { handlers } from "../../utils/handlers";
 
 import "./singlePd.css";
 
@@ -28,64 +27,12 @@ const SingleProduct = () => {
 
   const navigate = useNavigate();
 
-  const addToCartHandler = (prod) => {
-    const header = { authorization: token };
-    token
-      ? getDataFromServer(
-          "/api/user/cart",
-          "post",
-          dispatch,
-          "ADD_PRODUCT_INTO_CART",
-          "cart",
-          setActionDisable,
-          {
-            product: prod,
-          },
-          header
-        )
-      : alert("You have to login first.");
-  };
-
   const isProducInCart = cartItems.some((item) => item._id === productId);
+
   const isProducInWishlist = wishlistItems.some(
     (item) => item._id === productId
   );
 
-  const moveToWishlistHandler = (product) => {
-    const header = { authorization: token };
-    if (isProducInWishlist) {
-      alert("Item already inside of Wishlist");
-    } else if (token) {
-      getDataFromServer(
-        `/api/user/wishlist`,
-        "POST",
-        dispatch,
-        "ADD_PRODUCT_INTO_WISHLIST",
-        "wishlist",
-        setActionDisable,
-        { product: product },
-        header
-      );
-    } else {
-      alert("You have to login first.");
-    }
-  };
-
-  const removefromWishlistHandler = (id) => {
-    const header = { authorization: token };
-    token
-      ? getDataFromServer(
-          `/api/user/wishlist/${id}`,
-          "DELETE",
-          dispatch,
-          "ADD_PRODUCT_INTO_WISHLIST",
-          "wishlist",
-          setActionDisable,
-          { product: SingleProduct.product },
-          header
-        )
-      : alert("You have to login first.");
-  };
   return SingleProduct?.product ? (
     <>
       <div className='card-container equal-grid  single-product-wrapper flex flex-row'>
@@ -101,8 +48,8 @@ const SingleProduct = () => {
           <p> {product.brand}</p>
           <p> {product.desc}</p>
           <div className='pd-price'>
-            <h3 className='crnt-price'>$ {product.price}</h3>
-            <h3 className='prev-price'>$ {product.prev_prece}</h3>
+            <h3 className='crnt-price'>₹ {product.price}</h3>
+            <h3 className='prev-price'>₹ {product.prev_price}</h3>
             <h3 className='discount'>{product.discount} off</h3>
           </div>
           <div className='discount'>inclusive of all taxes</div>
@@ -113,7 +60,12 @@ const SingleProduct = () => {
               onClick={() =>
                 isProducInCart
                   ? navigate("/cart")
-                  : addToCartHandler(SingleProduct.product)
+                  : handlers.addToCart(
+                      token,
+                      product,
+                      dispatch,
+                      setActionDisable
+                    )
               }
               className={
                 loading ? "btn icon-text btn-disabled" : "btn icon-text"
@@ -126,8 +78,21 @@ const SingleProduct = () => {
               disabled={actionDisable}
               onClick={() =>
                 isProducInWishlist
-                  ? removefromWishlistHandler(product._id)
-                  : moveToWishlistHandler(product)
+                  ? handlers.removefromWishlist(
+                      product._id,
+                      token,
+                      product,
+                      dispatch,
+                      setActionDisable,
+                      isProducInWishlist
+                    )
+                  : handlers.addToWishlist(
+                      token,
+                      product,
+                      dispatch,
+                      setActionDisable,
+                      isProducInWishlist
+                    )
               }
               className='btn icon-text outline-error'>
               <HeartIcon

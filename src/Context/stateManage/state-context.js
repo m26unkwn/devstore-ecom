@@ -7,8 +7,9 @@ let initialSatate = {
   products: [],
   cartItems: [],
   wishlistItems: [],
-  selectedFilters: {},
-  rating: 0,
+  selectedFilters: {
+    rating: 1,
+  },
 };
 
 const StateProvider = ({ children }) => {
