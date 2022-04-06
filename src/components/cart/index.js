@@ -8,6 +8,8 @@ const Cart = () => {
     state: { cartItems },
   } = useData();
 
+  console.log(cartItems);
+
   return (
     <main className='cart-wrapper'>
       <div className='cart-head flex jc-center'>

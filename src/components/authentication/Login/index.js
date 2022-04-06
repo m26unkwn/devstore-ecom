@@ -18,7 +18,12 @@ const Login = () => {
   } = useAuth();
 
   let location = useLocation();
-  let lastLocation = location.state?.lastLocation?.pathname || "/";
+  let lastLocation =
+    location.state?.lastLocation?.pathname ||
+    location.state?.location.pathname ||
+    "/";
+
+  let cartData = location.state?.item;
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
@@ -26,8 +31,14 @@ const Login = () => {
 
   const loginUser = (e) => {
     e.preventDefault();
+
     if (loginValidation(loginState, dispatch)) {
-      getUserAuth("/api/auth/login", loginState.email, loginState.password);
+      getUserAuth(
+        "/api/auth/login",
+        loginState.email,
+        loginState.password,
+        cartData
+      );
     }
   };
 
@@ -37,7 +48,12 @@ const Login = () => {
 
   const testUserLogin = (e) => {
     e.preventDefault();
-    getUserAuth("/api/auth/login", "adarshbalika@gmail.com", "Adarshbalika1!");
+    getUserAuth(
+      "/api/auth/login",
+      "adarshbalika@gmail.com",
+      "Adarshbalika1!",
+      cartData
+    );
   };
 
   return (

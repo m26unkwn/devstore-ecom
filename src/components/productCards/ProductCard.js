@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CartIcon } from "../../assets";
 import { ReactComponent as StarIcon } from "../../assets/Star.svg";
@@ -30,6 +30,8 @@ const ProductCard = (props) => {
   } = props;
 
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const isProducInCart = cartItems.some((item) => item._id === product._id);
 
@@ -67,7 +69,9 @@ const ProductCard = (props) => {
                     product,
                     dispatch,
                     setLoading,
-                    isProducInWishlist
+                    isProducInWishlist,
+                    navigate,
+                    location
                   )
             }
             className='btn btn-icon'>
@@ -101,7 +105,14 @@ const ProductCard = (props) => {
               onClick={() =>
                 isProducInCart
                   ? navigate("/cart")
-                  : handlers.addToCart(token, product, dispatch, setLoading)
+                  : handlers.addToCart(
+                      token,
+                      product,
+                      dispatch,
+                      setLoading,
+                      navigate,
+                      location
+                    )
               }
               className='btn icon-text'>
               <img src={CartIcon} alt='add_to_cart_icon' />

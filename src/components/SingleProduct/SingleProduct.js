@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import useAxios from "../../hooks/use-axios";
 import { CartIcon } from "../../assets";
 import { ReactComponent as HeartIcon } from "../../assets/svg/Heart.svg";
@@ -26,6 +26,8 @@ const SingleProduct = () => {
   const [actionDisable, setActionDisable] = useState(false);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const isProducInCart = cartItems.some((item) => item._id === productId);
 
@@ -64,7 +66,9 @@ const SingleProduct = () => {
                       token,
                       product,
                       dispatch,
-                      setActionDisable
+                      setActionDisable,
+                      navigate,
+                      location
                     )
               }
               className={
@@ -91,7 +95,9 @@ const SingleProduct = () => {
                       product,
                       dispatch,
                       setActionDisable,
-                      isProducInWishlist
+                      isProducInWishlist,
+                      navigate,
+                      location
                     )
               }
               className='btn icon-text outline-error'>
@@ -103,11 +109,11 @@ const SingleProduct = () => {
           </div>
           <ul>
             <h5>Features</h5>
-            {SingleProduct
-              ? product.description.map((desc, index) => (
+            {product?.description
+              ? product?.description?.map((desc, index) => (
                   <li key={index}>{desc}</li>
                 ))
-              : "Loading"}
+              : "Will add soon"}
           </ul>
         </div>
       </div>

@@ -1,22 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth, useData } from "../../Context";
+import { useAuth } from "../../Context";
 import "./profile.css";
 
 const Profile = () => {
   const {
-    authDispatch,
     authState: { userDetails },
+    logoutUser,
   } = useAuth();
-  const { dispatch } = useData();
 
   const navigate = useNavigate();
-
-  const logoutHandler = (e, navigate) => {
-    e.preventDefault();
-    authDispatch({ type: "LOGOUT_USER" });
-    dispatch({ type: "CLEAR_ALL_DATA_FROM_STATE" });
-    navigate("/");
-  };
 
   return (
     <div className=' account-wrapper'>
@@ -40,7 +32,7 @@ const Profile = () => {
           </div>
           <button
             style={{ marginTop: "2rem" }}
-            onClick={(e) => logoutHandler(e, navigate)}
+            onClick={(e) => logoutUser(e, navigate)}
             className='btn outline-primary'>
             Logout
           </button>

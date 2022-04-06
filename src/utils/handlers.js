@@ -48,7 +48,7 @@ const moveToWishlist = (
 
 const updateQuantity = (id, token, dispatch, setLoading, type) => {
   const header = { authorization: token };
-
+  console.log("clicked");
   getDataFromServer(
     `/api/user/cart/${id}`,
     "post",
@@ -65,7 +65,14 @@ const updateQuantity = (id, token, dispatch, setLoading, type) => {
   );
 };
 
-const addToCart = (token, product, dispatch, setLoading) => {
+const addToCart = (
+  token,
+  product,
+  dispatch,
+  setLoading,
+  navigate,
+  location
+) => {
   const header = { authorization: token };
   token
     ? getDataFromServer(
@@ -80,7 +87,7 @@ const addToCart = (token, product, dispatch, setLoading) => {
         },
         header
       )
-    : alert("You have to login first.");
+    : navigate("/login", { state: { location, item: product } });
 };
 
 const addToWishlist = (
@@ -88,7 +95,9 @@ const addToWishlist = (
   product,
   dispatch,
   setLoading,
-  isProducInWishlist
+  isProducInWishlist,
+  navigate,
+  location
 ) => {
   const header = { authorization: token };
   if (isProducInWishlist) {
@@ -105,7 +114,7 @@ const addToWishlist = (
       header
     );
   } else {
-    alert("You have to login first.");
+    navigate("/login", { state: location });
   }
 };
 
@@ -149,6 +158,7 @@ const moveToCart = (
       },
       header
     );
+    alert("Quantity Increased");
   } else {
     getDataFromServer(
       "/api/user/cart",
@@ -162,7 +172,6 @@ const moveToCart = (
       },
       header
     );
-    removefromWishlist(id, token, product, dispatch);
   }
 };
 

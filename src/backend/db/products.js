@@ -23,6 +23,7 @@ export const products = [
       "Green under visor",
     ],
     rating: 4,
+    qty: 1,
   },
 
   {
@@ -42,6 +43,7 @@ export const products = [
       " Stickers ship separately from other items.",
     ],
     rating: 2,
+    qty: 1,
   },
 
   {
@@ -58,6 +60,7 @@ export const products = [
       " This mug will end the meeting the moment you arrive because, well, what else is there to say? This glossy ceramic mug is safe for the dishwasher and the microwave!",
     ],
     rating: 1,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -70,6 +73,7 @@ export const products = [
     img: Sticker,
     inStock: false,
     rating: 4,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -81,6 +85,7 @@ export const products = [
     category: "bag",
     img: Bag,
     inStock: false,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -100,6 +105,7 @@ export const products = [
     ],
     inStock: true,
     rating: 3,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -119,6 +125,7 @@ export const products = [
     ],
     inStock: true,
     rating: 2,
+    qty: 1,
   },
 
   {
@@ -132,6 +139,8 @@ export const products = [
     category: "sticker",
     img: "https://cdn.shopify.com/s/files/1/0051/4802/products/stickers_pack_1_882x882.png",
     description: ["These are the high Quality Stickers."],
+    rating: 4,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -150,6 +159,7 @@ export const products = [
       "Washed-out vintage effect",
     ],
     rating: 5,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -162,6 +172,7 @@ export const products = [
     brand: "dev",
     img: "https://cdn.shopify.com/s/files/1/1626/8507/products/mockup-22c8b531_1024x1024.jpg",
     rating: 3,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -179,6 +190,7 @@ export const products = [
       "Super durable and water-resistant",
     ],
     rating: 4,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -196,6 +208,7 @@ export const products = [
       "Large inside pocket with a separate pocket for a 15” laptop, front pocket with a zipper, and a hidden pocket with zipper on the back of the bag",
     ],
     rating: 5,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -214,6 +227,7 @@ export const products = [
       "Dishwasher and microwave safe",
     ],
     rating: 5,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -231,6 +245,7 @@ export const products = [
       "Large inside pocket with a separate pocket for a 15” laptop, front pocket with a zipper, and a hidden pocket with zipper on the back of the bag",
     ],
     rating: 3,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -249,6 +264,7 @@ export const products = [
       "Black sweatband",
     ],
     rating: 1,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -267,6 +283,7 @@ export const products = [
       "Dishwasher and microwave safe",
     ],
     rating: 2,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -280,6 +297,7 @@ export const products = [
     brand: "apple",
     inStock: false,
     rating: 4,
+    qty: 1,
   },
   {
     _id: uuid(),
@@ -298,5 +316,6 @@ export const products = [
       "Black sweatband",
     ],
     rating: 5,
+    qty: 1,
   },
 ];

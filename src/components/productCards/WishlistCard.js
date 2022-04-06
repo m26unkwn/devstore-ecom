@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { RemoveIcon, CartIcon } from "../../assets";
@@ -17,11 +17,18 @@ const WishlistCard = (props) => {
     authState: { token },
   } = useAuth();
 
+  const [checkQty, setCheckQty] = useState(1);
+
   const [loading, setLoading] = useState(false);
 
   const { title, desc, price, prevPrice, discount, img, product } = props;
 
   const isProducInCart = cartItems.some((item) => item._id === product._id);
+
+  useEffect(() => {
+    const qtyProduct = cartItems.find((item) => item._id === product._id);
+    setCheckQty(qtyProduct);
+  }, [cartItems, product._id]);
 
   return (
     <div className='pd-card-container vertical'>
@@ -63,7 +70,7 @@ const WishlistCard = (props) => {
         </p>{" "}
         <div className='pd-card-action pd-card-btn'>
           <button
-            disabled={loading}
+            disabled={checkQty?.qty === 10 || loading}
             onClick={() =>
               handlers.moveToCart(
                 product._id,
@@ -74,9 +81,13 @@ const WishlistCard = (props) => {
                 isProducInCart
               )
             }
-            className='btn icon-text'>
+            className={
+              checkQty?.qty === 10 || loading
+                ? "btn btn-disabled icon-text"
+                : "btn icon-text"
+            }>
             <img src={CartIcon} alt='add_to_cart_icon' />
-            Move To Cart
+            {isProducInCart ? "Increase Quantity" : "Add To Cart"}
           </button>
         </div>
       </div>
