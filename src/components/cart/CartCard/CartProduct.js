@@ -77,9 +77,7 @@ const CartProduct = (props) => {
                 ? "btn btn-disabled btn-icon icon-primary-color "
                 : "btn btn-icon icon-primary-color "
             }>
-            <Tooltip info='Increase Quantity'>
-              <img src={Negative} alt='increment-product-quantity' />
-            </Tooltip>
+            <img src={Negative} alt='increment-product-quantity' />
           </button>
           <span className='quantity-view flex ai-center jc-center'>{qty}</span>
           <button
@@ -98,9 +96,7 @@ const CartProduct = (props) => {
                 ? "btn btn-disabled btn-icon icon-primary-color "
                 : "btn btn-icon icon-primary-color "
             }>
-            <Tooltip info='Decrease Quantity'>
-              <img src={Positive} alt='increment-product-quantity' />
-            </Tooltip>
+            <img src={Positive} alt='increment-product-quantity' />
           </button>
         </div>
         <div className='pd-card-action pd-card-btn'>
