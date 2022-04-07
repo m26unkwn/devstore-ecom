@@ -120,7 +120,7 @@ const ProductCard = (props) => {
           </div>
         </div>
       </div>
-      {inStock === false && <div class='overlay-text'>SOLD OUT</div>}
+      {inStock === false && <div className='overlay-text'>SOLD OUT</div>}
     </div>
   );
 };

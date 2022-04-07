@@ -114,7 +114,7 @@ const MobileFilter = (props) => {
               max='5'
               value={rating}
               onChange={onChangeSlider}
-              class='slider'
+              className='slider'
             />
           </li>
         </ul>
