@@ -26,7 +26,7 @@ const CartProduct = (props) => {
   let isProducInWishlist = wishlistItems.some((item) => item._id === id);
 
   return (
-    <div className='pd-card-container'>
+    <div className='pd-card-container' style={{ background: "white" }}>
       <div className='card-img-wrapper'>
         <Link to={`/products/${product._id}`}>
           <img
