@@ -108,7 +108,10 @@ const Filter = () => {
         </ul>
       </section>
       <div className='mobile-filter-button'>
-        <button onClick={filterIconOpen} className='btn btn-float'>
+        <button
+          onClick={filterIconOpen}
+          style={{ width: "44px" }}
+          className='btn btn-float'>
           <Tooltip info='Filter'>
             <FilterIcon storke='white' />
           </Tooltip>
