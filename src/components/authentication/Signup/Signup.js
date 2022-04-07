@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { Navigate, Link } from "react-router-dom";
-import { useAuth } from "../../../Context/";
+import { useAuth } from "../../../Context";
 
 import "../auth.css";
 

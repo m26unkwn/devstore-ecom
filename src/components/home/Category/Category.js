@@ -1,32 +1,28 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useData } from "../../../Context";
+import useAxios from "../../../hooks/use-axios";
 
-export const CategoryCard = ({ img, categoryName }) => {
-  const { dispatch } = useData();
+import { CategoryCard } from "./CategoryCard";
 
-  const navigate = useNavigate();
-
-  const onClickNavigate = (e, navigate) => {
-    e.preventDefault();
-    dispatch({
-      type: "CHECKBOX_CHANGE",
-      payload: {
-        data: categoryName,
-        filterType: "checkbox",
-        filterParam: "category",
-      },
-    });
-    navigate("/products");
-  };
-
+const Category = () => {
+  const [categoryDatas] = useAxios("/api/categories", "get");
   return (
-    <div className='categories-item'>
-      <Link to={`/products/category/${categoryName}`}>
-        <img className='img-resposive' src={img} alt='clothing-section' />
-      </Link>
-      <div className='item-btn' onClick={(e) => onClickNavigate(e, navigate)}>
-        <span>Shop {categoryName}</span>
+    <section className='pd-container'>
+      <h1>Categories</h1>
+      <div className='categories-wrapper flex jc-center flex-wrap'>
+        {categoryDatas ? (
+          categoryDatas.categories.map((item) => (
+            <CategoryCard
+              key={item._id}
+              link={item.link}
+              img={item.img}
+              categoryName={item.categoryName}
+            />
+          ))
+        ) : (
+          <p>Loading</p>
+        )}
       </div>
-    </div>
+    </section>
   );
 };
+
+export default Category;

@@ -1,22 +1,40 @@
 import { useEffect } from "react";
 import useWidth from "../../../hooks/use-width";
-
+import { filters } from "../utils/filters";
 import { Sort } from "./Sort";
 import { Checkbox } from "./Checkbox";
 import { CheckboxBrand } from "./CheckboxBrand";
 
 import { ReactComponent as StarIcon } from "../../../assets/Star.svg";
 
+import { useData } from "../../../Context";
+
+import "./slider.css";
+
 import "./slider.css";
 const MobileFilter = (props) => {
   const {
-    clearFilterHandler,
-    clearFilterFlag,
-    filters,
-    onChangeSlider,
-    rating,
-    setOpenFilter,
-  } = props;
+    dispatch,
+    state: { selectedFilters },
+  } = useData();
+
+  const clearFilterHandler = () => {
+    dispatch({ type: "CLEAR_FILTER" });
+  };
+
+  const { setOpenFilter } = props;
+
+  const { rating } = selectedFilters;
+
+  let clearFilterFlag =
+    selectedFilters.price?.data ||
+    selectedFilters.category?.data ||
+    selectedFilters.brands?.data;
+
+  let onChangeSlider = (e) => {
+    console.log(e.target.value);
+    dispatch({ type: "CHANGE_RATING", rating: e.target.value });
+  };
 
   const width = useWidth();
 

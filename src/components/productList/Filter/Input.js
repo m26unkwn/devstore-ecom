@@ -36,7 +36,7 @@ export const Input = ({
         name={name}
         value={value}
         onChange={onChangeHandler}
-        checked={checkedValue}
+        defaultChecked={checkedValue}
       />
       {label}
     </label>

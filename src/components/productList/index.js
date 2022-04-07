@@ -1,2 +1,2 @@
-export { default as Filter } from "./Filter";
-export { default as AllProducts } from "./AllProducts";
+export { default as Filter } from "./Filter/Filter";
+export { default as AllProducts } from "./AllProducts/AllProducts";

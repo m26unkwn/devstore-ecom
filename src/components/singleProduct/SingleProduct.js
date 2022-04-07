@@ -47,7 +47,7 @@ const SingleProduct = () => {
         </div>
         <div className='pd-content'>
           <h2 className='pd-heading'>{product.title}</h2>
-          <p> {product.brand}</p>
+          <p>By {product.brand}</p>
           <p> {product.desc}</p>
           <div className='pd-price'>
             <h3 className='crnt-price'>₹ {product.price}</h3>

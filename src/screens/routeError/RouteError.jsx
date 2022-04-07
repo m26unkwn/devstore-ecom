@@ -1,4 +1,3 @@
-import { devLogo} from "../../assets";
 import { Link } from "react-router-dom";
 
 import "./error.css"

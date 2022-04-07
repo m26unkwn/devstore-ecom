@@ -1,11 +1,11 @@
 export { default as FilterProducts } from "./filterProducts/FilterProducts";
-export { default as PrivateRoute } from "./privateRoute/index";
+export { default as PrivateRoute } from "./privateRoute/PrivateRoute";
 export { default as CategoryProducts } from "./categoryPage/CategoryProducts";
 export { default as SingleProduct } from "./singleProduct/SingleProduct";
 export { Filter, AllProducts } from "./productList";
 export { default as Wishlist } from "./wishlist/Wishlist";
 export { HomeProducts, Category, Hero } from "./home";
 export { Login, Signup } from "./authentication";
-export { default as Profile } from "./profile/index";
-export { default as Navbar } from "./navbar";
-export { default as Cart } from "./cart";
+export { default as Profile } from "./profile/Profile";
+export { default as Navbar } from "./navbar/Navbar";
+export { default as Cart } from "./cart/Cart";
