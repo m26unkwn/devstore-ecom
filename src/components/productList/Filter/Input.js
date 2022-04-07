@@ -29,6 +29,8 @@ export const Input = ({
     ? value === stateValue
     : false;
 
+  console.log("checkvalue", checkedValue);
+
   return (
     <label className='form-label'>
       <input
@@ -36,7 +38,7 @@ export const Input = ({
         name={name}
         value={value}
         onChange={onChangeHandler}
-        defaultChecked={checkedValue}
+        checked={checkedValue}
       />
       {label}
     </label>

@@ -1,5 +1,5 @@
 .cart-wrapper {
-  margin: calc(var(--spacing-xl) * 2) 0;
+  margin-top: 10rem;
 }
 
 .cart-head {

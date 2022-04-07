@@ -37,6 +37,7 @@ function App() {
     <>
       <div className='app'>
         <Navbar />
+
         <Routes>
           <Route
             path='/mockman'

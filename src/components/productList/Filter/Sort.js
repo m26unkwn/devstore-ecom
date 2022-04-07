@@ -13,6 +13,7 @@ export const Sort = ({ filter }) => {
       {filter.data.map((sort) => (
         <li key={sort.id}>
           <Input
+            key={sort.id + value}
             value={sort.value}
             name={sort.name}
             label={sort.label}

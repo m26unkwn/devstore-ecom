@@ -1,7 +1,7 @@
 .filter-product-wrapper {
   display: grid;
   grid-template-columns: 15rem 1fr;
-  margin-top: 3rem;
+  margin-top: 7rem;
 }
 
 .pd-wrapper{
@@ -44,7 +44,7 @@
   .filter-product-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: 3rem;
+    margin-top: 7rem;
   }
   .mobile-filter-button{
     display: flex;
