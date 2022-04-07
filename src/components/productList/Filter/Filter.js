@@ -9,6 +9,7 @@ import { ReactComponent as FilterIcon } from "../../../assets/Filter.svg";
 import "./slider.css";
 import { useState } from "react";
 import MobileFilter from "./MobileFilter";
+import Tooltip from "../../tooltip/Tooltip";
 const Filter = () => {
   const {
     dispatch,
@@ -108,7 +109,9 @@ const Filter = () => {
       </section>
       <div className='mobile-filter-button'>
         <button onClick={filterIconOpen} className='btn btn-float'>
-          <FilterIcon storke='white' />
+          <Tooltip info='Filter'>
+            <FilterIcon storke='white' />
+          </Tooltip>
         </button>
       </div>
       {openFilter && (

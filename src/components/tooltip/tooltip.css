@@ -1,0 +1,20 @@
+.shape {
+    position: absolute;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.tooltip-text {
+    background-color: #575757;
+    padding: 8px 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    width: 8rem;
+    text-align: center;
+}
+
+.tooltip-content {
+    position: relative;
+    width: 100%;
+}

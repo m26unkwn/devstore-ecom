@@ -8,6 +8,8 @@ import { useAuth, useData } from "../../Context";
 
 import { handlers } from "../../utils/handlers";
 
+import Tooltip from "../tooltip/Tooltip";
+
 const WishlistCard = (props) => {
   const {
     dispatch,
@@ -54,7 +56,9 @@ const WishlistCard = (props) => {
             )
           }
           className='btn btn-icon'>
-          <img src={RemoveIcon} alt='wishlist_heart_icon' />
+          <Tooltip info='remove from Wishlist '>
+            <img src={RemoveIcon} alt='wishlist_heart_icon' />
+          </Tooltip>
         </button>
       </div>
       <div className='pd-content'>

@@ -6,6 +6,7 @@ import { ReactComponent as StarIcon } from "../../../assets/Star.svg";
 
 import { useData, useAuth } from "../../../Context";
 import { handlers } from "../../../utils/handlers";
+import Tooltip from "../../tooltip/Tooltip";
 
 const CartProduct = (props) => {
   const { id, img, title, desc, price, prevPrice, discPrice, qty, product } =
@@ -42,7 +43,9 @@ const CartProduct = (props) => {
             handlers.removefromCart(id, token, product, dispatch, setLoading)
           }
           className='btn btn-icon'>
-          <img src={Delete} alt='remove-product-icon' />
+          <Tooltip info='Remove From Cart'>
+            <img src={Delete} alt='remove-product-icon' />
+          </Tooltip>
         </button>
       </div>
       <div className='pd-content'>
@@ -74,7 +77,9 @@ const CartProduct = (props) => {
                 ? "btn btn-disabled btn-icon icon-primary-color "
                 : "btn btn-icon icon-primary-color "
             }>
-            <img src={Negative} alt='increment-product-quantity' />
+            <Tooltip info='Increase Quantity'>
+              <img src={Negative} alt='increment-product-quantity' />
+            </Tooltip>
           </button>
           <span className='quantity-view flex ai-center jc-center'>{qty}</span>
           <button
@@ -93,7 +98,9 @@ const CartProduct = (props) => {
                 ? "btn btn-disabled btn-icon icon-primary-color "
                 : "btn btn-icon icon-primary-color "
             }>
-            <img src={Positive} alt='increment-product-quantity' />
+            <Tooltip info='Decrease Quantity'>
+              <img src={Positive} alt='increment-product-quantity' />
+            </Tooltip>
           </button>
         </div>
         <div className='pd-card-action pd-card-btn'>

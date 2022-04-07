@@ -5,6 +5,7 @@ import { ReactComponent as StarIcon } from "../../assets/Star.svg";
 import { ReactComponent as HeartIcon } from "../../assets/svg/Heart.svg";
 import { useAuth, useData } from "../../Context";
 import { handlers } from "../../utils/handlers";
+import Tooltip from "../tooltip/Tooltip";
 
 const ProductCard = (props) => {
   const {
@@ -74,9 +75,11 @@ const ProductCard = (props) => {
                   )
             }
             className='btn btn-icon'>
-            <HeartIcon
-              fill={isProducInWishlist ? "var(--danger-color)" : "none"}
-            />
+            <Tooltip info='Add to Wishlist '>
+              <HeartIcon
+                fill={isProducInWishlist ? "var(--danger-color)" : "none"}
+              />
+            </Tooltip>
           </button>
         </div>
         <div className='pd-content'>

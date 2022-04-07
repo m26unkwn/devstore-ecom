@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useLocation, NavLink, Link } from "react-router-dom";
 
 import { devLogo, wishlist, cart, burger, User } from "../../assets";
-import { useAuth } from "../../Context/auth/auth-context";
-import { useData } from "../../Context/stateManage/state-context";
+import { useAuth, useData } from "../../Context";
 import SearchBar from "./SearchBar";
 
 import SidebarNav from "./SidebarNav";
+import Tooltip from "../tooltip/Tooltip";
 
 const Navbar = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -55,9 +55,11 @@ const Navbar = () => {
         {!pathArray.some((item) => currentPath.pathname === item) && (
           <div className='auth-link flex jc-between flex-gap'>
             {token ? (
-              <NavLink to='/profile' className='btn btn-icon'>
-                <img src={User} alt='userImage' />
-              </NavLink>
+              <Tooltip info='My Profile'>
+                <NavLink to='/profile' className='btn btn-icon'>
+                  <img src={User} alt='userImage' />
+                </NavLink>
+              </Tooltip>
             ) : (
               <>
                 <NavLink to='/login' className='btn auth-login'>
@@ -74,9 +76,11 @@ const Navbar = () => {
         <div className='nav-btn flex jc-between flex-gap'>
           <Link to='/wishlist'>
             <div className='badge'>
-              <button className='btn btn-icon'>
-                <img src={wishlist} alt='wishlist_logo' />
-              </button>
+              <Tooltip info='My Wishlist'>
+                <button className='btn btn-icon'>
+                  <img src={wishlist} alt='wishlist_logo' />
+                </button>
+              </Tooltip>
               {token
                 ? wishlistItems.length > 0 && (
                     <div className='badge-num-size badge-num-pos circle'>
@@ -88,9 +92,11 @@ const Navbar = () => {
           </Link>
           <NavLink to='/cart'>
             <div className='badge'>
-              <button className='btn btn-icon'>
-                <img src={cart} alt='cart_icon' />
-              </button>
+              <Tooltip info='My Cart'>
+                <button className='btn btn-icon'>
+                  <img src={cart} alt='cart_icon' />
+                </button>
+              </Tooltip>
               {token
                 ? cartItems.length > 0 && (
                     <div className='badge-num-size badge-num-pos circle'>
