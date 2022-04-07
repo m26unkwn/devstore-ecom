@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import { useData } from "./Context/stateManage/state-context";
 
 import { ProductList } from "./screens/ProductList";
+import Footer from "./screens/Footer";
 import { getDataFromServer } from "./services";
 
 function App() {
@@ -35,53 +36,56 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route
-          path='/mockman'
-          element={
-            <div className='MockAPI'>
-              <Mockman />
-            </div>
-          }
-        />
-        <Route path='/' element={<Home />} />
-        <Route path='/products' element={<ProductList />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/products/:productId' element={<SingleProduct />} />
-        <Route
-          path='/products/category/:categoryParam'
-          element={<CategoryProducts />}
-        />
-        <Route path='/products/search' element={<FilterProducts />} />
+      <div className='app'>
+        <Navbar />
+        <Routes>
+          <Route
+            path='/mockman'
+            element={
+              <div className='MockAPI'>
+                <Mockman />
+              </div>
+            }
+          />
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<ProductList />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/products/:productId' element={<SingleProduct />} />
+          <Route
+            path='/products/category/:categoryParam'
+            element={<CategoryProducts />}
+          />
+          <Route path='/products/search' element={<FilterProducts />} />
 
-        <Route
-          path='/profile'
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        />
+          <Route
+            path='/profile'
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path='/cart'
-          element={
-            <PrivateRoute>
-              <Cart />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/wishlist'
-          element={
-            <PrivateRoute>
-              <Wishlist />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
+          <Route
+            path='/cart'
+            element={
+              <PrivateRoute>
+                <Cart />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/wishlist'
+            element={
+              <PrivateRoute>
+                <Wishlist />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </div>
+      <Footer />
     </>
   );
 }

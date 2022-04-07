@@ -3,6 +3,8 @@ import "./cart.css";
 import CartProduct from "./CartCard/CartProduct";
 import CartValue from "./CartValue";
 
+import { Link } from "react-router-dom";
+
 const Cart = () => {
   const {
     state: { cartItems },
@@ -13,7 +15,7 @@ const Cart = () => {
   return (
     <main className='cart-wrapper'>
       <div className='cart-head flex jc-center'>
-        <h1>My Cart {cartItems.length}</h1>
+        <h1>My Cart ({cartItems.length})</h1>
       </div>
       <section className='pd-container-main flex flex-wrap flex-gap jc-center'>
         <div className='pd-wrapper flex jc-center flex-col flex-gap flex-wrap'>
@@ -33,7 +35,15 @@ const Cart = () => {
               />
             ))
           ) : (
-            <h1>You cart is empty</h1>
+            <>
+              <h1>You cart is empty</h1>
+              <Link
+                to='/products'
+                style={{ width: "fit-content", margin: "auto" }}
+                className='btn btn-link'>
+                Shop Now
+              </Link>
+            </>
           )}
         </div>
         {cartItems.length > 0 && <CartValue />}

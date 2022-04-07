@@ -69,7 +69,7 @@
   position: relative;
 }
 .hero {
-  background: var(--secondary-color);
+  background: var(--secondary-bg-color);
 
   width: 100%;
   height: 550px;
@@ -132,7 +132,7 @@
   height: 20rem;
 }
 .categories-item {
-  background: var(--secondary-color);
+  background: var(--secondary-bg-color);
 }
 .categories-item > a {
   display: block;
@@ -160,15 +160,13 @@
   left: 0;
   position: absolute;
 
-  pointer-events: none;
-
   width: 100%;
-
+  cursor:pointer;
   display: flex;
   justify-content: center;
 }
 
-.item-btn > a {
+.item-btn > span{
   display: flex;
   justify-content: center;
   align-items: flex-end;

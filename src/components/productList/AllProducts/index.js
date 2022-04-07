@@ -14,7 +14,7 @@ export const AllProducts = () => {
   const filterProduct = filterByRating(filters, selectedFilters.rating);
 
   return (
-    <section className='pd-container-main'>
+    <section className='pd-container-main flex jc-center'>
       <div className='pd-wrapper flex jc-center flex-gap flex-wrap'>
         {filterProduct.length > 0 ? (
           filterProduct.map((product) => (

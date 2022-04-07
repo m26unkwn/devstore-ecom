@@ -114,7 +114,7 @@ const addToWishlist = (
       header
     );
   } else {
-    navigate("/login", { state: location });
+    navigate("/login");
   }
 };
 

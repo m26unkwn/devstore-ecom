@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { useData } from "../../Context";
 import WishlistCard from "../productCards/WishlistCard";
 import "./wishlist.css";
@@ -28,7 +30,15 @@ const Wishlist = () => {
               />
             ))
           ) : (
-            <h1>You Don't have wishlist Products</h1>
+            <div className='flex flex-col flex-gap'>
+              <h1>You Don't have wishlist Products</h1>
+              <Link
+                to='/products'
+                style={{ width: "fit-content", margin: "auto" }}
+                className='btn btn-link '>
+                Shop Now
+              </Link>
+            </div>
           )}
         </div>
       </section>

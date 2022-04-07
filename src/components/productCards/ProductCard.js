@@ -70,8 +70,7 @@ const ProductCard = (props) => {
                     dispatch,
                     setLoading,
                     isProducInWishlist,
-                    navigate,
-                    location
+                    navigate
                   )
             }
             className='btn btn-icon'>

@@ -1,4 +1,3 @@
-import { productBrandFilter } from "./product-brand-filter";
 import { productCheckbox } from "./product-checkbox";
 import { productSort } from "./product-sort";
 
@@ -10,7 +9,7 @@ export default function filteredProduct(products, selectedFilters = {}) {
       filteredProducts = productSort(filteredProducts, data, filterPram);
     }
     if (type === "checkboxBrand" && data.length > 0) {
-      filteredProducts = productBrandFilter(filteredProducts, data, filterPram);
+      filteredProducts = productCheckbox(filteredProducts, data, filterPram);
     }
     if (type === "checkbox" && data.length > 0) {
       filteredProducts = productCheckbox(filteredProducts, data, filterPram);

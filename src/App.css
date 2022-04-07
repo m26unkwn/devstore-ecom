@@ -11,7 +11,7 @@
 
 :root {
   /* colors */
-  --secondary-color: #ff99dc;
+  --secondary-bg-color: #ff99dc;
   --bg-color: #f7f7f7;
   --white-color: #ffff;
   --bg-input-color: #f2f2f6;
@@ -23,4 +23,8 @@
 body {
   font-family: "Poppins";
   background: var(--bg-color);
+}
+
+.app{
+      min-height: calc(100vh - 5rem);
 }

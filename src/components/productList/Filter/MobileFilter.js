@@ -1,45 +1,40 @@
-import { filters } from "../utils/filters";
+import { useEffect } from "react";
+import useWidth from "../../../hooks/use-width";
+
 import { Sort } from "./Sort";
 import { Checkbox } from "./Checkbox";
-import { useData } from "../../../Context";
 import { CheckboxBrand } from "./CheckboxBrand";
+
 import { ReactComponent as StarIcon } from "../../../assets/Star.svg";
-import { ReactComponent as FilterIcon } from "../../../assets/Filter.svg";
 
 import "./slider.css";
-import { useState } from "react";
-import MobileFilter from "./MobileFilter";
-const Filter = () => {
+const MobileFilter = (props) => {
   const {
-    dispatch,
-    state: { selectedFilters },
-  } = useData();
+    clearFilterHandler,
+    clearFilterFlag,
+    filters,
+    onChangeSlider,
+    rating,
+    setOpenFilter,
+  } = props;
 
-  const clearFilterHandler = () => {
-    dispatch({ type: "CLEAR_FILTER" });
-  };
+  const width = useWidth();
 
-  const [openFilter, setOpenFilter] = useState(false);
+  useEffect(() => {
+    if (width > 700) {
+      setOpenFilter(false);
+    }
+  }, [width, setOpenFilter]);
 
-  const { rating } = selectedFilters;
-
-  let clearFilterFlag =
-    selectedFilters.price?.data ||
-    selectedFilters.category?.data ||
-    selectedFilters.brands?.data;
-
-  let onChangeSlider = (e) => {
-    console.log(e.target.value);
-    dispatch({ type: "CHANGE_RATING", rating: e.target.value });
-  };
-
-  const filterIconOpen = () => {
-    setOpenFilter((flag) => !flag);
+  const removeSideBar = (e) => {
+    if (e.target.classList.contains("mobile-filter-backdrop")) {
+      setOpenFilter(false);
+    }
   };
 
   return (
-    <>
-      <section className='filter'>
+    <div className='mobile-filter-backdrop' onClick={removeSideBar}>
+      <section className='mobile-filter'>
         <div className='filter-head flex jc-between'>
           <h4>Filter</h4>
           {clearFilterFlag ? (
@@ -106,23 +101,8 @@ const Filter = () => {
           </li>
         </ul>
       </section>
-      <div className='mobile-filter-button'>
-        <button onClick={filterIconOpen} className='btn btn-float'>
-          <FilterIcon storke='white' />
-        </button>
-      </div>
-      {openFilter && (
-        <MobileFilter
-          onChangeSlider={onChangeSlider}
-          filters={filters}
-          clearFilterHandler={clearFilterHandler}
-          rating={rating}
-          clearFilterFlag={clearFilterFlag}
-          setOpenFilter={setOpenFilter}
-        />
-      )}
-    </>
+    </div>
   );
 };
 
-export default Filter;
+export default MobileFilter;

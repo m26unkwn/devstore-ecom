@@ -11,3 +11,18 @@
     display: grid;
     grid-template-columns: 50% 50%;
 }
+
+
+@media (max-width: 700px){
+    .single-product-wrapper {
+        width: 90%;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: var(--white-color);
+        grid-column-gap: 2rem;
+    }
+    .equal-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}

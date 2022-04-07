@@ -87,30 +87,32 @@ const AuthProvider = ({ children }) => {
           type: "ADD_PRODUCT_INTO_WISHLIST",
           payload: foundUser.wishlist,
         });
-        let flag = foundUser.cart.some((item) => item._id === cartData._id);
-        if (!flag) {
-          try {
-            let {
-              data: { cart },
-              status,
-            } = await axios({
-              method: "POST",
-              url: "/api/user/cart",
-              data: { product: cartData },
-              headers: { authorization: encodedToken },
-            });
-            if (status === 201) {
-              dispatch({
-                type: "ADD_PRODUCT_INTO_CART",
-                payload: cart,
+        if (cartData) {
+          let flag = foundUser.cart.some((item) => item._id === cartData._id);
+          if (!flag) {
+            try {
+              let {
+                data: { cart },
+                status,
+              } = await axios({
+                method: "POST",
+                url: "/api/user/cart",
+                data: { product: cartData },
+                headers: { authorization: encodedToken },
               });
-              alert("Product added in cart");
+              if (status === 201) {
+                dispatch({
+                  type: "ADD_PRODUCT_INTO_CART",
+                  payload: cart,
+                });
+                alert("Product added in cart");
+              }
+            } catch (error) {
+              console.log("error aa rha hai", error);
             }
-          } catch (error) {
-            console.log("error aa rha hai", error);
+          } else {
+            alert("Product is already in cart");
           }
-        } else {
-          alert("Product is already in cart");
         }
       } else if (status === 201 && createdUser) {
         localStorage.setItem(
