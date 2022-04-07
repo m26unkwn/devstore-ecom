@@ -7,7 +7,7 @@
 
 ## Video Demo:
 
- (https://user-images.githubusercontent.com/91944618/162271485-31eef38a-cd30-462c-9b03-68aa81461b3a.mp4)
+ https://user-images.githubusercontent.com/91944618/162271485-31eef38a-cd30-462c-9b03-68aa81461b3a.mp4
 
 ## Technologies used
  - HTML
