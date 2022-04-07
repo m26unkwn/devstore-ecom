@@ -41,7 +41,7 @@ const ProductCard = (props) => {
   );
 
   return (
-    <div className='pd-card-container vertical'>
+    <div className='pd-card-container vertical' style={{ minWidth: "280px" }}>
       <div className={inStock === false ? "card-overlay" : ""}>
         <div className='card-img-wrapper vertical-img'>
           <Link to={`/products/${product._id}`}>

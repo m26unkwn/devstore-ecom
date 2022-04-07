@@ -50,7 +50,9 @@ const FilterProducts = () => {
           </section>
         </>
       ) : (
-        <div className=' flex jc-center flex-col ai-center flex-gap'>
+        <div
+          className=' flex jc-center flex-col ai-center flex-gap'
+          style={{ marginTop: "20rem" }}>
           <h3
             style={{
               fontSize: "2rem",

@@ -8,7 +8,7 @@ const Hero = () => {
         <h1>All dev product at one place.</h1>
         <h1>Buy Anything with ease.</h1>
         <Link to='/products' className='btn link-btn'>
-          SHOP NOW
+          SHOP WITH US
         </Link>
       </div>
     </section>

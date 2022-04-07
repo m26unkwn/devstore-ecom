@@ -131,7 +131,7 @@
   overflow: hidden;
   position: relative;
 
-  width: 15rem;
+  min-width: 15rem;
   height: 20rem;
 }
 .categories-item {
