@@ -1,7 +1,7 @@
 ## DEVSTORE
 ![shopping_cart_black_24dp 1](https://raw.githubusercontent.com/m26unkwn/devstore-ecom/7dc28a1d4b4313a011b4e2ef3ddf89537c461538/src/assets/Devlogo.svg)
 
-###Devstore is e-com website. which has products like stickers, mug , hat and bags.
+### Devstore is e-com website. which has products like stickers, mug , hat and bags.
 
 
 ## Video Demo:
