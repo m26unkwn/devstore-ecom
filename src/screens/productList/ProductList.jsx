@@ -1,7 +1,7 @@
-import { Filter,AllProducts } from "../components";
+import { Filter,AllProducts } from "../../components";
 import "./productlist.css"
 
-export const ProductList = () => {
+ const ProductList = () => {
   return (
     <main className='filter-product-wrapper'>
       <Filter />
@@ -9,3 +9,5 @@ export const ProductList = () => {
     </main>
   );
 };
+
+export default ProductList;

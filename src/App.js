@@ -1,5 +1,4 @@
 import "./App.css";
-import Home from "./screens/Home";
 import {
   Navbar,
   Login,
@@ -16,11 +15,11 @@ import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 
 import { useEffect } from "react";
-import { useData } from "./Context/stateManage/state-context";
+import { useData } from "./Context";
 
-import { ProductList } from "./screens/ProductList";
-import Footer from "./screens/Footer";
 import { getDataFromServer } from "./services";
+
+import { Home, RouteError, ProductList, Footer } from "./screens";
 
 function App() {
   const { dispatch } = useData();
@@ -83,6 +82,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path='*' element={<RouteError />} />
         </Routes>
       </div>
       <Footer />

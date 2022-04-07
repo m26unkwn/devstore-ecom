@@ -1,0 +1,11 @@
+.route-error-wrapper{
+    min-height: 80vh;
+}
+
+.route-error-wrapper>h1{
+  font-size: 10rem;
+}
+
+.route-error-wrapper>h3 {
+    font-size: 5rem;
+}

@@ -1,6 +1,6 @@
 import "./home.css";
 
-import { Hero,Category,HomeProducts } from "../components";
+import { Hero,Category,HomeProducts } from "../../components";
 
 const home = () => {
   return (
