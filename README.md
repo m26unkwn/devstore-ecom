@@ -53,6 +53,14 @@ This e-commerce app contains following features:
 8. 404 page
   - When user goes on any route which is not there in the app, this will show a 404 page.
 
+###  Run Locally
+
+ 1. CLONE THIS REPO
+ 2. USE NPM INSTALL
+ 3. Then do NPM Start
+ 4. You are ready to go
+ 5. to use the private Route you can checkout this link (https://mockbee.netlify.app/)
+
 
 [Live link](https://devvstore-react.netlify.app/)
 
