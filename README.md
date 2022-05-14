@@ -3,7 +3,7 @@
 
 ### Devstore is e-com website. which has products like stickers, mug , hat and bags.
 
-## LINK LINK => (https://devvstore-react.netlify.app/)
+## LIVE LINK => (https://devvstore-react.netlify.app/)
 
 ## Video Demo:
 
