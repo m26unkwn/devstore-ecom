@@ -105,7 +105,7 @@ const AuthProvider = ({ children }) => {
                   type: "ADD_PRODUCT_INTO_CART",
                   payload: cart,
                 });
-                alert("Product added in cart");
+                toast.success("Product added in cart");
               }
             } catch (error) {
               console.log("error aa rha hai", error);
