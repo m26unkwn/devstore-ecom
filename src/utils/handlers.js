@@ -1,4 +1,5 @@
 import { getDataFromServer } from "../services";
+import { toast } from "react-toastify";
 
 // It is use for Removing the item from cart.
 
@@ -10,9 +11,10 @@ const removefromCart = (id, token, product, dispatch, setLoading) => {
     dispatch,
     "ADD_PRODUCT_INTO_CART",
     "cart",
+    "Product Removed From Cart",
     setLoading,
     { product: product },
-    header
+    header,
   );
 };
 
@@ -24,11 +26,11 @@ const moveToWishlist = (
   product,
   dispatch,
   setLoading,
-  isProducInWishlist
+  isProducInWishlist,
 ) => {
   const header = { authorization: token };
   if (isProducInWishlist) {
-    alert("Item already inside of Wishlist");
+    toast.warning("Product already in Wishlist");
   } else {
     getDataFromServer(
       `/api/user/wishlist`,
@@ -38,9 +40,10 @@ const moveToWishlist = (
       "wishlist",
       setLoading,
       { product: product },
-      header
+      header,
     );
     removefromCart(id, token, product, dispatch, setLoading);
+    toast.success("Product Moved Into Wishtlist");
   }
 };
 
@@ -55,13 +58,14 @@ const updateQuantity = (id, token, dispatch, setLoading, type) => {
     dispatch,
     "ADD_PRODUCT_INTO_CART",
     "cart",
+    "Quntity Updated.",
     setLoading,
     {
       action: {
         type: type,
       },
     },
-    header
+    header,
   );
 };
 
@@ -71,7 +75,7 @@ const addToCart = (
   dispatch,
   setLoading,
   navigate,
-  location
+  location,
 ) => {
   const header = { authorization: token };
   token
@@ -81,11 +85,12 @@ const addToCart = (
         dispatch,
         "ADD_PRODUCT_INTO_CART",
         "cart",
+        "Product Added To Cart.",
         setLoading,
         {
           product: product,
         },
-        header
+        header,
       )
     : navigate("/login", { state: { location, item: product } });
 };
@@ -97,7 +102,7 @@ const addToWishlist = (
   setLoading,
   isProducInWishlist,
   navigate,
-  location
+  location,
 ) => {
   const header = { authorization: token };
   if (isProducInWishlist) {
@@ -109,9 +114,10 @@ const addToWishlist = (
       dispatch,
       "ADD_PRODUCT_INTO_WISHLIST",
       "wishlist",
+      "Product Added To Wishlist.",
       setLoading,
       { product: product },
-      header
+      header,
     );
   } else {
     navigate("/login");
@@ -127,11 +133,12 @@ const removefromWishlist = (id, token, product, dispatch, setLoading) => {
         dispatch,
         "ADD_PRODUCT_INTO_WISHLIST",
         "wishlist",
+        "Product Removed From Wishlist.",
         setLoading,
         { product: product },
-        header
+        header,
       )
-    : alert("You have to login first.");
+    : toast.warning("You have to Login First");
 };
 
 const moveToCart = (
@@ -140,7 +147,7 @@ const moveToCart = (
   product,
   dispatch,
   setLoading,
-  isProducInCart
+  isProducInCart,
 ) => {
   const header = { authorization: token };
   if (isProducInCart) {
@@ -150,15 +157,16 @@ const moveToCart = (
       dispatch,
       "ADD_PRODUCT_INTO_CART",
       "cart",
+      "Product Moved To Cart.",
       setLoading,
       {
         action: {
           type: "increment",
         },
       },
-      header
+      header,
     );
-    alert("Quantity Increased");
+    toast.success("Quantity Increased");
   } else {
     getDataFromServer(
       "/api/user/cart",
@@ -166,11 +174,12 @@ const moveToCart = (
       dispatch,
       "ADD_PRODUCT_INTO_CART",
       "cart",
+      "Product Added To Cart",
       setLoading,
       {
         product: product,
       },
-      header
+      header,
     );
   }
 };

@@ -1,13 +1,15 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 export const getDataFromServer = async (
   api,
   method,
   dispatch,
   type,
   result,
+  message,
   setLoading = null,
   body = null,
-  header = null
+  header = null,
 ) => {
   try {
     if (setLoading) {
@@ -24,6 +26,7 @@ export const getDataFromServer = async (
         setLoading(false);
       }
       dispatch({ type: type, payload: response.data[result] });
+      toast.success(message);
     }
   } catch (error) {
     console.log(error);

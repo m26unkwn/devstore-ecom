@@ -1,25 +1,28 @@
 import "./App.css";
-import {
-  Navbar,
-  Login,
-  Signup,
-  PrivateRoute,
-  Profile,
-  Cart,
-  Wishlist,
-  SingleProduct,
-  CategoryProducts,
-  FilterProducts,
-} from "./components";
+
 import { Routes, Route } from "react-router-dom";
-import Mockman from "mockman-js";
 
 import { useEffect } from "react";
 import { useData } from "./Context";
 
 import { getDataFromServer } from "./services";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { Home, RouteError, ProductList, Footer } from "./screens";
+import {
+  Cart,
+  CategoryProducts,
+  FilterProducts,
+  Login,
+  Navbar,
+  PrivateRoute,
+  Profile,
+  Signup,
+  SingleProduct,
+  Wishlist,
+} from "./components";
 
 function App() {
   const { dispatch } = useData();
@@ -29,24 +32,17 @@ function App() {
       "get",
       dispatch,
       "ADD_TO_PRODUCTS",
-      "products"
+      "products",
     );
   }, [dispatch]);
 
   return (
     <>
       <div className='app'>
+        <ToastContainer theme='colored' autoClose={2000} position='top-right' />
         <Navbar />
 
         <Routes>
-          <Route
-            path='/mockman'
-            element={
-              <div className='MockAPI'>
-                <Mockman />
-              </div>
-            }
-          />
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<ProductList />} />
           <Route path='/login' element={<Login />} />

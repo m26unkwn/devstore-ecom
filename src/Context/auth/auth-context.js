@@ -3,7 +3,7 @@ import { useData } from "../stateManage/state-context";
 import axios from "axios";
 import authReducer from "./auth-reducer";
 import { useEffect } from "react";
-
+import { toast } from "react-toastify";
 const AuthContext = createContext();
 
 let initialAuthData = {
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
     password,
     cartData = null,
     firstName = null,
-    lastName = null
+    lastName = null,
   ) => {
     console.log("cartData aa rha hai kya", cartData);
     try {
@@ -69,7 +69,7 @@ const AuthProvider = ({ children }) => {
           JSON.stringify({
             token: encodedToken,
             foundUser: foundUser,
-          })
+          }),
         );
         authDispatch({
           type: "ADD_TOKEN",
@@ -120,7 +120,7 @@ const AuthProvider = ({ children }) => {
           JSON.stringify({
             token: encodedToken,
             foundUser: createdUser,
-          })
+          }),
         );
         authDispatch({
           type: "ADD_TOKEN",
@@ -166,7 +166,7 @@ const AuthProvider = ({ children }) => {
           payload: "Email is already exist",
         });
       }
-
+      toast.error(errors[0]);
       console.error(errors[0]);
     }
   };
