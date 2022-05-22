@@ -111,7 +111,7 @@ const AuthProvider = ({ children }) => {
               console.log("error aa rha hai", error);
             }
           } else {
-            alert("Product is already in cart");
+            toast.warning("Product is already in cart");
           }
         }
       } else if (status === 201 && createdUser) {

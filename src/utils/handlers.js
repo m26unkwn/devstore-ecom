@@ -106,7 +106,7 @@ const addToWishlist = (
 ) => {
   const header = { authorization: token };
   if (isProducInWishlist) {
-    alert("Item already inside of Wishlist");
+    toast.warning("Item already inside of Wishlist");
   } else if (token) {
     getDataFromServer(
       `/api/user/wishlist`,
