@@ -1,4 +1,11 @@
 import { Server, Model, RestSerializer } from "miragejs";
+import { v4 as uuid } from "uuid";
+import {
+  getAddressListHandler,
+  addAddressHandler,
+  removeAddressHandler,
+  updateAddressHandler,
+} from "./backend/controllers/AddressController";
 import {
   loginHandler,
   signupHandler,
@@ -38,6 +45,7 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      addressList: Model,
     },
 
     // Runs on the start of the server
@@ -49,7 +57,24 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", {
+          ...item,
+          cart: [],
+          wishlist: [],
+
+          addressList: [
+            {
+              _id: uuid(),
+              name: "Jhon Doe",
+              street: "Indian Jones",
+              city: "Phagwara",
+              state: "Punjab",
+              country: "India",
+              pincode: "144401",
+              phone: "1234567891",
+            },
+          ],
+        }),
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -75,7 +100,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/user/cart/:productId", updateCartItemHandler.bind(this));
       this.delete(
         "/user/cart/:productId",
-        removeItemFromCartHandler.bind(this)
+        removeItemFromCartHandler.bind(this),
       );
 
       // wishlist routes (private)
@@ -83,8 +108,13 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/user/wishlist", addItemToWishlistHandler.bind(this));
       this.delete(
         "/user/wishlist/:productId",
-        removeItemFromWishlistHandler.bind(this)
+        removeItemFromWishlistHandler.bind(this),
       );
+      // addresse routes (private)
+      this.get("/user/address", getAddressListHandler.bind(this));
+      this.post("/user/address", addAddressHandler.bind(this));
+      this.post("/user/address/:addressId", updateAddressHandler.bind(this));
+      this.delete("/user/address/:addressId", removeAddressHandler.bind(this));
     },
   });
 }

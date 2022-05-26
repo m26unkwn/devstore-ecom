@@ -1,44 +1,34 @@
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context";
+import { Link } from "react-router-dom";
+import { BoldProfile, Home, OrderBag } from "../../assets";
 import "./profile.css";
 
 const Profile = () => {
-  const {
-    authState: { userDetails },
-    logoutUser,
-  } = useAuth();
-
-  const navigate = useNavigate();
-
   return (
-    <div className=' account-wrapper'>
-      <div className=' card-container account-head flex flex-col ai-center jc-center'>
-        <h1>Account</h1>
-        <div className='card-divider'></div>
-        <div
-          style={{ marginTop: "1rem" }}
-          className='card-content flex flex-col flex-start flex-gap'>
-          <div style={{ gap: "2rem" }} className='flex flex-col flex-gap'>
-            <div className='flex flex-gap jc-between'>
-              <h4>Full Name : </h4>
-              <h4>
-                {userDetails.firstName} {userDetails.lastName}
-              </h4>
+    <>
+      <div className=' account-wrapper'>
+        <h1 className='flex jc-center'>Account</h1>
+        <div className='account-card-wrapper flex flex-wrap flex-gap'>
+          <Link to='/account/profile' className='card-container account-card'>
+            <div className='acount-content flex ai-center flex-gap'>
+              <img src={BoldProfile} alt='profile-img' />
+              <h3>Profile</h3>
             </div>
-            <div className='flex flex-gap jc-between'>
-              <h4>Email Address : </h4>
-              <h4>{userDetails.email}</h4>
+          </Link>
+          <Link to='/account/orders' className='card-container account-card'>
+            <div className='acount-content flex ai-center flex-gap'>
+              <img src={OrderBag} alt='order-img' />
+              <h3>Orders</h3>
             </div>
-          </div>
-          <button
-            style={{ marginTop: "2rem" }}
-            onClick={(e) => logoutUser(e, navigate)}
-            className='btn outline-primary'>
-            Logout
-          </button>
+          </Link>
+          <Link to='/account/address' className='card-container account-card'>
+            <div className='acount-content flex ai-center flex-gap'>
+              <img src={Home} alt='order-img' />
+              <h3>Address</h3>
+            </div>
+          </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

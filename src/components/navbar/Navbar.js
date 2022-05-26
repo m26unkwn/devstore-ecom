@@ -55,8 +55,8 @@ const Navbar = () => {
         {!pathArray.some((item) => currentPath.pathname === item) && (
           <div className='auth-link flex jc-between flex-gap'>
             {token ? (
-              <Tooltip info='My Profile'>
-                <NavLink to='/profile' className='btn btn-icon'>
+              <Tooltip info='Account'>
+                <NavLink to='/account' className='btn btn-icon'>
                   <img src={User} alt='userImage' />
                 </NavLink>
               </Tooltip>
