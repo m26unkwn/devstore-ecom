@@ -35,6 +35,10 @@ const AuthProvider = ({ children }) => {
         type: "ADD_PRODUCT_INTO_WISHLIST",
         payload: userData.foundUser.wishlist,
       });
+      dispatch({
+        type: "ADD_ADDRESS",
+        payload: userData.foundUser.addressList,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -86,6 +90,10 @@ const AuthProvider = ({ children }) => {
         dispatch({
           type: "ADD_PRODUCT_INTO_WISHLIST",
           payload: foundUser.wishlist,
+        });
+        dispatch({
+          type: "ADD_ADDRESS",
+          payload: foundUser.addressList,
         });
         if (cartData) {
           let flag = foundUser.cart.some((item) => item._id === cartData._id);
