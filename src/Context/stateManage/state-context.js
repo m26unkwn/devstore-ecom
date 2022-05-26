@@ -10,6 +10,7 @@ let initialSatate = {
   selectedFilters: {
     rating: 1,
   },
+  allAddress: [],
 };
 
 const StateProvider = ({ children }) => {

@@ -137,7 +137,7 @@ export const products = [
     discount: 50,
     brand: "github",
     category: "sticker",
-    img: "https://cdn.shopify.com/s/files/1/0051/4802/products/stickers_pack_1_882x882.png",
+    img: "https://cdn.shopify.com/s/files/1/0051/4802/products/Capsule_Pack_10_882x882.jpg",
     description: ["These are the high Quality Stickers."],
     rating: 4,
     qty: 1,

@@ -3,6 +3,59 @@ import { toast } from "react-toastify";
 
 // It is use for Removing the item from cart.
 
+// addresss Manangement Handlers
+
+// Add Addresss
+
+const addAddress = (token, address, dispatch) => {
+  const header = { authorization: token };
+  getDataFromServer(
+    "/api/user/address/",
+    "post",
+    dispatch,
+    "ADD_ADDRESS",
+    "addressList",
+    "Addresss Added",
+    null,
+    { address: address },
+    header,
+  );
+};
+
+// remove addresss
+
+const removeAddress = (token, address, dispatch) => {
+  const header = { authorization: token };
+  getDataFromServer(
+    `/api/user/address/${address._id}`,
+    "delete",
+    dispatch,
+    "ADD_ADDRESS",
+    "addressList",
+    "Addresss removed",
+    null,
+    null,
+    header,
+  );
+};
+
+const updateAddress = (token, address, dispatch) => {
+  const header = { authorization: token };
+  getDataFromServer(
+    `/api/user/address/${address._id}`,
+    "post",
+    dispatch,
+    "ADD_ADDRESS",
+    "addressList",
+    "Addresss Updated",
+    null,
+    { address: address },
+    header,
+  );
+};
+
+// edit Address
+
 const removefromCart = (id, token, product, dispatch, setLoading) => {
   const header = { authorization: token };
   getDataFromServer(
@@ -192,6 +245,9 @@ const handlers = {
   addToWishlist,
   removefromWishlist,
   moveToCart,
+  addAddress,
+  removeAddress,
+  updateAddress,
 };
 
 export { handlers };

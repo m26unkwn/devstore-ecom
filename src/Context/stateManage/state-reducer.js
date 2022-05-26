@@ -28,7 +28,7 @@ export function reducer(state, action) {
             type: action.payload.filterType,
             data: found
               ? state.selectedFilters[action.payload.filterParam].data.filter(
-                  (value) => value !== action.payload.data
+                  (value) => value !== action.payload.data,
                 )
               : state.selectedFilters[action.payload.filterParam]
               ? [
@@ -51,7 +51,7 @@ export function reducer(state, action) {
             type: action.payload.filterType,
             data: Newfound
               ? state.selectedFilters[action.payload.filterParam].data.filter(
-                  (value) => value !== action.payload.data
+                  (value) => value !== action.payload.data,
                 )
               : state.selectedFilters[action.payload.filterParam]
               ? [
@@ -81,12 +81,15 @@ export function reducer(state, action) {
 
     case "ADD_PRODUCT_INTO_WISHLIST":
       return { ...state, wishlistItems: action.payload };
+    case "ADD_ADDRESS":
+      return { ...state, allAddress: action.payload };
 
     case "CLEAR_ALL_DATA_FROM_STATE":
       return {
         ...state,
         wishlistItems: [],
         cartItems: [],
+        allAddress: [],
       };
 
     default:
