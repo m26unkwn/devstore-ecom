@@ -8,7 +8,6 @@ const Orders = () => {
     state: { orders },
   } = useData();
 
-  console.log(orders);
   return (
     <div className=' account-wrapper'>
       <Link to='/account' className='btn account-btn outline-secondary'>

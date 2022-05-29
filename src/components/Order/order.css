@@ -1,0 +1,31 @@
+.order-card {
+  width: 100%;
+}
+
+.ordered-product {
+  width: 100%;
+  display: flex;
+  border: 1px solid rgb(199, 199, 199);
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 1rem;
+  text-decoration: none;
+}
+.img-contaniner {
+  width: 8rem;
+  height: auto;
+  margin: 1rem 0 1rem 1rem;
+}
+.text-container {
+  width: calc(100% - 111px);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 12px;
+}
+
+.product-info > a {
+  all: unset;
+  cursor: pointer;
+}
