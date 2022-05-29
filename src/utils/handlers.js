@@ -155,7 +155,7 @@ const emptyCart = (token, dispatch) => {
     dispatch,
     "ADD_PRODUCT_INTO_CART",
     "cart",
-    "Order Placed Successfully",
+    null,
     null,
     null,
     header,

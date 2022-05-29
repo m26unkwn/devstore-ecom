@@ -19,11 +19,11 @@ const Checkout = () => {
     setModal(true);
   };
 
-  const setAdressHandler = (e) => {
+  const setAdressHandler = (e, address) => {
     if (e.target.checked) {
-      setAddress(true);
+      setAddress(address);
     } else {
-      setAddress(false);
+      setAddress(null);
     }
   };
 
@@ -46,7 +46,7 @@ const Checkout = () => {
                         <input
                           type='radio'
                           name='radio'
-                          onChange={setAdressHandler}
+                          onChange={(e) => setAdressHandler(e, address)}
                         />
                       </label>
                       <p className='user-name'>{address.name}</p>

@@ -21,6 +21,7 @@ export const getDataFromServer = async (
       data: body,
       headers: header,
     });
+    console.log(response);
     if (response.status === 200 || response.status === 201) {
       if (setLoading) {
         setLoading(false);

@@ -41,7 +41,6 @@ export const Bill = ({ address, setOrderData }) => {
       return;
     }
 
-    // checkoutDispatch({ type: "clearSelections" });
 
     const options = {
       key: "rzp_test_MHI0UXUT81c4xu",

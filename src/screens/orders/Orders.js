@@ -21,7 +21,23 @@ const Orders = () => {
         <h1 className='flex jc-center'>My Orders</h1>
         <div className='card-divider'></div>
         <div className='addresss-wrapper'>
-          <OrderCard />
+          {orders.length > 0 ? (
+            orders.map((order) => (
+              <OrderCard key={order.orderId} order={order} />
+            ))
+          ) : (
+            <div className='order-summary'>
+              <h3 style={{ marginTop: "1rem" }} className='sub-color'>
+                Please buy something!
+              </h3>
+              <Link
+                to='/products'
+                style={{ width: "fit-content", margin: "auto" }}
+                className='btn btn-link'>
+                Shop Now
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
