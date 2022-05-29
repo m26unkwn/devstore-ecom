@@ -85,7 +85,11 @@ const Checkout = () => {
             <h2 className='order-placed'>Order Placed Successfully</h2>
             <p className='order-id'>order Id : {order.orderId}</p>
             <p className='order-text'>Thankyou for Shopping with us.</p>
-            <button className='btn btn-primary btn-center'>View Order</button>
+            <Link to='/account/orders'>
+              <button className='btn btn-primary btn-center btn-link'>
+                View Order
+              </button>
+            </Link>
           </div>
         </div>
       )}

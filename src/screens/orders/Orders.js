@@ -12,7 +12,10 @@ const Orders = () => {
   return (
     <div className=' account-wrapper'>
       <Link to='/account' className='btn account-btn outline-secondary'>
-        <h3>Account</h3>
+        <h3>
+          {"<  "}
+          Account
+        </h3>
       </Link>
       <div className=' card-container account-head flex flex-col ai-center jc-center'>
         <h1 className='flex jc-center'>My Orders</h1>

@@ -241,7 +241,7 @@ const moveToCart = (
       dispatch,
       "ADD_PRODUCT_INTO_CART",
       "cart",
-      "Product Added To Cart",
+      "",
       setLoading,
       {
         product: product,
@@ -254,10 +254,9 @@ const moveToCart = (
 // orders
 
 const addOrder = (token, order, dispatch) => {
-  alert("ghus gya ander");
   const header = { authorization: token };
   getDataFromServer(
-    "api/user/orders",
+    "/api/user/orders",
     "post",
     dispatch,
     "ADD_ORDER",

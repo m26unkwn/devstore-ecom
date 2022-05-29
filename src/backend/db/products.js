@@ -1,5 +1,4 @@
 import { Sticker, Bag, Hat } from "../../assets";
-import {v4 as uuid} from "uuid"
 /**
  * Product Database can be added here.
  * You can add products of your wish with different attributes
@@ -7,7 +6,7 @@ import {v4 as uuid} from "uuid"
 
 export const products = [
   {
-    _id: uuid(),
+    _id: String(1),
     title: "DEV Snapback Cap",
     desc: "black Devloper Hat",
     price: 40,
@@ -26,7 +25,7 @@ export const products = [
   },
 
   {
-    _id: uuid(),
+    _id: String(2),
     title: " Sticker Pack ",
     desc: " Developer Sticker Collection",
     price: 16,
@@ -46,7 +45,7 @@ export const products = [
   },
 
   {
-    _id: uuid(),
+    _id: String(3),
     title: "“Computers, amirite?” Mug ",
     desc: "White Apple Mug",
     price: 80,
@@ -62,7 +61,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(4),
     title: "Github Sticker ",
     desc: "Cat Github Sticker",
     price: 6,
@@ -75,7 +74,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(5),
     title: "Dev Bag ",
     desc: "Black Bag Leather",
     price: 6,
@@ -87,7 +86,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(6),
     title: "Github InvertoCat Mug ",
     desc: "Github Black Matte Mug",
     price: 150,
@@ -107,7 +106,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(7),
     title: " CodeNewbie Sticker Pack",
     desc: " Developer Sticker Collection",
     price: 20,
@@ -128,7 +127,7 @@ export const products = [
   },
 
   {
-    _id: uuid(),
+    _id: String(8),
     title: "Github Cat Stiker Pack ",
     desc: "Coding Stikers for Newbiew",
     price: 18,
@@ -142,7 +141,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(9),
     title: "Google CodenewBiew Hat",
     desc: "Grey CodenewBie Hat",
     price: 20,
@@ -161,7 +160,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(10),
     title: "DEV Rainbow Mug",
     desc: "White Rainbow Mug",
     price: 60,
@@ -174,7 +173,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(11),
     title: "Github Sticker ",
     desc: "Cat Github Sticker",
     price: 6,
@@ -192,7 +191,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(12),
     title: "Dev Bag ",
     desc: "Black Bag Leather",
     price: 6,
@@ -210,7 +209,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(13),
     title: "Github Cat Black Mug ",
     desc: "Github Black Matte Mug",
     price: 100,
@@ -229,7 +228,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(14),
     title: "Rainbow DEV Backpack",
     desc: "Black Bag Leather",
     price: 100,
@@ -247,7 +246,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(15),
     title: "Vintage DEV Baseball Cap (Acid Wash Red)",
     desc: "Baseball CAP",
     price: 30,
@@ -266,7 +265,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(16),
     title: "“CodeNewbie Coffee Mug ",
     desc: "Apple CodeNewbie Mug",
     price: 200,
@@ -285,7 +284,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(17),
     title: "Don't Stop ",
     desc: "Motivation Stikers",
     price: 4,
@@ -299,7 +298,7 @@ export const products = [
     qty: 1,
   },
   {
-    _id: uuid(),
+    _id: String(18),
     title: "InvertoCat Hat Charcoal",
     desc: "Charcoal Cap",
     price: 25,

@@ -3,6 +3,7 @@ import { useAuth, useData } from "../../Context";
 import { useLocation } from "react-router-dom";
 import { handlers } from "../../utils/handlers";
 import { v4 as uuid } from "uuid";
+import { toast } from "react-toastify";
 
 export const Bill = ({ address, setOrderData }) => {
   const {
@@ -36,7 +37,7 @@ export const Bill = ({ address, setOrderData }) => {
       "https://checkout.razorpay.com/v1/checkout.js",
     );
     if (!res) {
-      alert("You are offline!, please check your internet");
+      toast.error("You are offline!, please check your internet");
       return;
     }
 

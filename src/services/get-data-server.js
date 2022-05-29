@@ -11,7 +11,6 @@ export const getDataFromServer = async (
   body = null,
   header = null,
 ) => {
-  console.log(api);
   try {
     if (setLoading) {
       setLoading(true);
@@ -22,7 +21,6 @@ export const getDataFromServer = async (
       data: body,
       headers: header,
     });
-    console.log(response);
     if (response.status === 200 || response.status === 201) {
       if (setLoading) {
         setLoading(false);
@@ -31,7 +29,6 @@ export const getDataFromServer = async (
       toast.success(message);
     }
   } catch (error) {
-    alert(error);
     if (setLoading) {
       setLoading(false);
     }
