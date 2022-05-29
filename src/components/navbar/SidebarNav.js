@@ -70,13 +70,13 @@ const SidebarNav = ({ setIsClicked, clickHandler }) => {
               My Cart
             </NavLink>
           </li>
-          <NavLink to='/profile' className='link-btn'>
+          <NavLink to='/account' className='link-btn'>
             Profile
           </NavLink>
         </ul>
       </div>
     </div>,
-    document.getElementById("portal-root")
+    document.getElementById("portal-root"),
   );
 };
 export default SidebarNav;

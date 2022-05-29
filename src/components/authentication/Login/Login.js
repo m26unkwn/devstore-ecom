@@ -37,7 +37,7 @@ const Login = () => {
         "/api/auth/login",
         loginState.email,
         loginState.password,
-        cartData
+        cartData,
       );
     }
   };
@@ -50,9 +50,9 @@ const Login = () => {
     e.preventDefault();
     getUserAuth(
       "/api/auth/login",
-      "adarshbalika@gmail.com",
-      "Adarshbalika1!",
-      cartData
+      "jhonedoe@gmail.com",
+      "Jhonedeo1!",
+      cartData,
     );
   };
 

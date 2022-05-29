@@ -1,0 +1,10 @@
+.address-card {
+  width: 20rem;
+  padding: 1rem;
+}
+.user-name {
+  font-weight: bold;
+}
+.address-action {
+  margin-top: 10px;
+}

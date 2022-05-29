@@ -18,3 +18,6 @@ export { default as Positive } from "./Positive.svg";
 export { default as Star } from "./Star.svg";
 export { default as Search } from "./Search.svg";
 export { default as Filter } from "./Filter.svg";
+export { default as BoldProfile } from "./BoldProfile.svg";
+export { default as OrderBag } from "./OrderBag.svg";
+export { default as Home } from "./Home.svg";

@@ -24,7 +24,7 @@ export const signupHandler = function (schema, request) {
         {},
         {
           errors: ["Unprocessable Entity. Email Already Exists."],
-        }
+        },
       );
     }
     const _id = uuid();
@@ -37,6 +37,8 @@ export const signupHandler = function (schema, request) {
       ...rest,
       cart: [],
       wishlist: [],
+      addressList: [],
+      orders: [],
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
@@ -47,7 +49,7 @@ export const signupHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
@@ -66,13 +68,15 @@ export const loginHandler = function (schema, request) {
       return new Response(
         404,
         {},
-        { errors: ["The email you entered is not Registered. Not Found error"] }
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        },
       );
     }
     if (password === foundUser.password) {
       const encodedToken = sign(
         { _id: foundUser._id, email },
-        process.env.REACT_APP_JWT_SECRET
+        process.env.REACT_APP_JWT_SECRET,
       );
       return new Response(200, {}, { foundUser, encodedToken });
     }
@@ -84,7 +88,7 @@ export const loginHandler = function (schema, request) {
           errors: [
             "The credentials you entered are invalid. Unauthorized access error.",
           ],
-        }
+        },
       );
     }
   } catch (error) {
@@ -93,7 +97,8 @@ export const loginHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
+

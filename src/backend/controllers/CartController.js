@@ -19,7 +19,7 @@ export const getCartItemsHandler = function (schema, request) {
       {},
       {
         errors: ["The email you entered is not Registered. Not Found error"],
-      }
+      },
     );
   }
   const userCart = schema.users.findBy({ _id: userId }).cart;
@@ -41,7 +41,7 @@ export const addItemToCartHandler = function (schema, request) {
         {},
         {
           errors: ["The email you entered is not Registered. Not Found error"],
-        }
+        },
       );
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
@@ -60,7 +60,7 @@ export const addItemToCartHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
@@ -79,7 +79,7 @@ export const removeItemFromCartHandler = function (schema, request) {
         {},
         {
           errors: ["The email you entered is not Registered. Not Found error"],
-        }
+        },
       );
     }
     let userCart = schema.users.findBy({ _id: userId }).cart;
@@ -93,7 +93,7 @@ export const removeItemFromCartHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
@@ -114,7 +114,7 @@ export const updateCartItemHandler = function (schema, request) {
         {},
         {
           errors: ["The email you entered is not Registered. Not Found error"],
-        }
+        },
       );
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
@@ -142,7 +142,34 @@ export const updateCartItemHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
+    );
+  }
+};
+export const clearCartHandler = function (schema, request) {
+  const userId = requiresAuth.call(this, request);
+  try {
+    if (!userId) {
+      new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        },
+      );
+    }
+
+    this.db.users.update({ _id: userId }, { cart: [] });
+    const userCart = schema.users.findBy({ _id: userId }).cart;
+
+    return new Response(201, {}, { cart: userCart });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      },
     );
   }
 };

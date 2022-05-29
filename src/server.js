@@ -1,4 +1,12 @@
 import { Server, Model, RestSerializer } from "miragejs";
+import { v4 as uuid } from "uuid";
+
+import {
+  getAddressListHandler,
+  addAddressHandler,
+  removeAddressHandler,
+  updateAddressHandler,
+} from "./backend/controllers/AddressController";
 import {
   loginHandler,
   signupHandler,
@@ -8,6 +16,7 @@ import {
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
+  clearCartHandler,
 } from "./backend/controllers/CartController";
 import {
   getAllCategoriesHandler,
@@ -26,6 +35,9 @@ import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
 
+import { getOrderItemsHandler } from "./backend/controllers/OrdersController";
+import { addItemToOrdersHandler } from "./backend/controllers/OrdersController";
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -38,6 +50,8 @@ export function makeServer({ environment = "development" } = {}) {
       user: Model,
       cart: Model,
       wishlist: Model,
+      addressList: Model,
+      orders: Model,
     },
 
     // Runs on the start of the server
@@ -49,7 +63,24 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [] })
+        server.create("user", {
+          ...item,
+          cart: [],
+          wishlist: [],
+          addressList: [
+            {
+              _id: uuid(),
+              name: "Jhon Doe",
+              street: "Indian Jones",
+              city: "Phagwara",
+              state: "Punjab",
+              country: "India",
+              pincode: "144401",
+              phone: "1234567891",
+            },
+          ],
+          orders: [],
+        }),
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
@@ -57,6 +88,7 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
+
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
@@ -75,16 +107,27 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/user/cart/:productId", updateCartItemHandler.bind(this));
       this.delete(
         "/user/cart/:productId",
-        removeItemFromCartHandler.bind(this)
+        removeItemFromCartHandler.bind(this),
       );
+      this.post("/user/cart/clearCart", clearCartHandler.bind(this));
 
       // wishlist routes (private)
       this.get("/user/wishlist", getWishlistItemsHandler.bind(this));
       this.post("/user/wishlist", addItemToWishlistHandler.bind(this));
       this.delete(
         "/user/wishlist/:productId",
-        removeItemFromWishlistHandler.bind(this)
+        removeItemFromWishlistHandler.bind(this),
       );
+
+      //orders
+
+      this.post("/user/orders", addItemToOrdersHandler.bind(this));
+      this.get("/user/orders", getOrderItemsHandler.bind(this));
+      // addresse routes (private)
+      this.get("/user/address", getAddressListHandler.bind(this));
+      this.post("/user/address", addAddressHandler.bind(this));
+      this.post("/user/address/:addressId", updateAddressHandler.bind(this));
+      this.delete("/user/address/:addressId", removeAddressHandler.bind(this));
     },
   });
 }

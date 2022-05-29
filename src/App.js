@@ -10,7 +10,16 @@ import { getDataFromServer } from "./services";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { Home, RouteError, ProductList, Footer } from "./screens";
+import {
+  Home,
+  RouteError,
+  ProductList,
+  Footer,
+  ProfileInfo,
+  Address,
+  Checkout,
+  Orders,
+} from "./screens";
 import {
   Cart,
   CategoryProducts,
@@ -26,6 +35,7 @@ import {
 
 function App() {
   const { dispatch } = useData();
+
   useEffect(() => {
     getDataFromServer(
       "/api/products",
@@ -53,32 +63,21 @@ function App() {
             element={<CategoryProducts />}
           />
           <Route path='/products/search' element={<FilterProducts />} />
+          <Route path='/' element={<PrivateRoute />}>
+            <Route path='/cart'>
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/cart/checkout' element={<Checkout />} />
+            </Route>
 
-          <Route
-            path='/profile'
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
+            <Route path='/wishlist' element={<Wishlist />} />
+            <Route path='/account'>
+              <Route path='/account' element={<Profile />} />
+              <Route path='profile' element={<ProfileInfo />} />
+              <Route path='address' element={<Address />} />
+              <Route path='orders' element={<Orders />} />
+            </Route>
+          </Route>
 
-          <Route
-            path='/cart'
-            element={
-              <PrivateRoute>
-                <Cart />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/wishlist'
-            element={
-              <PrivateRoute>
-                <Wishlist />
-              </PrivateRoute>
-            }
-          />
           <Route path='*' element={<RouteError />} />
         </Routes>
       </div>

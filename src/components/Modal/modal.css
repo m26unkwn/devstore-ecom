@@ -1,0 +1,70 @@
+.modal-backdrop {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+.address-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.select > select {
+  all: unset;
+  color: var(--input-color);
+  border-radius: 4px;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--border-color);
+}
+.select > select > option {
+  all: unset;
+  color: var(--input-color);
+  border-radius: 4px;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--border-color);
+}
+
+.modal-card {
+  width: 500px;
+}
+
+.address-action {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 1rem 0;
+  margin-left: 2.2rem;
+}
+
+@media (max-width: 780px) {
+  .modal-card {
+    width: 300px;
+  }
+
+  .address-action {
+    display: flex;
+    flex-direction: column;
+    column-gap: 2rem;
+    margin: 10px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-card {
+    width: 300px;
+  }
+  .address-action {
+    display: flex;
+    flex-direction: column;
+    column-gap: 2rem;
+    margin: 10px;
+    padding: 1rem;
+  }
+}

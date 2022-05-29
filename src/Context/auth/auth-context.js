@@ -35,6 +35,10 @@ const AuthProvider = ({ children }) => {
         type: "ADD_PRODUCT_INTO_WISHLIST",
         payload: userData.foundUser.wishlist,
       });
+      dispatch({
+        type: "ADD_ADDRESS",
+        payload: userData.foundUser.addressList,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -47,7 +51,6 @@ const AuthProvider = ({ children }) => {
     firstName = null,
     lastName = null,
   ) => {
-    console.log("cartData aa rha hai kya", cartData);
     try {
       const {
         data: { encodedToken, foundUser, createdUser },
@@ -87,6 +90,10 @@ const AuthProvider = ({ children }) => {
           type: "ADD_PRODUCT_INTO_WISHLIST",
           payload: foundUser.wishlist,
         });
+        dispatch({
+          type: "ADD_ADDRESS",
+          payload: foundUser.addressList,
+        });
         if (cartData) {
           let flag = foundUser.cart.some((item) => item._id === cartData._id);
           if (!flag) {
@@ -107,8 +114,13 @@ const AuthProvider = ({ children }) => {
                 });
                 toast.success("Product added in cart");
               }
-            } catch (error) {
-              console.log("error aa rha hai", error);
+            } catch ({
+              response: {
+                data: { errors },
+                status,
+              },
+            }) {
+              toast.error(errors[0]);
             }
           } else {
             toast.warning("Product is already in cart");
@@ -167,7 +179,6 @@ const AuthProvider = ({ children }) => {
         });
       }
       toast.error(errors[0]);
-      console.error(errors[0]);
     }
   };
 

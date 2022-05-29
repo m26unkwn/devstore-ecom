@@ -3,20 +3,58 @@ import { toast } from "react-toastify";
 
 // It is use for Removing the item from cart.
 
-const removefromCart = (id, token, product, dispatch, setLoading) => {
+// addresss Manangement Handlers
+
+// Add Addresss
+
+const addAddress = (token, address, dispatch) => {
   const header = { authorization: token };
   getDataFromServer(
-    `/api/user/cart/${id}`,
-    "DELETE",
+    "/api/user/address/",
+    "post",
     dispatch,
-    "ADD_PRODUCT_INTO_CART",
-    "cart",
-    "Product Removed From Cart",
-    setLoading,
-    { product: product },
+    "ADD_ADDRESS",
+    "addressList",
+    "Addresss Added",
+    null,
+    { address: address },
     header,
   );
 };
+
+// remove addresss
+
+const removeAddress = (token, address, dispatch) => {
+  const header = { authorization: token };
+  getDataFromServer(
+    `/api/user/address/${address._id}`,
+    "delete",
+    dispatch,
+    "ADD_ADDRESS",
+    "addressList",
+    "Addresss removed",
+    null,
+    null,
+    header,
+  );
+};
+
+const updateAddress = (token, address, dispatch) => {
+  const header = { authorization: token };
+  getDataFromServer(
+    `/api/user/address/${address._id}`,
+    "post",
+    dispatch,
+    "ADD_ADDRESS",
+    "addressList",
+    "Addresss Updated",
+    null,
+    { address: address },
+    header,
+  );
+};
+
+// edit Address
 
 // It is use for moving  the item from cart to wishlist.
 
@@ -51,7 +89,6 @@ const moveToWishlist = (
 
 const updateQuantity = (id, token, dispatch, setLoading, type) => {
   const header = { authorization: token };
-  console.log("clicked");
   getDataFromServer(
     `/api/user/cart/${id}`,
     "post",
@@ -65,6 +102,20 @@ const updateQuantity = (id, token, dispatch, setLoading, type) => {
         type: type,
       },
     },
+    header,
+  );
+};
+const removefromCart = (id, token, product, dispatch, setLoading) => {
+  const header = { authorization: token };
+  getDataFromServer(
+    `/api/user/cart/${id}`,
+    "DELETE",
+    dispatch,
+    "ADD_PRODUCT_INTO_CART",
+    "cart",
+    "Product Removed From Cart",
+    setLoading,
+    { product: product },
     header,
   );
 };
@@ -93,6 +144,22 @@ const addToCart = (
         header,
       )
     : navigate("/login", { state: { location, item: product } });
+};
+
+const emptyCart = (token, dispatch) => {
+  const header = { authorization: token };
+
+  getDataFromServer(
+    "/api/user/cart/clearCart",
+    "post",
+    dispatch,
+    "ADD_PRODUCT_INTO_CART",
+    "cart",
+    "Order Placed Successfully",
+    null,
+    null,
+    header,
+  );
 };
 
 const addToWishlist = (
@@ -184,6 +251,24 @@ const moveToCart = (
   }
 };
 
+// orders
+
+const addOrder = (token, order, dispatch) => {
+  alert("ghus gya ander");
+  const header = { authorization: token };
+  getDataFromServer(
+    "api/user/orders",
+    "post",
+    dispatch,
+    "ADD_ORDER",
+    "orders",
+    "Order Placed Successfully",
+    null,
+    { ...order },
+    header,
+  );
+};
+
 const handlers = {
   removefromCart,
   moveToWishlist,
@@ -192,6 +277,11 @@ const handlers = {
   addToWishlist,
   removefromWishlist,
   moveToCart,
+  addAddress,
+  removeAddress,
+  updateAddress,
+  emptyCart,
+  addOrder,
 };
 
 export { handlers };

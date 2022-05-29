@@ -30,7 +30,6 @@ const Filter = () => {
     selectedFilters.brands?.data;
 
   let onChangeSlider = (e) => {
-    console.log(e.target.value);
     dispatch({ type: "CHANGE_RATING", rating: e.target.value });
   };
 
