@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAuth, useData } from "../../Context";
 import { useLocation } from "react-router-dom";
 import { handlers } from "../../utils/handlers";
@@ -44,7 +44,7 @@ export const Bill = ({ address, setOrderData }) => {
 
     const options = {
       key: "rzp_test_MHI0UXUT81c4xu",
-      amount: 5000 * 100,
+      amount: cartValue.totalprice * 100,
       currency: "INR",
       name: "DevStore",
       description: "Shopping With DevStore",

@@ -2,10 +2,6 @@ import { Server, Model, RestSerializer } from "miragejs";
 import { v4 as uuid } from "uuid";
 
 import {
-  getOrderItemsHandler,
-  addItemToOrdersHandler,
-} from "./backend/controllers/OrdersController";
-import {
   getAddressListHandler,
   addAddressHandler,
   removeAddressHandler,
@@ -39,6 +35,9 @@ import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
 
+import { getOrderItemsHandler } from "./backend/controllers/OrdersController";
+import { addItemToOrdersHandler } from "./backend/controllers/OrdersController";
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -68,7 +67,6 @@ export function makeServer({ environment = "development" } = {}) {
           ...item,
           cart: [],
           wishlist: [],
-
           addressList: [
             {
               _id: uuid(),
@@ -90,8 +88,7 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
-      this.get("/user/orders", getOrderItemsHandler.bind(this));
-      this.post("/user/orders", addItemToOrdersHandler.bind(this));
+
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
@@ -121,6 +118,11 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this),
       );
+
+      //orders
+
+      this.post("/user/orders", addItemToOrdersHandler.bind(this));
+      this.get("/user/orders", getOrderItemsHandler.bind(this));
       // addresse routes (private)
       this.get("/user/address", getAddressListHandler.bind(this));
       this.post("/user/address", addAddressHandler.bind(this));
