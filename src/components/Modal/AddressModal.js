@@ -21,7 +21,7 @@ export const AddressModal = ({ setModal, edit, editAddress }) => {
       ? editAddress
       : {
           name: "",
-          house: "",
+          street: "",
           city: "",
           state: "",
           pincode: "",
@@ -37,7 +37,7 @@ export const AddressModal = ({ setModal, edit, editAddress }) => {
   const fillDummyData = () => {
     setAddress({
       name: "Milke",
-      house: "IH:31",
+      street: "IH:31",
       city: "Gothwam",
       state: "Param",
       pincode: "1234",
@@ -49,7 +49,7 @@ export const AddressModal = ({ setModal, edit, editAddress }) => {
   const cancelAddress = () => {
     setAddress({
       name: "",
-      house: "",
+      street: "",
       city: "",
       state: "",
       pincode: "",
@@ -91,9 +91,9 @@ export const AddressModal = ({ setModal, edit, editAddress }) => {
             <div className='input-field'>
               <input
                 type='text'
-                value={address.house}
+                value={address.street}
                 placeholder='Enter House Number'
-                onChange={(e) => inputHanlder(e, "house")}
+                onChange={(e) => inputHanlder(e, "street")}
                 required
               />
             </div>

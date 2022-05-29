@@ -11,6 +11,7 @@ let initialSatate = {
     rating: 1,
   },
   allAddress: [],
+  orders: [],
 };
 
 const StateProvider = ({ children }) => {

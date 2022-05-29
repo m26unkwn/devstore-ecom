@@ -1,0 +1,35 @@
+.address-wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+.checkout-address {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 1rem 2rem;
+  background: white;
+}
+
+.order-placed {
+  color: var(--success-color);
+  text-align: center;
+}
+.order-id {
+  text-align: center;
+  font-weight: bold;
+  color: rgb(55, 55, 55);
+}
+.order-summary > * {
+  margin-bottom: 1rem;
+}
+.btn-center {
+  margin: auto;
+}
+
+.order-text {
+  text-align: center;
+}
+
+.sub-desc {
+  color: rgb(135, 135, 135);
+}

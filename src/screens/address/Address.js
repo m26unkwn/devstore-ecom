@@ -10,7 +10,6 @@ const ProfileInfo = () => {
     state: { allAddress },
   } = useData();
 
-  console.log("allAddress", allAddress);
 
   const openAddressModal = () => {
     setAddress(true);

@@ -30,7 +30,7 @@ const Wishlist = () => {
               />
             ))
           ) : (
-            <div className='flex flex-col flex-gap'>
+            <div className='flex flex-col flex-gap sub-color'>
               <h1>You Don't have wishlist Products</h1>
               <Link
                 to='/products'

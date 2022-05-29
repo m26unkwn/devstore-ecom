@@ -17,6 +17,8 @@ import {
   Footer,
   ProfileInfo,
   Address,
+  Checkout,
+  Orders,
 } from "./screens";
 import {
   Cart,
@@ -62,12 +64,17 @@ function App() {
           />
           <Route path='/products/search' element={<FilterProducts />} />
           <Route path='/' element={<PrivateRoute />}>
-            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart'>
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/cart/checkout' element={<Checkout />} />
+            </Route>
+
             <Route path='/wishlist' element={<Wishlist />} />
             <Route path='/account'>
               <Route path='/account' element={<Profile />} />
-              <Route path='/account/profile' element={<ProfileInfo />} />
-              <Route path='/account/address' element={<Address />} />
+              <Route path='profile' element={<ProfileInfo />} />
+              <Route path='address' element={<Address />} />
+              <Route path='orders' element={<Orders />} />
             </Route>
           </Route>
 

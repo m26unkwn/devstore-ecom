@@ -37,7 +37,7 @@ const ProductCard = (props) => {
   const isProducInCart = cartItems.some((item) => item._id === product._id);
 
   const isProducInWishlist = wishlistItems.some(
-    (item) => item._id === product._id
+    (item) => item._id === product._id,
   );
 
   return (
@@ -63,7 +63,7 @@ const ProductCard = (props) => {
                     product,
                     dispatch,
                     setLoading,
-                    isProducInWishlist
+                    isProducInWishlist,
                   )
                 : handlers.addToWishlist(
                     token,
@@ -71,7 +71,7 @@ const ProductCard = (props) => {
                     dispatch,
                     setLoading,
                     isProducInWishlist,
-                    navigate
+                    navigate,
                   )
             }
             className='btn btn-icon'>
@@ -113,7 +113,7 @@ const ProductCard = (props) => {
                       dispatch,
                       setLoading,
                       navigate,
-                      location
+                      location,
                     )
               }
               className='btn icon-text'>

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useData } from "../../Context";
 import { cartValueCalc } from "./utils/cart-value";
 
@@ -7,6 +8,11 @@ const CartValue = () => {
   } = useData();
 
   const cartValueData = cartValueCalc(cartItems);
+
+  const navigate = useNavigate();
+  const placeOrder = () => {
+    navigate("/cart/checkout", { state: { cartValue: cartValueData } });
+  };
 
   return (
     <div className='cart-checkout'>
@@ -31,13 +37,15 @@ const CartValue = () => {
           <div className='card-divider'></div>
           <div className='total-amount'>
             <div className='item-details flex jc-between'>
-              <h3>TOTAL AMONUT</h3>
+              <h3>TOTAL AMOUNT</h3>
               <h4>₹{cartValueData.totalprice}</h4>
             </div>
           </div>
           <div className='card-divider'></div>
           <div className='cart-action flex jc-center'>
-            <button className='btn'>PLACE ORDER</button>
+            <button className='btn' onClick={placeOrder}>
+              PLACE ORDER
+            </button>
           </div>
         </div>
       </div>

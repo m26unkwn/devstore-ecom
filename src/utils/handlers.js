@@ -56,21 +56,6 @@ const updateAddress = (token, address, dispatch) => {
 
 // edit Address
 
-const removefromCart = (id, token, product, dispatch, setLoading) => {
-  const header = { authorization: token };
-  getDataFromServer(
-    `/api/user/cart/${id}`,
-    "DELETE",
-    dispatch,
-    "ADD_PRODUCT_INTO_CART",
-    "cart",
-    "Product Removed From Cart",
-    setLoading,
-    { product: product },
-    header,
-  );
-};
-
 // It is use for moving  the item from cart to wishlist.
 
 const moveToWishlist = (
@@ -104,7 +89,6 @@ const moveToWishlist = (
 
 const updateQuantity = (id, token, dispatch, setLoading, type) => {
   const header = { authorization: token };
-  console.log("clicked");
   getDataFromServer(
     `/api/user/cart/${id}`,
     "post",
@@ -118,6 +102,20 @@ const updateQuantity = (id, token, dispatch, setLoading, type) => {
         type: type,
       },
     },
+    header,
+  );
+};
+const removefromCart = (id, token, product, dispatch, setLoading) => {
+  const header = { authorization: token };
+  getDataFromServer(
+    `/api/user/cart/${id}`,
+    "DELETE",
+    dispatch,
+    "ADD_PRODUCT_INTO_CART",
+    "cart",
+    "Product Removed From Cart",
+    setLoading,
+    { product: product },
     header,
   );
 };
@@ -146,6 +144,22 @@ const addToCart = (
         header,
       )
     : navigate("/login", { state: { location, item: product } });
+};
+
+const emptyCart = (token, dispatch) => {
+  const header = { authorization: token };
+
+  getDataFromServer(
+    "/api/user/cart/clearCart",
+    "post",
+    dispatch,
+    "ADD_PRODUCT_INTO_CART",
+    "cart",
+    "Order Placed Successfully",
+    null,
+    null,
+    header,
+  );
 };
 
 const addToWishlist = (
@@ -237,6 +251,24 @@ const moveToCart = (
   }
 };
 
+// orders
+
+const addOrder = (token, order, dispatch) => {
+  alert("ghus gya ander");
+  const header = { authorization: token };
+  getDataFromServer(
+    "api/user/orders",
+    "post",
+    dispatch,
+    "ADD_ORDER",
+    "orders",
+    "Order Placed Successfully",
+    null,
+    { ...order },
+    header,
+  );
+};
+
 const handlers = {
   removefromCart,
   moveToWishlist,
@@ -248,6 +280,8 @@ const handlers = {
   addAddress,
   removeAddress,
   updateAddress,
+  emptyCart,
+  addOrder,
 };
 
 export { handlers };

@@ -51,7 +51,6 @@ const AuthProvider = ({ children }) => {
     firstName = null,
     lastName = null,
   ) => {
-    console.log("cartData aa rha hai kya", cartData);
     try {
       const {
         data: { encodedToken, foundUser, createdUser },
@@ -115,8 +114,13 @@ const AuthProvider = ({ children }) => {
                 });
                 toast.success("Product added in cart");
               }
-            } catch (error) {
-              console.log("error aa rha hai", error);
+            } catch ({
+              response: {
+                data: { errors },
+                status,
+              },
+            }) {
+              toast.error(errors[0]);
             }
           } else {
             toast.warning("Product is already in cart");
@@ -175,7 +179,6 @@ const AuthProvider = ({ children }) => {
         });
       }
       toast.error(errors[0]);
-      console.error(errors[0]);
     }
   };
 

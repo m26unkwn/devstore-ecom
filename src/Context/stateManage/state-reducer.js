@@ -84,12 +84,16 @@ export function reducer(state, action) {
     case "ADD_ADDRESS":
       return { ...state, allAddress: action.payload };
 
+    case "ADD_ORDER":
+      return { ...state, orders: action.payload };
+
     case "CLEAR_ALL_DATA_FROM_STATE":
       return {
         ...state,
         wishlistItems: [],
         cartItems: [],
         allAddress: [],
+        orders: [],
       };
 
     default:

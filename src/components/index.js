@@ -9,4 +9,6 @@ export { Login, Signup } from "./authentication";
 export { default as Profile } from "./Profile/Profile";
 export { default as Navbar } from "./Navbar/Navbar";
 export { default as Cart } from "./Cart/Cart";
+
 export { AddressCard } from "./Address/AddressCard";
+export { OrderCard } from "./Order/OrderCard";

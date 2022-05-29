@@ -11,6 +11,7 @@ export const getDataFromServer = async (
   body = null,
   header = null,
 ) => {
+  console.log(api);
   try {
     if (setLoading) {
       setLoading(true);
@@ -30,7 +31,7 @@ export const getDataFromServer = async (
       toast.success(message);
     }
   } catch (error) {
-    console.log(error);
+    alert(error);
     if (setLoading) {
       setLoading(false);
     }

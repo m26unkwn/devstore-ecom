@@ -10,8 +10,6 @@ const Cart = () => {
     state: { cartItems },
   } = useData();
 
-  console.log(cartItems);
-
   return (
     <main className='cart-wrapper'>
       <div className='cart-head flex jc-center'>
@@ -36,7 +34,7 @@ const Cart = () => {
             ))
           ) : (
             <>
-              <h1>You cart is empty</h1>
+              <h1 className='sub-color'>You cart is empty</h1>
               <Link
                 to='/products'
                 style={{ width: "fit-content", margin: "auto" }}
