@@ -4,7 +4,12 @@ import { useAuth, useData } from "../../Context";
 import { handlers } from "../../utils/handlers";
 import "./modal.css";
 
-export const AddressModal = ({ setModal, edit, editAddress }) => {
+export const AddressModal = ({
+  setModal,
+  edit,
+  editAddress,
+  clearAddressState,
+}) => {
   const { dispatch } = useData();
   const {
     authState: { token },
@@ -63,9 +68,12 @@ export const AddressModal = ({ setModal, edit, editAddress }) => {
     if (!edit) {
       handlers.addAddress(token, address, dispatch);
       setModal(false);
+      if (clearAddressState) clearAddressState(null);
     } else {
       handlers.updateAddress(token, address, dispatch);
       setModal(false);
+
+      if (clearAddressState) clearAddressState(null);
     }
   };
 

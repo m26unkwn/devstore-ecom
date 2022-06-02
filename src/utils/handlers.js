@@ -95,7 +95,7 @@ const updateQuantity = (id, token, dispatch, setLoading, type) => {
     dispatch,
     "ADD_PRODUCT_INTO_CART",
     "cart",
-    "Quntity Updated.",
+    "Quantity Updated.",
     setLoading,
     {
       action: {

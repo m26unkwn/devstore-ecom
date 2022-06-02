@@ -77,7 +77,7 @@ const Checkout = () => {
               </Link>
             </div>
           )}
-          {modal && <AddressModal setModal={setModal} />}
+          {modal && <AddressModal setModal={setModal} clearAddressState={setAddress}/>}
         </>
       ) : (
         <div className='cart-head flex jc-center'>
